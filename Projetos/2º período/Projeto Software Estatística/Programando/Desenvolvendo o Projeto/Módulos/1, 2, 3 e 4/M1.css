@@ -1,0 +1,119 @@
+/* Resetando estilos padrões */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('Imagens/FundoSite.png'); /* Defina o caminho correto da imagem de fundo */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Container principal */
+.module-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Mantém o conteúdo centralizado horizontalmente */
+    justify-content: flex-start; /* Posiciona no topo da tela */
+    padding-top: 40px;
+    color: white; /* Cor do texto */
+    position: relative; /* Para posicionamento absoluto da seta e título */
+}
+
+/* Título e seta no canto superior esquerdo */
+.title-row {
+    display: flex;
+    align-items: center; /* Alinha a seta e o título na mesma linha */
+    position: absolute; /* Permite mover o grupo de elementos livremente */
+    top: -230px; /* Ajuste conforme necessário para a altura */
+    left: -50px; /* Ajuste conforme necessário para a distância da esquerda */
+}
+
+/* Estilo da seta */
+.back-arrow {
+    width: 45px; /* Tamanho da seta */
+    height: 45px;
+    margin-right: 40px; /* Espaço entre a seta e o título */
+}
+
+/* Título "Módulo 1" */
+.module-title {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0; /* Remove a margem padrão */
+}
+
+/* Subtítulo */
+.module-subtitle {
+    font-size: 40px;
+    margin-top: -170px; /* Suba um pouco o subtítulo */
+    margin-bottom: 30px; /* Espaço abaixo do subtítulo */
+    text-align: center; /* Centraliza o subtítulo */
+}
+
+/* Caixinhas de escolha */
+.choice-boxes {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza as caixinhas */
+}
+
+.choice-box {
+    width: 1200px; /* Largura ajustável */
+    max-width: 2000px; /* Limita o tamanho máximo */
+    padding: 10px;
+    margin: 10px 0; /* Espaço entre as caixas */
+    background-color: white; /* Fundo branco */
+    border-radius: 50px; /* Cantos arredondados */
+    border-style: solid;
+    font-size: 22px;
+    color: black; /* Cor do texto */
+    font-weight: bold;
+    text-align: left; /* Texto à esquerda dentro das caixas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para efeito */
+}
+
+/* Estilo para os links */
+.choice-link {
+    text-decoration: none; /* Remove o sublinhado dos links */
+    width: 100%; /* O link preenche 100% da largura da caixa */
+}
+
+/* Seção de download fixa no rodapé */
+.download-section {
+    position: fixed;
+    bottom: 80px; /* Ajuste a distância do rodapé */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    text-align: center;
+}
+
+.download-link {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: rgba(95, 144, 243, 0.589); /* Cor de fundo do botão */
+    padding: 15px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para o botão */
+}
+
+.download-link:hover {
+    background-color: #3a44ce; /* Cor ao passar o mouse */
+}
+
+/* Estilo para a imagem do ícone de download */
+.atividades-propostas {
+    width: 50px; /* Ajuste o tamanho conforme necessário */
+    height: 50px;
+    vertical-align: middle; /* Alinha a imagem ao centro do texto */
+    margin-right: 3px; /* Espaço entre a imagem e o texto */
+}

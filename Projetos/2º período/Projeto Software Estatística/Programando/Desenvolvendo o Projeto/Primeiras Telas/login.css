@@ -1,0 +1,137 @@
+/* Definindo o layout básico da tela */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('Imagens/FundoCadastro.png'); /* Coloque aqui a imagem de fundo */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Contêiner principal para organizar os elementos */
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    background-color: #3082c5b6;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px; /* Adiciona espaço para o título */
+}
+
+/* Título fora do formulário */
+.title {
+    position: absolute;
+    top: 110px; /* Ajusta a posição do título para ficar em cima */
+    font-size: 30px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    width: 100%; /* Faz o título ocupar toda a largura da página */
+}
+
+/* Botão Entrar (superior direito) */
+.login-button {
+    position: absolute;
+    top: 30px;
+    right: 20px;
+    background-color: #ffffff;
+    color: #00c3ff;
+    padding: 15px 30px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Seta de voltar (superior esquerdo) */
+.back-button {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    text-decoration: none;
+}
+
+.back-button img {
+    width: 50px;
+}
+
+/* Formulário de Cadastro */
+.form-container {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+    color: #ffffff;
+}
+
+/* Campos do formulário */
+.form-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(100, 211, 255);
+}
+
+/* Ajuste do input de senha para o mesmo tamanho */
+.password-container {
+    position: relative;
+    width: 100%; /* Agora o mesmo tamanho que os outros inputs */
+}
+
+.password-container input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(100, 211, 255);
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.password-toggle img {
+    width: 20px;
+}
+
+/* Botão Criar Conta */
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    background-color: #00c4ff;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px; /* Ajuste o valor conforme necessário */
+}
+
+.submit-button:hover {
+    background-color: #009fd4;
+}

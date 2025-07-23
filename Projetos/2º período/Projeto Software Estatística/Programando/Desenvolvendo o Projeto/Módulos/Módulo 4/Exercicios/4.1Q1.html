@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="4.1Q1.css">
+    <title>Probabilidade Clássica e Eventos Independentes</title>
+</head>
+<body>
+    <!-- Faixa superior com seta de retorno e subtítulo -->
+    <div class="faixa-superior">
+        <a href="../../1, 2, 3 e 4/M4.html" class="botao-retorno">
+            <img src="../Imagens/setaVoltar.png" alt="Seta de Retorno" class="icone-retorno">
+        </a>
+        <h2>4.1 Probabilidade Clássica e Eventos Independentes:</h2>
+    </div>
+    
+    <!-- Faixa lateral com botões de navegação -->
+    <div class="faixa-lateral">
+        <a href="../M4-1Apresentação.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/apresentação.png" width="40px" alt="apresentação"> APRESENTAÇÃO
+            </button>
+        </a>
+        <a href="../M4-1Conteúdo.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/conteúdo.png" width="40px" alt="conteúdo"> CONTEÚDO
+            </button>
+        </a>
+        <a href="#" class="botao-lateral-link">
+            <button class="botao-lateral ativo">
+                <img src="../Imagens/exercícios práticos.png" width="40px" alt="exercícios práticos"> EXERCÍCIOS PRÁTICOS
+            </button>
+        </a>
+        <a href="4.1respostas.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/exercícios resolvidos.png" width="40px" alt="exercícios resolvidos"> EXERCÍCIOS RESOLVIDOS
+            </button>
+        </a>
+    </div>
+
+        <!-- Área principal de conteúdo -->
+        <div class="conteudo-principal">
+            <form id="questionario" action="../../Gabarito/verificar.php" method="post">
+                <!-- Campo oculto para armazenar respostas -->
+                <input type="hidden" name="respostas" id="respostas">
+
+            <h2>Questão 1:</h2>
+            <h3>Um saco contém 8 bolas de mesmo tamanho, mas com cores diferentes: três azuis, quatro vermelhas e uma amarela. Retira-se ao acaso uma bola. Qual a probabilidade da bola retirada ser azul?</h3>
+    
+                <!-- Alternativas -->
+                <div class="alternativas">
+                    <label><input type="radio" name="4.1Q1" value="A"> A) 36%</label>
+                    <label><input type="radio" name="4.1Q1" value="B"> B) 37,5%</label>
+                    <label><input type="radio" name="4.1Q1" value="C"> C) 39%</label>
+                    <label><input type="radio" name="4.1Q1" value="D"> D) 40,5%</label>
+                    <label><input type="radio" name="4.1Q1" value="E"> E) 42%</label>
+                </div>
+                <div class="botoes-navegacao">
+                    <button type="button" class="botao-proximo" onclick="salvarResposta('4.1Q1', '4.1Q2.html', false, 'Grupo4.1')">PRÓXIMO ⭢</button>
+                </div>
+            </form>
+            <script src="../../Gabarito/salvarResposta.js"></script>
+        </div>
+    </body>
+    </html>
+    

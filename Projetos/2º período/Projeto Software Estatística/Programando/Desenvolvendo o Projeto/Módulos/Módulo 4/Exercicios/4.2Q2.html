@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="4.2Q2.css">
+    <title>Regra da Soma e do Produto</title>
+</head>
+<body>
+    <!-- Faixa superior com seta de retorno e subtítulo -->
+    <div class="faixa-superior">
+        <a href="../../1, 2, 3 e 4/M4.html" class="botao-retorno">
+            <img src="../Imagens/setaVoltar.png" alt="Seta de Retorno" class="icone-retorno">
+        </a>
+        <h2>4.2 Regra da Soma e do Produto:</h2>
+    </div>
+    
+    <!-- Faixa lateral com botões de navegação -->
+    <div class="faixa-lateral">
+        <a href="../M4-2Apresentação.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/apresentação.png" width="40px" alt="apresentação"> APRESENTAÇÃO
+            </button>
+        </a>
+        <a href="../M4-2Conteúdo.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/conteúdo.png" width="40px" alt="conteúdo"> CONTEÚDO
+            </button>
+        </a>
+        <a href="#" class="botao-lateral-link">
+            <button class="botao-lateral ativo">
+                <img src="../Imagens/exercícios práticos.png" width="40px" alt="exercícios práticos"> EXERCÍCIOS PRÁTICOS
+            </button>
+        </a>
+        <a href="4.2respostas.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/exercícios resolvidos.png" width="40px" alt="exercícios resolvidos"> EXERCÍCIOS RESOLVIDOS
+            </button>
+        </a>
+    </div>
+
+        <!-- Área principal de conteúdo -->
+        <div class="conteudo-principal">
+            <form id="questionario" action="../../Gabarito/verificar.php" method="post">
+                <input type="hidden" name="respostas" id="respostas">
+
+            <h2>Questão 2:</h2>
+            <h3>No lançamento simultâneo de dois dados comuns, a soma das faces superiores será anotada. Nesse caso, qual é a probabilidade de o resultado ser um número maior que 7 ou ser um número primo?</h3>
+            
+                <!-- Alternativas -->
+                <div class="alternativas">
+                    <label><input type="radio" name="4.2Q2" value="A"> A) 52%</label>
+                    <label><input type="radio" name="4.2Q2" value="B"> B) 64%</label>
+                    <label><input type="radio" name="4.2Q2" value="C"> C) 72%</label>
+                    <label><input type="radio" name="4.2Q2" value="D"> D) 80%</label>
+                    <label><input type="radio" name="4.2Q2" value="E"> E) 92%</label>
+                </div>
+                <div class="botoes-navegacao">
+                    <button type="button" class="botao-voltar" onclick="salvarResposta('4.2Q2', '4.2Q1.html', false, 'Grupo4.2')">⭠ VOLTAR</button>
+                    <button type="button" class="botao-proximo" onclick="salvarResposta('4.2Q2', '4.2Q3.html', false, 'Grupo4.2')">PRÓXIMO ⭢</button>
+                </div>
+            </form>
+            <script src="../../Gabarito/salvarResposta.js"></script>
+        </div>
+    </body>
+    </html>
+    

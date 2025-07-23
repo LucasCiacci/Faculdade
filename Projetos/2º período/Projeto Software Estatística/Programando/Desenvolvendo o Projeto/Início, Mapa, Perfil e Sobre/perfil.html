@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+    <!-- Barra lateral -->
+    <div class="sidebar">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="Imagens/Logo sem fundo.png" alt="Logo"> <!-- Espaço reservado para logo -->
+        </div>
+
+        <!-- Botões de Navegação -->
+        <nav class="nav-buttons">
+            <a href="inicio.html" class="nav-button"><img src="Imagens/inicio.png" width="23px" alt="início"> INÍCIO</a>
+            <a href="mapa.html" class="nav-button">🗺️ MAPA</a>
+            <a href="#" class="nav-button active"><img src="Imagens/perfil.png" width="23px" alt="perfil"> PERFIL</a>
+            <a href="sobre.html" class="nav-button"><img src="Imagens/sobre.png" width="23px" alt="sobre"> SOBRE</a>
+            <a href="../Primeiras Telas/index.html" class="nav-button"><img src="Imagens/sair.png" width="23px" alt="sair"> SAIR</a>
+        </nav>
+    </div>
+
+    <!-- Parte principal da tela -->
+    <div class="main-content">
+        <h1 class="main-title">Perfil</h1>
+        <div class="content-container">
+            <!-- Imagem de perfil e texto ao lado -->
+            <div class="profile-section">
+                <img src="Imagens/iconePerfil.png" alt="Imagem de Perfil" class="profile-image"> <!-- Espaço reservado para imagem -->
+                <p class="profile-text">Bem-vindo ao seu perfil! Aqui você pode revisar e atualizar suas informações.</p>
+            </div>
+
+            <!-- Inputs para Nome Completo, Usuário e Email -->
+            <div class="input-section">
+                <label for="name">Nome Completo:</label>
+                <input type="text" id="name" name="name" placeholder="Digite seu nome completo">
+                
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" placeholder="Digite seu nome de usuário">
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu email">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

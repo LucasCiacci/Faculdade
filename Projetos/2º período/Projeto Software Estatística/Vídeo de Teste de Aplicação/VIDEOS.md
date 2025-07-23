@@ -1,0 +1,5 @@
+* [Câmera do Usuário](https://drive.google.com/file/d/1iIbedbZerurdXruNZvOeIva49_dZviXC/view?usp=sharing)
+* [Navegação pelas Telas](https://drive.google.com/file/d/1g6YGdKo5zUhvOzFlugBHL2O1i-nVlrvc/view?usp=sharing)
+* [Vídeo Gravação da Tela](https://drive.google.com/file/d/1sIAYhnrhnppjSGi61H0iFKac35BU-2b3/view?usp=sharing)
+* [Vídeo Sincronizado](https://drive.google.com/file/d/1cIhRdQw4iDbXqk-npVQCehpenYmqsJCp/view?usp=sharing)
+* [Vídeo Pronto](https://drive.google.com/file/d/1iGaOJ_D5_gBA6u0jSB33hQr40x1qzzGf/view?usp=sharing)
