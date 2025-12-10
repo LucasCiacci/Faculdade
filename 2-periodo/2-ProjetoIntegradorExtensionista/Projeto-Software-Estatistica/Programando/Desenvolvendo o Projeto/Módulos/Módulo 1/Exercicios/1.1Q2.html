@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="1.1Q2.css">
+    <title>Gráficos de Barras e Pizza</title>
+</head>
+<body>
+    <!-- Faixa superior com seta de retorno e subtítulo -->
+    <div class="faixa-superior">
+        <a href="../../1, 2, 3 e 4/M1.html" class="botao-retorno">
+            <img src="../Imagens/setaVoltar.png" alt="Seta de Retorno" class="icone-retorno">
+        </a>
+        <h2>1.1 Gráficos de Barras e Pizza:</h2>
+    </div>
+    
+    <!-- Faixa lateral com botões de navegação -->
+    <div class="faixa-lateral">
+        <a href="../M1-1Apresentação.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/apresentação.png" width="40px" alt="apresentação"> APRESENTAÇÃO
+            </button>
+        </a>
+        <a href="../M1-1Conteúdo.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/conteúdo.png" width="40px" alt="conteúdo"> CONTEÚDO
+            </button>
+        </a>
+        <a href="#" class="botao-lateral-link">
+            <button class="botao-lateral ativo">
+                <img src="../Imagens/exercícios práticos.png" width="40px" alt="exercícios práticos"> EXERCÍCIOS PRÁTICOS
+            </button>
+        </a>
+        <a href="1.1respostas.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/exercícios resolvidos.png" width="40px" alt="exercícios resolvidos"> EXERCÍCIOS RESOLVIDOS
+            </button>
+        </a>
+    </div>
+
+        <!-- Área principal de conteúdo -->
+        <div class="conteudo-principal">
+            <form id="questionario" action="../../Gabarito/verificar.php" method="post">
+                <input type="hidden" name="respostas" id="respostas">
+
+            <h2>Questão 2:</h2>
+            <h3>As alturas dos alunos de uma turma foram registradas em centímetros e organizados no histograma abaixo.</h3>
+            
+            <!-- Imagem da questão -->
+            <img src="../Imagens/1.1Q2.png" alt="Imagem da Questão" class="imagem-questao">
+            
+            <p><h3>Pela leitura do histograma podemos afirmar que</h3></p>
+    
+            <!-- Alternativas -->
+            <div class="alternativas">
+                <label><input type="radio" name="1.1Q2" value="A"> A) A maior quantidade de alunos da turma possui entre 140cm e 155 cm.</label>
+                <label><input type="radio" name="1.1Q2" value="B"> B) Há mais alunos até 155 cm do que entre 156 cm e 175 cm.</label>
+                <label><input type="radio" name="1.1Q2" value="C"> C) Há mais alunos entre 156 cm e 175 cm do que entre 140cm e 155 cm.</label>
+                <label><input type="radio" name="1.1Q2" value="D"> D) A mediana das alturas está na classe 156 cm - 160 cm.</label>
+                <label><input type="radio" name="1.1Q2" value="E"> E) A moda das alturas está na classe 156 cm - 160 cm.</label>
+            </div>
+            
+            <div class="botoes-navegacao">
+                <button type="button" class="botao-voltar" onclick="salvarResposta('1.1Q2', '1.1Q1.html', false, 'Grupo1.1')">⭠ VOLTAR</button>
+                <button type="button" class="botao-proximo" onclick="salvarResposta('1.1Q2', '1.1Q3.html', false, 'Grupo1.1')">PRÓXIMO ⭢</button>
+            </div>
+        </form>
+        <script src="../../Gabarito/salvarResposta.js"></script>
+        </div>
+    </body>
+    </html>
+    

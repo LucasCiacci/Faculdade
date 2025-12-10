@@ -1,0 +1,92 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Fundo da página */
+body {
+    text-align: center;
+    background-image: url('Imagens/FundoSite.png'); /* Mantenha o caminho correto para a imagem */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    color: #333;
+}
+
+/* Container principal */
+.resultado-container {
+    margin: 50px auto;
+    padding: 30px;
+    max-width: 500px;
+    background-color: rgba(255, 255, 255, 0.521);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Título */
+.titulo {
+    font-size: 28px;
+    color: #2C3E50;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Detalhes do resultado */
+.resultado-detalhes {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.card {
+    flex: 1;
+    background-color: #2d2a35a4;
+    color: white;
+    border-radius: 10px;
+    margin: 0 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.numero {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Estilo específico para acertos e erros */
+.numero.acertos {
+    color: #27AE60;
+}
+
+.numero.erros {
+    color: #E74C3C;
+}
+
+/* Botão de retorno */
+.botao-retorno {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #1c2835;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.botao-retorno:hover {
+    background-color: #34495E;
+    transform: scale(1.05);
+}

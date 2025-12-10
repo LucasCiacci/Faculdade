@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="2.1Q1.css">
+    <title>Média Aritmética Simples e Ponderada</title>
+</head>
+<body>
+    <!-- Faixa superior com seta de retorno e subtítulo -->
+    <div class="faixa-superior">
+        <a href="../../1, 2, 3 e 4/M2.html" class="botao-retorno">
+            <img src="../Imagens/setaVoltar.png" alt="Seta de Retorno" class="icone-retorno">
+        </a>
+        <h2>2.1 Média Aritmética Simples e Ponderada:</h2>
+    </div>
+    
+    <!-- Faixa lateral com botões de navegação -->
+    <div class="faixa-lateral">
+        <a href="../M2-1Apresentação.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/apresentação.png" width="40px" alt="apresentação"> APRESENTAÇÃO
+            </button>
+        </a>
+        <a href="../M2-1Conteúdo.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/conteúdo.png" width="40px" alt="conteúdo"> CONTEÚDO
+            </button>
+        </a>
+        <a href="#" class="botao-lateral-link">
+            <button class="botao-lateral ativo">
+                <img src="../Imagens/exercícios práticos.png" width="40px" alt="exercícios práticos"> EXERCÍCIOS PRÁTICOS
+            </button>
+        </a>
+        <a href="2.1respostas.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/exercícios resolvidos.png" width="40px" alt="exercícios resolvidos"> EXERCÍCIOS RESOLVIDOS
+            </button>
+        </a>
+    </div>
+
+        <!-- Área principal de conteúdo -->
+        <div class="conteudo-principal">
+            <form id="questionario" action="../../Gabarito/verificar.php" method="post">
+                <!-- Campo oculto para armazenar respostas -->
+                <input type="hidden" name="respostas" id="respostas">
+
+            <h2>Questão 1:</h2>
+            <h3>Fernando está avaliando o preço médio de sua tarifa de energia elétrica nos cinco primeiros meses do ano. A planilha mostra os valores por mês, de janeiro a maio.</h3>
+            
+            <!-- Imagem da questão -->
+            <img src="../Imagens/2.1Q1.png" alt="Imagem da Questão" class="imagem-questao">
+            
+            <p><h3>Sua meta é fechar o semestre com um preço médio de R$ 130,00. Para alcançar a meta, o maior preço possível a pagar na tarifa do mêsde junho, será de</h3></p>
+    
+                <!-- Alternativas -->
+                <div class="alternativas">
+                    <label><input type="radio" name="2.1Q1" value="A"> A) R$ 109,05</label>
+                    <label><input type="radio" name="2.1Q1" value="B"> B) R$ 125,65</label>
+                    <label><input type="radio" name="2.1Q1" value="C"> C) R$ 130,87</label>
+                    <label><input type="radio" name="2.1Q1" value="D"> D) R$ 98,55</label>
+                    <label><input type="radio" name="2.1Q1" value="E"> E) R$ 97,42</label>
+                </div>
+                <div class="botoes-navegacao">
+                    <button type="button" class="botao-proximo" onclick="salvarResposta('2.1Q1', '2.1Q2.html', false, 'Grupo2.1')">PRÓXIMO ⭢</button>
+                </div>
+            </form>
+            <script src="../../Gabarito/salvarResposta.js"></script>
+        </div>
+    </body>
+    </html>
+    

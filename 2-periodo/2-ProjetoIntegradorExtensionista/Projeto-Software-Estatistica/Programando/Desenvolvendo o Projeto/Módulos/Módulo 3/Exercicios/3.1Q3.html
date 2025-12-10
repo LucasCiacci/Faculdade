@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="3.1Q3.css">
+    <title>Amplitude</title>
+</head>
+<body>
+    <!-- Faixa superior com seta de retorno e subtítulo -->
+    <div class="faixa-superior">
+        <a href="../../1, 2, 3 e 4/M3.html" class="botao-retorno">
+            <img src="../Imagens/setaVoltar.png" alt="Seta de Retorno" class="icone-retorno">
+        </a>
+        <h2>3.1 Amplitude:</h2>
+    </div>
+    
+    <!-- Faixa lateral com botões de navegação -->
+    <div class="faixa-lateral">
+        <a href="../M3-1Apresentação.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/apresentação.png" width="40px" alt="apresentação"> APRESENTAÇÃO
+            </button>
+        </a>
+        <a href="../M3-1Conteúdo.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/conteúdo.png" width="40px" alt="conteúdo"> CONTEÚDO
+            </button>
+        </a>
+        <a href="#" class="botao-lateral-link">
+            <button class="botao-lateral ativo">
+                <img src="../Imagens/exercícios práticos.png" width="40px" alt="exercícios práticos"> EXERCÍCIOS PRÁTICOS
+            </button>
+        </a>
+        <a href="3.1respostas.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/exercícios resolvidos.png" width="40px" alt="exercícios resolvidos"> EXERCÍCIOS RESOLVIDOS
+            </button>
+        </a>
+    </div>
+
+        <!-- Área principal de conteúdo -->
+        <div class="conteudo-principal">
+            <form id="questionario" action="../../Gabarito/verificar.php" method="post">
+                <input type="hidden" name="respostas" id="respostas">
+
+            <h2>Questão 3:</h2>
+            <h3>Um professor fez uma pesquisa de idades em uma turma do ensino médio, composta por 15 alunos, e obteve os seguintes resultados: 15, 15, 15, 15, 16, 16, 16, 14, 16, 16, 16, 17, 17, 18, 18.</h3>
+
+            <h3>Qual é a amplitude das idades dos alunos dessa sala de aula?</h3>
+    
+                <!-- Alternativas -->
+                <div class="alternativas">
+                    <label><input type="radio" name="3.1Q3" value="A"> A) 1</label>
+                    <label><input type="radio" name="3.1Q3" value="B"> B) 2</label>
+                    <label><input type="radio" name="3.1Q3" value="C"> C) 3</label>
+                    <label><input type="radio" name="3.1Q3" value="D"> D) 4</label>
+                    <label><input type="radio" name="3.1Q3" value="E"> E) 5</label>
+                </div>
+                <div class="botoes-navegacao">
+                    <button type="button" class="botao-voltar" onclick="salvarResposta('3.1Q3', '3.1Q2.html', false, 'Grupo3.1')">⭠ VOLTAR</button>
+                    <button type="button" class="botao-proximo" onclick="salvarResposta('3.1Q3', null, true, 'Grupo3.1')">VERIFICAR RESPOSTAS</button>
+        
+                </div>
+            </form>
+            <script src="../../Gabarito/salvarResposta.js"></script>
+        </div>
+    </body>
+    </html>
+    

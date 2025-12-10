@@ -1,0 +1,172 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-image: url('Imagens/FundoSite.png'); /* Espaço reservado para a imagem de fundo */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Barra lateral */
+.sidebar {
+    width: 228.5px;
+    background-color: #386b9e93;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.logo img {
+    width: 170px;
+    margin-bottom: 50px;
+}
+
+.nav-buttons {
+    width: 100%;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #465f79;
+    border-bottom: 3px solid #141b22;
+    transition: background-color 0.3s;
+    border-radius: 50px;
+}
+
+.nav-button:hover {
+    background-color: #3c5970c5;
+}
+
+.nav-button.active {
+    background-color: #d35400c5;
+}
+
+.nav-button:last-child {
+    margin-top: 50px;
+    background-color: #000000;
+}
+
+.nav-button:last-child:hover {
+    background-color: #c0392b;
+}
+
+/* Parte principal da tela */
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+    color: white;
+}
+
+.main-title {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.map-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-image {
+    width: 80%; /* Ajuste conforme necessário */
+    max-width: 800px; /* Para limitar o tamanho máximo */
+    margin-top: -30px; /* Ajuste este valor para subir o mapa */
+}
+
+/* Estilo dos botões circulares */
+.button {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    background-color: #1e90ff; /* Cor azul */
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* Posicionamento dos botões - ajuste conforme necessário */
+#btn1 {
+    top: 80%;
+    left: 15%;
+    background-image: url('Imagens/m1.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#btn2 {
+    top: 57%;
+    left: 36.5%;
+    background-image: url('Imagens/m2.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#btn3 {
+    top: 20%;
+    left: 55%;
+    background-image: url('Imagens/m3.png');
+    background-size: cover;
+    background-position: center;
+}
+
+#btn4 {
+    top: -5%;
+    left: 75%;
+    background-image: url('Imagens/m4.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Estilo dos textos dos botões */
+.button-text {
+    position: absolute;
+    font-size: 14px;
+    color: black ; /* Cor do texto */
+    text-align: center;
+    width: 100px; /* Largura do contêiner de texto (ajuste conforme necessário) */
+    transform: translateX(-50%); /* Para centralizar o texto horizontalmente */
+}
+
+/* Posicionamento dos textos */
+#text1 {
+    top: 69%; /* Abaixo do botão 1 */
+    left: 18.2%; /* Alinhado ao botão 1 */
+    font-weight: bold;
+}
+
+#text2 {
+    top: 73%; /* Abaixo do botão 2 */
+    left: 40%; /* Alinhado ao botão 2 */
+    font-weight: bold;
+}
+
+#text3 {
+    top: 35%; /* Abaixo do botão 3 */
+    left: 58.5%; /* Alinhado ao botão 3 */
+    font-weight: bold;
+}
+
+#text4 {
+    top: 10%; /* Abaixo do botão 4 */
+    left: 78.5%; /* Alinhado ao botão 4 */
+    font-weight: bold;
+}

@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('Imagens/FundoCadastro.png'); /* Adicione aqui o caminho para a imagem de fundo */
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    text-align: center;
+    color: white;
+}
+
+.content-box {
+    background-color: rgba(77, 126, 224, 0.349);
+    padding: 40px;
+    border-radius: 50px;
+}
+
+.logo img {
+    width: 240px; /* Ajuste conforme necessário */
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.button-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn-primary, .btn-secondary {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #00bcd4;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #00a4b8;
+}
+
+.btn-secondary {
+    background-color: white;
+    color: #00bcd4;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+}
+
+/* Estilo para o botão de navegação no canto superior esquerdo */
+.btn-nav {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #00bcd4; /* Cor verde */
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.btn-nav:hover {
+    background-color: #4565a0; /* Cor ao passar o mouse */
+}

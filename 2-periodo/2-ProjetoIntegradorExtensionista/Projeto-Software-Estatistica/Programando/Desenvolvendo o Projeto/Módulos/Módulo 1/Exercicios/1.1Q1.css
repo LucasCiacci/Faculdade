@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../Imagens/FundoSite.png'); /* Substitua pelo caminho da imagem de fundo */
+    background-size: cover;
+    display: flex;
+}
+
+.faixa-superior {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faixa-superior .botao-retorno {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.icone-retorno {
+    width: 45px; /* Ajuste o tamanho da imagem da seta */
+    height: auto;
+    cursor: pointer;
+}
+
+.faixa-superior h2 {
+    font-size: 25px;
+    color: black;
+    margin: 0;
+}
+
+.faixa-lateral {
+    height: 1030px;
+    width: 220px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.botao-lateral {
+    width: 100%;
+    padding: 25px;
+    font-size: 15px;
+    text-align: left;
+    border: none;
+    background-color: #f2f2f2;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.botao-lateral:hover, .botao-lateral.ativo {
+    background-color: #d28d5d;
+    color: white;
+}
+
+.botao-lateral-link {
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+.conteudo-principal {
+    margin-left: 220px;
+    padding-top: 150px;
+    padding-left: 20px;
+    padding-right: 20px; /* Adicionado padding à direita */
+    width: 70%; /* Reduz a largura da área de texto para 60% da tela */
+    max-width: 800px; /* Define uma largura máxima para telas maiores */
+    min-height: 500px; /* Define uma altura mínima */
+    margin: 0 auto; /* Centraliza o conteúdo principal */
+}
+.conteudo-principal h2, h3 {
+    font-size: 22px;
+    color: white;
+    line-height: 1.5;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+/* Centraliza a imagem da questão */
+.imagem-questao {
+    display: block;
+    margin: 20px auto; /* Centraliza a imagem e adiciona margem */
+    width: 80%; /* Ajuste conforme necessário para o tamanho da imagem */
+    max-width: 720px; /* Limite o tamanho máximo */
+}
+
+/* Estilo das alternativas */
+.alternativas {
+    margin-top: 20px;
+}
+
+.alternativas label {
+    display: block;
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.alternativas input[type="radio"] {
+    margin-right: 10px; /* Espaço entre o rádio e o texto */
+    cursor: pointer;
+}
+
+/* Estilo e posicionamento dos botões de navegação */
+.botoes-navegacao {
+    margin-top: 20px; /* Adiciona espaço entre as alternativas e os botões */
+    display: flex; /* Posiciona os botões em linha */
+    justify-content: flex-end; /* Alinha os botões à direita */
+    gap: 10px; /* Espaço entre os botões */
+}
+
+.botoes-navegacao button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #4CAF50; /* Cor inicial */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
+    transition: transform 0.2s ease, background-color 0.3s ease; /* Suaviza a interação */
+}
+
+.botoes-navegacao button:hover {
+    background-color: #45a049; /* Cor ao passar o mouse */
+    transform: scale(1.1); /* Aumenta ligeiramente o botão */
+}
+
+.botoes-navegacao button:active {
+    transform: scale(1.05); /* Efeito menor ao clicar */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra mais sutil */
+}
+
+.botao-voltar {
+    background-color: #d35400; /* Cor específica para o botão "Voltar" */
+}
+
+.botao-voltar:hover {
+    background-color: #e67e22; /* Cor ao passar o mouse */
+}
+
+.botao-proximo {
+    background-color: #2980b9; /* Cor específica para o botão "Próximo" */
+}
+
+.botao-proximo:hover {
+    background-color: #3498db; /* Cor ao passar o mouse */
+}

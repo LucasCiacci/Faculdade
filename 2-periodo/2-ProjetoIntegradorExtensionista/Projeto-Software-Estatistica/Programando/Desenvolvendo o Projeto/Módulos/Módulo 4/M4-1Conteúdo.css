@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('Imagens/FundoSite.png'); /* Substitua pelo caminho da imagem de fundo */
+    background-size: cover;
+    display: flex;
+}
+
+.faixa-superior {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.faixa-superior .botao-retorno {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.icone-retorno {
+    width: 45px; /* Ajuste o tamanho da imagem da seta */
+    height: auto;
+    cursor: pointer;
+}
+
+.faixa-superior h2 {
+    font-size: 25px;
+    color: black;
+    margin: 0;
+}
+
+.faixa-lateral {
+    height: 740px;
+    width: 220px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.botao-lateral {
+    width: 100%;
+    padding: 25px;
+    font-size: 15px;
+    text-align: left;
+    border: none;
+    background-color: #f2f2f2;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.botao-lateral:hover, .botao-lateral.ativo {
+    background-color: #d28d5d;
+    color: white;
+}
+
+.botao-lateral-link {
+    text-decoration: none; /* Remove o sublinhado */
+}
+
+.conteudo-principal {
+    margin-left: 220px;
+    padding-top: 160px;
+    padding-left: 20px;
+    padding-right: 20px; /* Adicionado padding à direita */
+    width: 70%; /* Reduz a largura da área de texto para 60% da tela */
+    max-width: 800px; /* Define uma largura máxima para telas maiores */
+    min-height: 500px; /* Define uma altura mínima */
+    margin: 0 auto; /* Centraliza o conteúdo principal */
+}
+.conteudo-principal h2, h3 {
+    font-size: 22px;
+    color: white;
+    line-height: 1.5;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+/* Destaques de texto */
+.destaque {
+    color: orange;
+    font-weight: bold;
+}
+
+.negrito {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+.formula {
+    font-weight: bold;
+    font-size: 22px;
+    color: white;
+}
+
+/* Balões de destaque */
+.balao-azul {
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 15px;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    width: 380px;
+    text-align: center;
+}
+
+.balao-azul {
+    background-color: rgb(47, 47, 241);
+    margin-right: 20px;
+    top: -5%;
+    right: -150px; /* Ajuste a posição conforme necessário */
+}
+
+
+/* Estilização das setas */
+.seta-azul {
+    position: absolute;
+    width: 120px;
+    height: auto;
+}
+
+.seta-azul {
+    top: 10%;
+    right: -100px; /* Ajuste a posição conforme necessário */
+    transform: translateY(-50%);
+}
+
+
+ul {
+    list-style-type: none; /* Remove a bolinha padrão */
+    padding-left: 20px; /* Ajuste para alinhar o texto */
+}
+
+ul li {
+    position: relative;
+    padding-left: 20px; /* Espaço para a nova bolinha */
+    color: white;
+    margin-bottom: 15px; /* Espaço entre os itens */
+}
+
+ul li::before {
+    content: '•'; /* Símbolo de bolinha */
+    position: absolute;
+    left: 0;
+    color: white; /* Cor da bolinha */
+    font-size: 18px; /* Tamanho da bolinha */
+}
+
+/* Estilo da fórmula */
+.formula {
+    font-size: 18px; /* Tamanho do texto, ajuste conforme necessário */
+}
+
+/* Estilo para a fração */
+.fraction {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.numerator {
+    display: block;
+}
+
+.denominator {
+    display: block;
+    border-top: 2px solid white; /* Linha entre numerador e denominador */
+    margin-top: 3px; /* Ajuste de espaçamento */
+    padding-top: 3px; /* Ajuste de espaçamento */
+}

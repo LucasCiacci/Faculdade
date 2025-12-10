@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="2.1Q2.css">
+    <title>Média Aritmética Simples e Ponderada</title>
+</head>
+<body>
+    <!-- Faixa superior com seta de retorno e subtítulo -->
+    <div class="faixa-superior">
+        <a href="../../1, 2, 3 e 4/M2.html" class="botao-retorno">
+            <img src="../Imagens/setaVoltar.png" alt="Seta de Retorno" class="icone-retorno">
+        </a>
+        <h2>2.1 Média Aritmética Simples e Ponderada:</h2>
+    </div>
+    
+    <!-- Faixa lateral com botões de navegação -->
+    <div class="faixa-lateral">
+        <a href="../M2-1Apresentação.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/apresentação.png" width="40px" alt="apresentação"> APRESENTAÇÃO
+            </button>
+        </a>
+        <a href="../M2-1Conteúdo.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/conteúdo.png" width="40px" alt="conteúdo"> CONTEÚDO
+            </button>
+        </a>
+        <a href="#" class="botao-lateral-link">
+            <button class="botao-lateral ativo">
+                <img src="../Imagens/exercícios práticos.png" width="40px" alt="exercícios práticos"> EXERCÍCIOS PRÁTICOS
+            </button>
+        </a>
+        <a href="2.1respostas.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/exercícios resolvidos.png" width="40px" alt="exercícios resolvidos"> EXERCÍCIOS RESOLVIDOS
+            </button>
+        </a>
+    </div>
+
+        <!-- Área principal de conteúdo -->
+        <div class="conteudo-principal">
+            <form id="questionario" action="../../Gabarito/verificar.php" method="post">
+                <input type="hidden" name="respostas" id="respostas">
+
+            <h2>Questão 2:</h2>
+            <h3>Em uma escola de Ensino Fundamental um concurso estabelece regras para conceder uma bolsa de estudos para o Ensino Médio. Em cada bimestre os alunos do 9.º ano realizam uma avaliação e, após os quatro bimestres, as notas são somadas. Os quatro alunos finalistas são os que alcançam as maiores pontuações. Ganhará a bolsa aquele que possuir a média mais alta das quatro notas das avaliações.</h3>
+
+            <h3>As notas dos quatro alunos finalistas são:</h3>
+            
+            <!-- Imagem da questão -->
+            <img src="../Imagens/2.1Q2.png" alt="Imagem da Questão" class="imagem-questao">
+            
+            <p><h3>O aluno que ganhou a bolsa de estudos foi</h3></p>
+    
+            <form action="../../Gabarito/verificar.php" method="post">
+                <!-- Alternativas -->
+                <div class="alternativas">
+                    <label><input type="radio" name="2.1Q2" value="A"> A) o aluno A</label>
+                    <label><input type="radio" name="2.1Q2" value="B"> B) o aluno B</label>
+                    <label><input type="radio" name="2.1Q2" value="C"> C) o aluno C</label>
+                    <label><input type="radio" name="2.1Q2" value="D"> D) o aluno D</label>
+                </div>
+                <div class="botoes-navegacao">
+                    <button type="button" class="botao-voltar" onclick="salvarResposta('2.1Q2', '2.1Q1.html', false, 'Grupo2.1')">⭠ VOLTAR</button>
+                    <button type="button" class="botao-proximo" onclick="salvarResposta('2.1Q2', '2.1Q3.html', false, 'Grupo2.1')">PRÓXIMO ⭢</button>
+                </div>
+            </form>
+            <script src="../../Gabarito/salvarResposta.js"></script>
+        </div>
+    </body>
+    </html>
+    

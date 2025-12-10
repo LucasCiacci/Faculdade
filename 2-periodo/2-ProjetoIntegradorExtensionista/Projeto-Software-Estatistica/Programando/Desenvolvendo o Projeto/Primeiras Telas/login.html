@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <!-- Seta de voltar -->
+    <a href="index.html" class="back-button">
+        <img src="Imagens/setaVoltar.png" alt="Voltar">
+    </a>
+
+    <!-- Botão CRIAR CONTA -->
+    <a href="cadastro.html" class="login-button">CRIAR CONTA</a>
+
+    <!-- Título fora do formulário -->
+    <h2 class="title">ENTRAR</h2>
+
+    <div class="container">
+        <!-- Formulário de Login -->
+        <div class="form-container">
+            <form action="login.php" method="POST">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="senha">Senha:</label>
+                <div class="password-container">
+                    <input type="password" id="senha" name="senha" required>
+                </div>
+
+                <button type="submit" class="submit-button">ENTRAR</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

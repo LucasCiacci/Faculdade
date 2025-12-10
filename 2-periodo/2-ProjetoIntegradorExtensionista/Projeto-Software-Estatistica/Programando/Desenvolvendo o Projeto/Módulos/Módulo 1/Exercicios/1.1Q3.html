@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="1.1Q3.css">
+    <title>Gráficos de Barras e Pizza</title>
+</head>
+
+<body>
+    <!-- Faixa superior com seta de retorno e subtítulo -->
+    <div class="faixa-superior">
+        <a href="../../1, 2, 3 e 4/M1.html" class="botao-retorno">
+            <img src="../Imagens/setaVoltar.png" alt="Seta de Retorno" class="icone-retorno">
+        </a>
+        <h2>1.1 Gráficos de Barras e Pizza:</h2>
+    </div>
+
+    <!-- Faixa lateral com botões de navegação -->
+    <div class="faixa-lateral">
+        <a href="../M1-1Apresentação.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/apresentação.png" width="40px" alt="apresentação"> APRESENTAÇÃO
+            </button>
+        </a>
+        <a href="../M1-1Conteúdo.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/conteúdo.png" width="40px" alt="conteúdo"> CONTEÚDO
+            </button>
+        </a>
+        <a href="#" class="botao-lateral-link">
+            <button class="botao-lateral ativo">
+                <img src="../Imagens/exercícios práticos.png" width="40px" alt="exercícios práticos"> EXERCÍCIOS
+                PRÁTICOS
+            </button>
+        </a>
+        <a href="1.1respostas.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/exercícios resolvidos.png" width="40px" alt="exercícios resolvidos"> EXERCÍCIOS
+                RESOLVIDOS
+            </button>
+        </a>
+    </div>
+
+    <!-- Área principal de conteúdo -->
+    <div class="conteudo-principal">
+        <form id="questionario" action="../../Gabarito/verificar.php" method="post">
+            <input type="hidden" name="respostas" id="respostas">
+
+        <h2>Questão 3:</h2>
+        <h3>Um curso preparatório para o Exame Nacional do Ensino Médio(ENEM) realizou uma enquete com seus alunos para
+            entender melhoras áreas mais importantes para eles, segundo suas preferências profissionais. O resultado da
+            pesquisa é mostrado no seguinte gráfico:</h3>
+
+        <!-- Imagem da questão -->
+        <img src="../Imagens/1.1Q3-1.png" alt="Imagem da Questão" class="imagem-questao">
+
+        <p>
+        <h3>Para os alunos que votaram na área com maior representatividade foi feito mais um questionamento, desta vez
+            acerca da profissão pretendida. Desses, foi obtido o seguinte gráfico:</h3>
+        </p>
+
+        <!-- Imagem da questão -->
+        <img src="../Imagens/1.1Q3-2.png" alt="Imagem da Questão" class="imagem-questao">
+
+        <p>
+        <h3>Considerando que 200 alunos responderam a pesquisa, o número de alunos deste curso que pretendem cursar medicina é</h3>
+        </p>
+
+        <!-- Alternativas -->
+        <div class="alternativas">
+            <label><input type="radio" name="1.1Q3" value="A"> A) 3</label>
+            <label><input type="radio" name="1.1Q3" value="B"> B) 4</label>
+            <label><input type="radio" name="1.1Q3" value="C"> C) 5</label>
+            <label><input type="radio" name="1.1Q3" value="D"> D) 6</label>
+            <label><input type="radio" name="1.1Q3" value="E"> E) 7</label>
+        </div>
+
+        <div class="botoes-navegacao">
+            <button type="button" class="botao-voltar" onclick="salvarResposta('1.1Q3', '1.1Q2.html', false, 'Grupo1.1')">⭠ VOLTAR</button>
+            <button type="button" class="botao-proximo" onclick="salvarResposta('1.1Q3', null, true, 'Grupo1.1')">VERIFICAR RESPOSTAS</button>
+
+        </div>
+    </form>
+    <script src="../../Gabarito/salvarResposta.js"></script>
+    </div>
+</body>
+
+</html>

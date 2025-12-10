@@ -1,0 +1,112 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-image: url('Imagens/FundoSite.png'); /* Espaço reservado para a imagem de fundo */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Barra lateral */
+.sidebar {
+    width: 400px;
+    background-color: #386b9e93;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10px;
+}
+
+.logo img {
+    width: 170px;
+    margin-bottom: 50px;
+}
+
+.nav-buttons {
+    width: 100%;
+}
+
+.nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #465f79;
+    border-bottom: 3px solid #141b22;
+    transition: background-color 0.3s;
+    border-radius: 50px;
+}
+
+.nav-button:hover {
+    background-color: #3c5970c5;
+}
+
+.nav-button.active {
+    background-color: #d35400c5;
+}
+
+.nav-button:last-child {
+    margin-top: 50px;
+    background-color: #000000;
+}
+
+.nav-button:last-child:hover {
+    background-color: #c0392b;
+}
+
+/* Parte principal da tela */
+.main-content {
+    flex-grow: 1;
+    padding: 40px;
+    color: white;
+}
+
+.main-title {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-content {
+    padding: 20px;
+    max-width: 60%;
+}
+
+.text-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.text-content p, .text-content ul {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.image-content img {
+    width: 300px; /* Ajuste conforme necessário */
+}

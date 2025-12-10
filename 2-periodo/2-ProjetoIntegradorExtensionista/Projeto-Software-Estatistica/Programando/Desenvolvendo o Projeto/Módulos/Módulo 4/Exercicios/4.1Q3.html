@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="4.1Q3.css">
+    <title>Probabilidade Clássica e Eventos Independentes</title>
+</head>
+<body>
+    <!-- Faixa superior com seta de retorno e subtítulo -->
+    <div class="faixa-superior">
+        <a href="../../1, 2, 3 e 4/M4.html" class="botao-retorno">
+            <img src="../Imagens/setaVoltar.png" alt="Seta de Retorno" class="icone-retorno">
+        </a>
+        <h2>4.1 Probabilidade Clássica e Eventos Independentes:</h2>
+    </div>
+    
+    <!-- Faixa lateral com botões de navegação -->
+    <div class="faixa-lateral">
+        <a href="../M4-1Apresentação.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/apresentação.png" width="40px" alt="apresentação"> APRESENTAÇÃO
+            </button>
+        </a>
+        <a href="../M4-1Conteúdo.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/conteúdo.png" width="40px" alt="conteúdo"> CONTEÚDO
+            </button>
+        </a>
+        <a href="#" class="botao-lateral-link">
+            <button class="botao-lateral ativo">
+                <img src="../Imagens/exercícios práticos.png" width="40px" alt="exercícios práticos"> EXERCÍCIOS PRÁTICOS
+            </button>
+        </a>
+        <a href="4.1respostas.html" class="botao-lateral-link">
+            <button class="botao-lateral">
+                <img src="../Imagens/exercícios resolvidos.png" width="40px" alt="exercícios resolvidos"> EXERCÍCIOS RESOLVIDOS
+            </button>
+        </a>
+    </div>
+
+        <!-- Área principal de conteúdo -->
+        <div class="conteudo-principal">
+            <form id="questionario" action="../../Gabarito/verificar.php" method="post">
+                <input type="hidden" name="respostas" id="respostas">
+
+            <h2>Questão 3:</h2>
+            <h3>(Enem/2013) Numa escola com 1.200 alunos foi realizada uma pesquisa sobre o conhecimento desses em duas línguas estrangeiras: inglês e espanhol.</h3>
+
+            <h3>Nessa pesquisa constatou-se que 600 alunos falam inglês, 500 falam espanhol e 300 não falam qualquer um desses idiomas.</h3>
+            
+            <h3>Escolhendo-se um aluno dessa escola ao acaso e sabendo-se que ele não fala inglês, qual a probabilidade de que esse aluno fale espanhol?</h3>
+
+                <!-- Alternativas -->
+                <div class="alternativas">
+                    <label><input type="radio" name="4.1Q3" value="A"> A) 1/2</label>
+                    <label><input type="radio" name="4.1Q3" value="B"> B) 5/8</label>
+                    <label><input type="radio" name="4.1Q3" value="C"> C) 1/4</label>
+                    <label><input type="radio" name="4.1Q3" value="D"> D) 5/6</label>
+                    <label><input type="radio" name="4.1Q3" value="E"> E) 5/14</label>
+                </div>
+                <div class="botoes-navegacao">
+                    <button type="button" class="botao-voltar" onclick="salvarResposta('4.1Q3', '4.1Q2.html', false, 'Grupo4.1')">⭠ VOLTAR</button>
+                    <button type="button" class="botao-proximo" onclick="salvarResposta('4.1Q3', null, true, 'Grupo4.1')">VERIFICAR RESPOSTAS</button>
+        
+                </div>
+            </form>
+            <script src="../../Gabarito/salvarResposta.js"></script>
+        </div>
+    </body>
+    </html>
+    
