@@ -1,0 +1,94 @@
+### 📘 Ordem ideal dos tópicos com explicação:
+
+---
+
+### **1. Infraestrutura Tecnológica**
+
+> **O que é:** Descrição detalhada dos recursos tecnológicos existentes na empresa analisada.
+> **Por que vem primeiro:** É a base do relatório — antes de avaliar riscos, é necessário entender o ambiente.
+> **O que incluir:**
+
+* Quantidade e tipo de computadores, servidores, roteadores, switches, etc.
+* Softwares utilizados (de escritório, ERPs, navegadores, antivírus).
+* Telecomunicações (quantidade de links de internet, velocidade, redundância).
+* Estrutura da equipe de TI (quantidade, funções, nível de capacitação).
+
+---
+
+### **2. Vulnerabilidades Identificadas**
+
+> **O que é:** Levantamento dos principais pontos frágeis observados na infraestrutura ou nos processos da empresa.
+> **Por que vem agora:** Após conhecer a estrutura, você mostra os riscos e falhas encontrados nela.
+> **O que pode ser analisado:**
+
+* Equipamentos desatualizados ou sem manutenção.
+* Softwares sem licenciamento ou atualização.
+* Falta de backups, antivírus, firewalls ou políticas de senha.
+* Acesso irrestrito a dados sensíveis ou ausência de controle de acessos.
+
+---
+
+### **3. Planilha com Mapeamento de Risco**
+
+> **O que é:** Tabela organizada com os riscos identificados, suas causas, impactos e classificações (alto/médio/baixo).
+> **Por que vem aqui:** Após descrever as vulnerabilidades, é importante mapear e quantificar o impacto de cada uma.
+> **Formato recomendado:**
+
+* Risco
+* Causa
+* Impacto
+* Probabilidade
+* Classificação de Risco
+* Observações
+
+---
+
+### **4. Sugestões de Correções**
+
+> **O que é:** Medidas específicas para resolver as vulnerabilidades encontradas.
+> **Por que aqui:** Com os riscos já identificados e classificados, você propõe soluções diretas.
+> **Exemplos:**
+
+* Trocar equipamentos obsoletos.
+* Implantar política de backups diários.
+* Configurar firewall ou controle de acesso.
+* Atualizar sistemas operacionais.
+
+---
+
+### **5. Oportunidades de Melhoria da Infraestrutura Tecnológica**
+
+> **O que é:** Recomendações mais amplas para evolução da TI da empresa, mesmo que não sejam urgentes.
+> **Por que agora:** Depois de resolver falhas, você aponta caminhos para melhorar o ambiente como um todo.
+> **Exemplos:**
+
+* Implantação de um sistema de gestão de TI.
+* Treinamentos em segurança da informação.
+* Redundância de links de internet ou cloud computing.
+
+---
+
+### **6. Sugestão de Política de Segurança**
+
+> **O que é:** Documento-base com diretrizes formais de segurança da informação para a empresa.
+> **Por que por último:** Agora que você conhece a empresa e seus riscos, pode sugerir uma política realista e personalizada.
+> **O que incluir:**
+
+* Controle de acessos e senhas
+* Normas sobre uso de e-mails, redes e dispositivos
+* Procedimentos de backup
+* Plano de resposta a incidentes
+* Treinamentos e conscientização
+
+---
+
+### 📌 Resumo visual da ordem sugerida:
+
+1. **Infraestrutura Tecnológica**
+2. **Vulnerabilidades Identificadas**
+3. **Planilha com Mapeamento de Risco**
+4. **Sugestões de Correções**
+5. **Oportunidades de Melhoria da Infraestrutura**
+6. **Sugestão de Política de Segurança**
+
+---
