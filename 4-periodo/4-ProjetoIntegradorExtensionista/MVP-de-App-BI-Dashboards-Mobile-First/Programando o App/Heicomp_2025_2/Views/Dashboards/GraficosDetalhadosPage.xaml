@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:shapes="clr-namespace:Microsoft.Maui.Controls.Shapes;assembly=Microsoft.Maui.Controls"
+             xmlns:microcharts="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             x:Class="MauiApp1.Views.Dashboards.GraficosDetalhadosPage"
+             Title=""
+             BackgroundColor="{AppThemeBinding Light={StaticResource FundoPaginaClaro}, 
+                                               Dark={StaticResource FundoPaginaEscuro}}"
+             Shell.FlyoutBehavior="Disabled">
+
+    <!-- ============================================================== -->
+    <!-- CABEÇALHO PERSONALIZADO (TITLE VIEW) -->
+    <!-- ============================================================== -->
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="Auto, *"
+              Style="{StaticResource TitleViewGridStyle}"
+              HorizontalOptions="Fill"
+              VerticalOptions="Fill"
+              Margin="0"
+              Padding="0">
+            <ImageButton Grid.Column="0"
+                         Source="seta_direita.png"  
+                         HeightRequest="44"
+                         WidthRequest="44"
+                         BackgroundColor="Transparent"
+                         Clicked="BotaoVoltarPainelGestao"
+                         Margin="0"
+                         Padding="0"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Center"/>
+
+            <Label Grid.Column="1"
+                   Text="Gráficos Detalhados"
+                   Style="{StaticResource TituloShellStyle}"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Fill"/>
+
+            <ImageButton Grid.Column="2"
+                       Source="icone_menu.png"  
+                       HeightRequest="44"
+                       WidthRequest="44"
+                       BackgroundColor="Transparent"
+                       Margin="0"
+                       Padding="0"
+                       HorizontalOptions="End"
+                       VerticalOptions="Center"/>
+        </Grid>
+    </Shell.TitleView>
+
+    <!-- ============================================================== -->
+    <!-- CONTEÚDO PRINCIPAL (COM SCROLL) -->
+    <!-- ============================================================== -->
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- 1. BLOCO DE FILTROS -->
+            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource FundoCardClaro}, 
+                                                     Dark={StaticResource FundoCardEscuro}}"
+                   CornerRadius="12"
+                   Padding="20"
+                   HasShadow="True">
+
+                <VerticalStackLayout Spacing="15">
+                    <Label Text="Colaboradores por Unidade"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           VerticalOptions="Start"
+                           HorizontalOptions="Start"
+                           TextColor="{AppThemeBinding Light={StaticResource TextoPrincipalClaro}, 
+                                                       Dark={StaticResource TextoPrincipalEscuro}}"/>
+
+                    <VerticalStackLayout Spacing="5">
+                        <Label Text="Filtrar por unidade"
+                               FontSize="12"
+                               TextColor="{AppThemeBinding Light={StaticResource CorTextoCinza}, 
+                                                           Dark={StaticResource CorTextoBranco}}"/>
+                        <Frame Padding="0" 
+                               CornerRadius="8" 
+                               HasShadow="False"
+                               BorderColor="{AppThemeBinding Light={StaticResource CorTextoCinza}, Dark={StaticResource CorTextoBranco}}"
+                               BackgroundColor="Transparent"
+                               HeightRequest="40">
+                            <Picker x:Name="PickerUnidade"
+                                    FontSize="12"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    ItemsSource="{Binding ListaUnidades}"
+                                    ItemDisplayBinding="{Binding NomeExibicao}"
+                                    SelectedItem="{Binding ItemSelecionado}" />
+                        </Frame>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- 2. BLOCO DO GRÁFICO (OCUPA LARGURA TOTAL) -->
+            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource FundoCardClaro}, 
+                                                     Dark={StaticResource FundoCardEscuro}}"
+                   CornerRadius="12"
+                   Padding="20"
+                   HasShadow="True">
+
+                <VerticalStackLayout Spacing="10">
+                    <!-- Nome da Unidade Selecionada -->
+                    <Label Text="{Binding ItemSelecionado.NomeExibicao}" 
+                           FontSize="16" 
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center" 
+                           TextColor="{AppThemeBinding Light={StaticResource TextoPrincipalClaro}, 
+                                                       Dark={StaticResource TextoPrincipalEscuro}}" />
+
+                    <!-- Gráfico -->
+                    <microcharts:ChartView Chart="{Binding GraficoUnidade}" 
+                                           HeightRequest="250"
+                                           WidthRequest="200"
+                                           BackgroundColor="Transparent"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- 3. BLOCO DA LISTA DE SITUAÇÕES (ABAIXO DO GRÁFICO) -->
+            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource FundoCardClaro}, 
+                                                     Dark={StaticResource FundoCardEscuro}}"
+                   CornerRadius="12"
+                   Padding="15"
+                   HasShadow="True">
+
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="Situações" 
+                           FontSize="16" 
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="{AppThemeBinding Light={StaticResource TextoPrincipalClaro}, Dark={StaticResource TextoPrincipalEscuro}}"/>
+
+                    <!-- Lista Dinâmica -->
+                    <!-- HeightRequest define a altura visível da lista para permitir rolagem interna se necessário -->
+                    <CollectionView ItemsSource="{Binding ListaSituacoes}"
+                                    VerticalScrollBarVisibility="Never"
+                                    HeightRequest="300">
+
+                        <CollectionView.EmptyView>
+                            <Label Text="Nenhum dado encontrado" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light={StaticResource CorTextoCinza}, Dark={StaticResource CorTextoCinzaEscuro}}"/>
+                        </CollectionView.EmptyView>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="*, Auto" Padding="0,8">
+                                    <!-- Nome da Situação -->
+                                    <Label Grid.Column="0" 
+                                           Text="{Binding Nome}" 
+                                           FontSize="14"
+                                           VerticalOptions="Center"
+                                           TextColor="{AppThemeBinding Light={StaticResource TextoPrincipalClaro}, 
+                                                                       Dark={StaticResource TextoPrincipalEscuro}}"/>
+
+                                    <!-- Quantidade -->
+                                    <Label Grid.Column="1" 
+                                           Text="{Binding Quantidade}" 
+                                           FontSize="14"
+                                           Margin="0,0,5,0"
+                                           FontAttributes="Bold"
+                                           VerticalOptions="Center"
+                                           TextColor="{AppThemeBinding Light={StaticResource TextoAzulClaro}, 
+                                                                       Dark={StaticResource TextoAzulEscuro}}"/>
+
+                                    <!-- Linha divisória sutil -->
+                                    <BoxView Grid.ColumnSpan="2" 
+                                             HeightRequest="1" 
+                                             Color="{AppThemeBinding Light=#E0E0E0, Dark=#333333}" 
+                                             VerticalOptions="End"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

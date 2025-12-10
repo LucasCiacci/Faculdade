@@ -1,0 +1,133 @@
+
+#TODOS AS OPÇÕES DE UNIDADES:
+SELECT DISTINCT Filial AS unidades FROM rhdataset;
+
+#TODOS AS OPÇÕES DE ANOS:
+SELECT DISTINCT YEAR(STR_TO_DATE(`Admissão`, '%d/%m/%Y')) AS anos FROM rhdataset ORDER BY anos DESC;
+
+/* ==========================================================
+   📌 1º BLOCO DE FILTROS GERAIS — BASE PADRÃO DE DADOS
+   ----------------------------------------------------------
+   Essa CTE (base_colaboradores) define todos os filtros
+   aplicáveis por ANO e UNIDADE, e serve de base para
+   todas as consultas seguintes da tela.
+   ========================================================== */
+
+WITH base_colaboradores AS (
+    SELECT *
+    FROM rhdataset
+    WHERE
+        -- Filtra quem foi admitido até o final do ano analisado
+        STR_TO_DATE(`Admissão`, '%d/%m/%Y') <= STR_TO_DATE(CONCAT(@ano, '-12-31'), '%Y-%m-%d')
+        
+        -- Garante que o colaborador não tenha sido desligado antes do início do ano
+        AND (
+            `Data Afastamento` = '00/00/0000'
+            OR STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y') >= STR_TO_DATE(CONCAT(@ano, '-01-01'), '%Y-%m-%d')
+        )
+
+        -- Aplica filtro por unidade, se especificado
+        AND (
+            @unidade = 'TODAS'
+            OR `Filial` = @unidade
+        )
+)
+
+
+
+/* ==========================================================
+   📊 2º INDICADOR PRINCIPAL — TOTAL DE COLABORADORES
+   ========================================================== */
+SELECT COUNT(*) AS total_colaboradores
+FROM base_colaboradores;
+
+
+
+/* ==========================================================
+   👩‍🦰👨 3º DISTRIBUIÇÃO POR GÊNERO
+   ========================================================== */
+SELECT
+    `Sexo`,
+    COUNT(*) AS quantidade,
+    ROUND(100 * COUNT(*) / (SELECT COUNT(*) FROM base_colaboradores), 1) AS percentual
+FROM base_colaboradores
+GROUP BY `Sexo`;
+
+
+
+/* ==========================================================
+   💼 4º STATUS DOS COLABORADORES
+   ========================================================== */
+
+-- 🔹 Ativos
+SELECT COUNT(*) AS ativos
+FROM base_colaboradores;
+
+
+-- 🔹 Em Licença
+SELECT COUNT(*) AS em_licenca
+FROM base_colaboradores
+WHERE
+    YEAR(STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y')) = @ano
+AND `Descrição (Situação)` IN (
+    'Lic. s/ Remuneração','Ferias','Lic.Medica - 15 Dias',
+    'Lic.Medica - 30 Dias Prof.','Licença Maternidade',
+    'Licença Paternidade','Licença Paternidade Prof.','Auxilio Doenca'
+);
+
+
+-- 🔹 Estagiários
+SELECT COUNT(*) AS estagiarios
+FROM base_colaboradores
+WHERE
+    (`Título Reduzido (Cargo)` LIKE '%estag%' OR `Descrição (Instrução)` LIKE '%estag%');
+
+
+-- 🔹 PCD
+SELECT COUNT(*) AS pcd
+FROM base_colaboradores
+WHERE
+    `Descrição (Deficiência)` IS NOT NULL
+AND `Descrição (Deficiência)` <> ''
+AND `Descrição (Deficiência)` <> 'Nenhuma';
+
+
+
+/* ==========================================================
+   🏢 5º COLABORADORES POR SETOR (GRÁFICO)
+   ========================================================== */
+SELECT 
+    `Descrição (C.Custo)` AS setor,
+    COUNT(*) AS quantidade
+FROM base_colaboradores
+GROUP BY `Descrição (C.Custo)`
+ORDER BY quantidade DESC;
+
+
+
+/* ==========================================================
+   📋 6º LISTA RESUMIDA DE COLABORADORES
+   ========================================================== */
+SELECT
+    `Nome`,
+    `Descrição (C.Custo)` AS setor,
+    `Título Reduzido (Cargo)` AS cargo,
+
+    CASE
+        WHEN `Descrição (Situação)` = 'Demitido'
+             AND YEAR(STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y')) = @ano
+            THEN 'Demitido'
+
+        WHEN `Descrição (Situação)` IN (
+            'Lic. s/ Remuneração','Ferias','Lic.Medica - 15 Dias',
+            'Lic.Medica - 30 Dias Prof.','Licença Maternidade',
+            'Licença Paternidade','Licença Paternidade Prof.','Auxilio Doenca'
+        )
+        AND YEAR(STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y')) = @ano
+            THEN 'Com licença'
+
+        ELSE 'Ativo'
+    END AS status
+
+FROM base_colaboradores
+ORDER BY `Nome`;

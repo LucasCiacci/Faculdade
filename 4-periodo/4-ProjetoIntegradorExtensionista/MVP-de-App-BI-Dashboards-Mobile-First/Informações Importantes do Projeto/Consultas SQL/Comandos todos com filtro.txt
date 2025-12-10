@@ -1,0 +1,195 @@
+
+--------------------------
+# 1º Filtros:
+
+
+--------------------------
+# 2º Indicador Principal — Total de Colaboradores:
+
+# Total (para uma unidade/ano específico)
+SELECT COUNT(*) AS total_colaboradores
+FROM rhdataset
+WHERE
+    STR_TO_DATE(`Admissão`, '%d/%m/%Y') <= STR_TO_DATE(CONCAT(@ano, '-12-31'), '%Y-%m-%d')
+AND (
+    `Data Afastamento` = '00/00/0000'
+    OR STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y') >= STR_TO_DATE(CONCAT(@ano, '-01-01'), '%Y-%m-%d')
+)
+AND (
+    @unidade = 'TODAS'
+    OR `Filial` = @unidade
+);
+
+
+--------------------------
+# 3º Distribuição por Gênero:
+
+# Homens × Mulheres
+-- DISTRIBUIÇÃO POR GÊNERO NO ANO
+SELECT
+    `Sexo`,
+    COUNT(*) AS quantidade,
+    ROUND(
+        100 * COUNT(*) /
+        (
+            SELECT COUNT(*)
+            FROM rhdataset
+            WHERE
+                STR_TO_DATE(`Admissão`, '%d/%m/%Y') <= STR_TO_DATE(CONCAT(@ano, '-12-31'), '%Y-%m-%d')
+            AND (
+                `Data Afastamento` = '00/00/0000'
+                OR STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y') >= STR_TO_DATE(CONCAT(@ano, '-01-01'), '%Y-%m-%d')
+            )
+            AND (
+                @unidade = 'TODAS'
+                OR `Filial` = @unidade
+            )
+        )
+    ,1) AS percentual
+FROM rhdataset
+WHERE
+    STR_TO_DATE(`Admissão`, '%d/%m/%Y') <= STR_TO_DATE(CONCAT(@ano, '-12-31'), '%Y-%m-%d')
+AND (
+    `Data Afastamento` = '00/00/0000'
+    OR STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y') >= STR_TO_DATE(CONCAT(@ano, '-01-01'), '%Y-%m-%d')
+)
+AND (
+    @unidade = 'TODAS'
+    OR `Filial` = @unidade
+)
+GROUP BY `Sexo`;
+
+
+
+--------------------------
+# 4️º Status dos Colaboradores:
+
+# Ativos
+SELECT COUNT(*) AS ativos
+FROM rhdataset
+WHERE
+    STR_TO_DATE(`Admissão`, '%d/%m/%Y') <= STR_TO_DATE(CONCAT(@ano, '-12-31'), '%Y-%m-%d')
+AND (
+    `Data Afastamento` = '00/00/0000'
+    OR STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y') >= STR_TO_DATE(CONCAT(@ano, '-01-01'), '%Y-%m-%d')
+)
+AND (
+    @unidade = 'TODAS'
+    OR `Filial` = @unidade
+);
+
+
+
+# Em Licença
+SELECT COUNT(*) AS em_licenca
+FROM rhdataset
+WHERE
+    YEAR(STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y')) = @ano
+AND `Descrição (Situação)` IN (
+  'Lic. s/ Remuneração','Ferias','Lic.Medica - 15 Dias',
+  'Lic.Medica - 30 Dias Prof.','Licença Maternidade',
+  'Licença Paternidade','Licença Paternidade Prof.','Auxilio Doenca'
+)
+AND (
+    @unidade = 'TODAS'
+    OR `Filial` = @unidade
+);
+
+
+
+# Estagiários
+SELECT COUNT(*) AS estagiarios
+FROM rhdataset
+WHERE
+    (`Título Reduzido (Cargo)` LIKE '%estag%' OR `Descrição (Instrução)` LIKE '%estag%')
+AND
+    STR_TO_DATE(`Admissão`, '%d/%m/%Y') <= STR_TO_DATE(CONCAT(@ano, '-12-31'), '%Y-%m-%d')
+AND (
+    `Data Afastamento` = '00/00/0000'
+    OR STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y') >= STR_TO_DATE(CONCAT(@ano, '-01-01'), '%Y-%m-%d')
+)
+AND (
+    @unidade = 'TODAS'
+    OR `Filial` = @unidade
+);
+
+
+   
+# PCD
+SELECT COUNT(*) AS pcd
+FROM rhdataset
+WHERE
+    `Descrição (Deficiência)` IS NOT NULL
+AND `Descrição (Deficiência)` <> ''
+AND `Descrição (Deficiência)` <> 'Nenhuma'
+AND
+    STR_TO_DATE(`Admissão`, '%d/%m/%Y') <= STR_TO_DATE(CONCAT(@ano, '-12-31'), '%Y-%m-%d')
+AND (
+    `Data Afastamento` = '00/00/0000'
+    OR STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y') >= STR_TO_DATE(CONCAT(@ano, '-01-01'), '%Y-%m-%d')
+)
+AND (
+    @unidade = 'TODAS'
+    OR `Filial` = @unidade
+);
+
+
+  
+--------------------------
+# 5º Colaboradores por Setor (Gráfico):
+
+SELECT 
+    `Descrição (C.Custo)` AS setor,
+    COUNT(*) AS quantidade
+FROM rhdataset
+WHERE
+    STR_TO_DATE(`Admissão`, '%d/%m/%Y') <= STR_TO_DATE(CONCAT(@ano, '-12-31'), '%Y-%m-%d')
+AND (
+    `Data Afastamento` = '00/00/0000'
+    OR STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y') >= STR_TO_DATE(CONCAT(@ano, '-01-01'), '%Y-%m-%d')
+)
+AND (
+    @unidade = 'TODAS'
+    OR `Filial` = @unidade
+)
+GROUP BY `Descrição (C.Custo)`
+ORDER BY quantidade DESC;
+
+
+
+
+--------------------------
+# 6º Lista Resumida de Colaboradores:
+
+SELECT
+    `Nome`,
+    `Descrição (C.Custo)` AS setor,
+    `Título Reduzido (Cargo)` AS cargo,
+
+    CASE
+        WHEN `Descrição (Situação)` = 'Demitido'
+             AND YEAR(STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y')) = @ano
+            THEN 'Demitido'
+
+        WHEN `Descrição (Situação)` IN (
+            'Lic. s/ Remuneração','Ferias','Lic.Medica - 15 Dias',
+            'Lic.Medica - 30 Dias Prof.','Licença Maternidade',
+            'Licença Paternidade','Licença Paternidade Prof.','Auxilio Doenca'
+        )
+        AND YEAR(STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y')) = @ano
+            THEN 'Com licença'
+        ELSE 'Ativo'
+    END AS status
+
+FROM rhdataset
+WHERE
+    STR_TO_DATE(`Admissão`, '%d/%m/%Y') <= STR_TO_DATE(CONCAT(@ano, '-12-31'), '%Y-%m-%d')
+AND (
+    `Data Afastamento` = '00/00/0000'
+    OR STR_TO_DATE(`Data Afastamento`, '%d/%m/%Y') >= STR_TO_DATE(CONCAT(@ano, '-01-01'), '%Y-%m-%d')
+)
+AND (
+    @unidade = 'TODAS'
+    OR `Filial` = @unidade
+)
+ORDER BY `Nome`;

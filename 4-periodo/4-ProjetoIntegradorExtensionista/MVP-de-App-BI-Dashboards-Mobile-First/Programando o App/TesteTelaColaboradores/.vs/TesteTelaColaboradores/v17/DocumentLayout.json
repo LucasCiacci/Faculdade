@@ -1,0 +1,199 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|c:\\visual studio 2022\\testetelacolaboradores\\services\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|solutionrelative:services\\databaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|c:\\visual studio 2022\\testetelacolaboradores\\services\\colaboradoresservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|solutionrelative:services\\colaboradoresservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|c:\\visual studio 2022\\testetelacolaboradores\\models\\colaboradorresumomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|solutionrelative:models\\colaboradorresumomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|c:\\visual studio 2022\\testetelacolaboradores\\views\\colaboradorespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|solutionrelative:views\\colaboradorespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|c:\\visual studio 2022\\testetelacolaboradores\\views\\listacolaboradores\\listacolaboradorespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|solutionrelative:views\\listacolaboradores\\listacolaboradorespage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|c:\\visual studio 2022\\testetelacolaboradores\\viewmodels\\colaboradoresviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|solutionrelative:viewmodels\\colaboradoresviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|c:\\visual studio 2022\\testetelacolaboradores\\models\\generodistribuicaomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|solutionrelative:models\\generodistribuicaomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|c:\\visual studio 2022\\testetelacolaboradores\\viewmodels\\listacolaboradoresviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|solutionrelative:viewmodels\\listacolaboradoresviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|c:\\visual studio 2022\\testetelacolaboradores\\views\\listacolaboradores\\listacolaboradorespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|solutionrelative:views\\listacolaboradores\\listacolaboradorespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|c:\\visual studio 2022\\testetelacolaboradores\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|solutionrelative:appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|c:\\visual studio 2022\\testetelacolaboradores\\views\\colaboradorespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F0814E8D-D972-440C-A38D-665113FB4889}|TesteTelaColaboradores.csproj|solutionrelative:views\\colaboradorespage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ColaboradorResumoModel.cs",
+              "DocumentMoniker": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Models\\ColaboradorResumoModel.cs",
+              "RelativeDocumentMoniker": "Models\\ColaboradorResumoModel.cs",
+              "ToolTip": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Models\\ColaboradorResumoModel.cs",
+              "RelativeToolTip": "Models\\ColaboradorResumoModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T23:25:51.867Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AppShell.xaml.cs",
+              "DocumentMoniker": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\AppShell.xaml.cs",
+              "RelativeDocumentMoniker": "AppShell.xaml.cs",
+              "ToolTip": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\AppShell.xaml.cs",
+              "RelativeToolTip": "AppShell.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T17:52:25.491Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ListaColaboradoresViewModel.cs",
+              "DocumentMoniker": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\ViewModels\\ListaColaboradoresViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\ListaColaboradoresViewModel.cs",
+              "ToolTip": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\ViewModels\\ListaColaboradoresViewModel.cs",
+              "RelativeToolTip": "ViewModels\\ListaColaboradoresViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIcAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T13:13:57.998Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ListaColaboradoresPage.xaml.cs",
+              "DocumentMoniker": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Views\\ListaColaboradores\\ListaColaboradoresPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\ListaColaboradores\\ListaColaboradoresPage.xaml.cs",
+              "ToolTip": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Views\\ListaColaboradores\\ListaColaboradoresPage.xaml.cs",
+              "RelativeToolTip": "Views\\ListaColaboradores\\ListaColaboradoresPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T13:14:45.155Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DatabaseService.cs",
+              "DocumentMoniker": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Services\\DatabaseService.cs",
+              "RelativeDocumentMoniker": "Services\\DatabaseService.cs",
+              "ToolTip": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Services\\DatabaseService.cs",
+              "RelativeToolTip": "Services\\DatabaseService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T23:12:50.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ColaboradoresService.cs",
+              "DocumentMoniker": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Services\\ColaboradoresService.cs",
+              "RelativeDocumentMoniker": "Services\\ColaboradoresService.cs",
+              "ToolTip": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Services\\ColaboradoresService.cs",
+              "RelativeToolTip": "Services\\ColaboradoresService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T16:57:12.593Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GeneroDistribuicaoModel.cs",
+              "DocumentMoniker": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Models\\GeneroDistribuicaoModel.cs",
+              "RelativeDocumentMoniker": "Models\\GeneroDistribuicaoModel.cs",
+              "ToolTip": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Models\\GeneroDistribuicaoModel.cs",
+              "RelativeToolTip": "Models\\GeneroDistribuicaoModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T23:26:21.5Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ListaColaboradoresPage.xaml",
+              "DocumentMoniker": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Views\\ListaColaboradores\\ListaColaboradoresPage.xaml",
+              "RelativeDocumentMoniker": "Views\\ListaColaboradores\\ListaColaboradoresPage.xaml",
+              "ToolTip": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Views\\ListaColaboradores\\ListaColaboradoresPage.xaml",
+              "RelativeToolTip": "Views\\ListaColaboradores\\ListaColaboradoresPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-10T13:13:37.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ColaboradoresViewModel.cs",
+              "DocumentMoniker": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\ViewModels\\ColaboradoresViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\ColaboradoresViewModel.cs",
+              "ToolTip": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\ViewModels\\ColaboradoresViewModel.cs",
+              "RelativeToolTip": "ViewModels\\ColaboradoresViewModel.cs",
+              "ViewState": "AgIAAKAAAAAAAAAAAAAAADIBAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T18:21:59.12Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ColaboradoresPage.xaml",
+              "DocumentMoniker": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Views\\ColaboradoresPage.xaml",
+              "RelativeDocumentMoniker": "Views\\ColaboradoresPage.xaml",
+              "ToolTip": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Views\\ColaboradoresPage.xaml",
+              "RelativeToolTip": "Views\\ColaboradoresPage.xaml",
+              "ViewState": "AgIAAMIBAAAAAAAAAAAAAOkBAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-03T13:06:25.458Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ColaboradoresPage.xaml.cs",
+              "DocumentMoniker": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Views\\ColaboradoresPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\ColaboradoresPage.xaml.cs",
+              "ToolTip": "C:\\Visual Studio 2022\\TesteTelaColaboradores\\Views\\ColaboradoresPage.xaml.cs",
+              "RelativeToolTip": "Views\\ColaboradoresPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-29T18:44:58.037Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
