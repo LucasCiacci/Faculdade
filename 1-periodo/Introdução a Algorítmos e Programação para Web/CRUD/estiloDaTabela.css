@@ -1,0 +1,51 @@
+/* Estilo básico para a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Estilo para as células de cabeçalho */
+  th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Estilo para o cabeçalho */
+  thead {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+  }
+  
+  /* Estilo para as linhas */
+  tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  /* Estilo para as linhas ímpares */
+  tbody tr:nth-of-type(odd) {
+    background-color: #f3f3f3;
+  }
+  
+  /* Estilo para a última linha */
+  tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  
+  /* Estilo para as células ao passar o mouse */
+  tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Estilo para as células de dados */
+  td {
+    font-family: 'Arial', sans-serif;
+    color: #333333;
+  }
+  
