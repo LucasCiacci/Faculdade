@@ -1,0 +1,859 @@
+<html>
+<head>
+<title>MainActivity.kt</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.kt</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">ativmob</span>
+
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">filled</span><span class="s2">.*</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">Manifest</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">content</span><span class="s2">.</span><span class="s1">pm</span><span class="s2">.</span><span class="s1">PackageManager</span>
+<span class="s1">import android</span><span class="s2">.</span><span class="s1">os</span><span class="s2">.</span><span class="s1">Bundle</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">activity</span><span class="s2">.</span><span class="s1">ComponentActivity</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">activity</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">rememberLauncherForActivityResult</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">activity</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">setContent</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">activity</span><span class="s2">.</span><span class="s1">enableEdgeToEdge</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">activity</span><span class="s2">.</span><span class="s1">result</span><span class="s2">.</span><span class="s1">contract</span><span class="s2">.</span><span class="s1">ActivityResultContracts</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">background</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">layout</span><span class="s2">.*</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">lazy</span><span class="s2">.</span><span class="s1">LazyColumn</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">lazy</span><span class="s2">.</span><span class="s1">items</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">foundation</span><span class="s2">.</span><span class="s1">shape</span><span class="s2">.</span><span class="s1">RoundedCornerShape</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">Icons</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">filled</span><span class="s2">.</span><span class="s1">ArrowBack</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">filled</span><span class="s2">.</span><span class="s1">Home</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">filled</span><span class="s2">.</span><span class="s1">List</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">filled</span><span class="s2">.</span><span class="s1">LocationOn</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">filled</span><span class="s2">.</span><span class="s1">NightsStay</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">filled</span><span class="s2">.</span><span class="s1">Place</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">filled</span><span class="s2">.</span><span class="s1">Search</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material</span><span class="s2">.</span><span class="s1">icons</span><span class="s2">.</span><span class="s1">filled</span><span class="s2">.</span><span class="s1">WbSunny</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">material3</span><span class="s2">.*</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">runtime</span><span class="s2">.*</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">Alignment</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">Modifier</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">draw</span><span class="s2">.</span><span class="s1">clip</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">graphics</span><span class="s2">.</span><span class="s1">Color</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">platform</span><span class="s2">.</span><span class="s1">LocalContext</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">text</span><span class="s2">.</span><span class="s1">font</span><span class="s2">.</span><span class="s1">FontWeight</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">text</span><span class="s2">.</span><span class="s1">style</span><span class="s2">.</span><span class="s1">TextAlign</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">tooling</span><span class="s2">.</span><span class="s1">preview</span><span class="s2">.</span><span class="s1">Preview</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">unit</span><span class="s2">.</span><span class="s1">dp</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">unit</span><span class="s2">.</span><span class="s1">sp</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">core</span><span class="s2">.</span><span class="s1">content</span><span class="s2">.</span><span class="s1">ContextCompat</span>
+<span class="s1">import androidx</span><span class="s2">.</span><span class="s1">lifecycle</span><span class="s2">.</span><span class="s1">viewmodel</span><span class="s2">.</span><span class="s1">compose</span><span class="s2">.</span><span class="s1">viewModel</span>
+<span class="s1">import com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">ativmob</span><span class="s2">.</span><span class="s1">ui</span><span class="s2">.</span><span class="s1">theme</span><span class="s2">.</span><span class="s1">AtivMobTheme</span>
+<span class="s1">import kotlinx</span><span class="s2">.</span><span class="s1">serialization</span><span class="s2">.</span><span class="s1">Serializable</span>
+<span class="s1">import kotlinx</span><span class="s2">.</span><span class="s1">serialization</span><span class="s2">.</span><span class="s1">json</span><span class="s2">.</span><span class="s1">Json</span>
+
+<span class="s1">@Serializable</span>
+<span class="s1">data </span><span class="s0">class </span><span class="s1">Item</span><span class="s2">(</span>
+    <span class="s0">val </span><span class="s1">id: Int</span><span class="s2">,</span>
+    <span class="s0">val </span><span class="s1">name: String</span><span class="s2">,</span>
+    <span class="s0">val </span><span class="s1">description: String</span>
+<span class="s2">)</span>
+
+<span class="s0">val </span><span class="s1">embeddedJsonData </span><span class="s2">= </span><span class="s3">&quot;&quot;&quot;</span>
+<span class="s3">[</span>
+    <span class="s3">{&quot;id&quot;: 1, &quot;name&quot;: &quot;Apple iPhone 15&quot;, &quot;description&quot;: &quot;Latest model smartphone&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 2, &quot;name&quot;: &quot;Samsung Galaxy S24&quot;, &quot;description&quot;: &quot;High-end Android phone&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 3, &quot;name&quot;: &quot;Google Pixel 8&quot;, &quot;description&quot;: &quot;Stock Android experience&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 4, &quot;name&quot;: &quot;MacBook Air M3&quot;, &quot;description&quot;: &quot;Lightweight Apple laptop&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 5, &quot;name&quot;: &quot;Dell XPS 15&quot;, &quot;description&quot;: &quot;Powerful Windows laptop&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 6, &quot;name&quot;: &quot;Sony WH-1000XM5&quot;, &quot;description&quot;: &quot;Noise-cancelling headphones&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 7, &quot;name&quot;: &quot;Bose QuietComfort Ultra&quot;, &quot;description&quot;: &quot;Premium comfort headphones&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 8, &quot;name&quot;: &quot;Apple Watch Series 9&quot;, &quot;description&quot;: &quot;Feature-rich smartwatch&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 9, &quot;name&quot;: &quot;Samsung Galaxy Watch 6&quot;, &quot;description&quot;: &quot;Android smartwatch competitor&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 10, &quot;name&quot;: &quot;Kindle Paperwhite&quot;, &quot;description&quot;: &quot;E-reader for books&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 11, &quot;name&quot;: &quot;iPad Air 5&quot;, &quot;description&quot;: &quot;Versatile Apple tablet&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 12, &quot;name&quot;: &quot;Samsung Galaxy Tab S9&quot;, &quot;description&quot;: &quot;Android tablet for productivity&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 13, &quot;name&quot;: &quot;GoPro HERO12 Black&quot;, &quot;description&quot;: &quot;Action camera for adventures&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 14, &quot;name&quot;: &quot;DJI Mini 4 Pro&quot;, &quot;description&quot;: &quot;Compact and powerful drone&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 15, &quot;name&quot;: &quot;Nintendo Switch OLED&quot;, &quot;description&quot;: &quot;Hybrid gaming console&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 16, &quot;name&quot;: &quot;PlayStation 5&quot;, &quot;description&quot;: &quot;Next-gen Sony gaming console&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 17, &quot;name&quot;: &quot;Xbox Series X&quot;, &quot;description&quot;: &quot;Powerful Microsoft console&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 18, &quot;name&quot;: &quot;Anker PowerCore III&quot;, &quot;description&quot;: &quot;Portable phone charger&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 19, &quot;name&quot;: &quot;Logitech MX Master 3S&quot;, &quot;description&quot;: &quot;Ergonomic wireless mouse&quot;},</span>
+    <span class="s3">{&quot;id&quot;: 20, &quot;name&quot;: &quot;Keychron K2 Pro&quot;, &quot;description&quot;: &quot;Mechanical keyboard for typing&quot;}</span>
+<span class="s3">]</span>
+<span class="s3">&quot;&quot;&quot;</span>
+
+<span class="s1">enum </span><span class="s0">class </span><span class="s1">Screen </span><span class="s2">{</span>
+    <span class="s1">Main</span><span class="s2">,</span>
+    <span class="s1">ListaEmbutida</span><span class="s2">,</span>
+    <span class="s1">Estados</span><span class="s2">,</span>
+    <span class="s1">Location</span>
+<span class="s2">}</span>
+
+<span class="s1">@OptIn</span><span class="s2">(</span><span class="s1">ExperimentalMaterial3Api::</span><span class="s0">class</span><span class="s2">)</span>
+<span class="s0">class </span><span class="s1">MainActivity : ComponentActivity</span><span class="s2">() {</span>
+    <span class="s1">override </span><span class="s0">fun </span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState: Bundle?</span><span class="s2">) {</span>
+        <span class="s0">super</span><span class="s2">.</span><span class="s1">onCreate</span><span class="s2">(</span><span class="s1">savedInstanceState</span><span class="s2">)</span>
+        <span class="s1">enableEdgeToEdge</span><span class="s2">()</span>
+
+        <span class="s0">val </span><span class="s1">allItems: List</span><span class="s2">&lt;</span><span class="s1">Item</span><span class="s2">&gt; = </span><span class="s1">Json</span><span class="s2">.</span><span class="s1">decodeFromString</span><span class="s2">(</span><span class="s1">embeddedJsonData</span><span class="s2">)</span>
+
+        <span class="s1">setContent </span><span class="s2">{</span>
+            <span class="s0">val </span><span class="s1">mainViewModel: MainViewModel </span><span class="s2">= </span><span class="s1">viewModel</span><span class="s2">()</span>
+            <span class="s0">val </span><span class="s1">isDarkTheme by mainViewModel</span><span class="s2">.</span><span class="s1">isDarkTheme</span><span class="s2">.</span><span class="s1">collectAsState</span><span class="s2">(</span><span class="s1">initial </span><span class="s2">= </span><span class="s0">false</span><span class="s2">)</span>
+            <span class="s0">var </span><span class="s1">currentScreen by remember </span><span class="s2">{ </span><span class="s1">mutableStateOf</span><span class="s2">&lt;</span><span class="s1">Screen</span><span class="s2">&gt;(</span><span class="s1">Screen</span><span class="s2">.</span><span class="s1">Main</span><span class="s2">) }</span>
+
+            <span class="s1">AtivMobTheme</span><span class="s2">(</span><span class="s1">darkTheme </span><span class="s2">= </span><span class="s1">isDarkTheme</span><span class="s2">) {</span>
+                <span class="s1">Scaffold</span><span class="s2">(</span>
+                    <span class="s1">topBar </span><span class="s2">= {</span>
+                        <span class="s1">CenterAlignedTopAppBar</span><span class="s2">(</span>
+                            <span class="s1">title </span><span class="s2">= {</span>
+                                <span class="s1">Text</span><span class="s2">(</span>
+                                    <span class="s3">&quot;AtivMob&quot;</span><span class="s2">,</span>
+                                    <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">headlineSmall</span><span class="s2">,</span>
+                                    <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span>
+                                <span class="s2">)</span>
+                            <span class="s2">},</span>
+                            <span class="s1">actions </span><span class="s2">= {</span>
+                                <span class="s4">// Botão de alternar tema</span>
+                                <span class="s1">IconButton</span><span class="s2">(</span><span class="s1">onClick </span><span class="s2">= { </span><span class="s1">mainViewModel</span><span class="s2">.</span><span class="s1">toggleTheme</span><span class="s2">() }) {</span>
+                                    <span class="s1">Icon</span><span class="s2">(</span>
+                                        <span class="s1">imageVector </span><span class="s2">= </span><span class="s0">if </span><span class="s2">(</span><span class="s1">isDarkTheme</span><span class="s2">) </span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Filled</span><span class="s2">.</span><span class="s1">WbSunny </span><span class="s0">else </span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Filled</span><span class="s2">.</span><span class="s1">NightsStay</span><span class="s2">,</span>
+                                        <span class="s1">contentDescription </span><span class="s2">= </span><span class="s0">if </span><span class="s2">(</span><span class="s1">isDarkTheme</span><span class="s2">) </span><span class="s3">&quot;Modo Claro&quot; </span><span class="s0">else </span><span class="s3">&quot;Modo Escuro&quot;</span>
+                                    <span class="s2">)</span>
+                                <span class="s2">}</span>
+
+                                <span class="s4">// Botão Home (só aparece quando não estiver na tela principal)</span>
+                                <span class="s0">if </span><span class="s2">(</span><span class="s1">currentScreen </span><span class="s2">!= </span><span class="s1">Screen</span><span class="s2">.</span><span class="s1">Main</span><span class="s2">) {</span>
+                                    <span class="s1">IconButton</span><span class="s2">(</span><span class="s1">onClick </span><span class="s2">= { </span><span class="s1">currentScreen </span><span class="s2">= </span><span class="s1">Screen</span><span class="s2">.</span><span class="s1">Main </span><span class="s2">}) {</span>
+                                        <span class="s1">Icon</span><span class="s2">(</span>
+                                            <span class="s1">imageVector </span><span class="s2">= </span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Default</span><span class="s2">.</span><span class="s1">Home</span><span class="s2">,</span>
+                                            <span class="s1">contentDescription </span><span class="s2">= </span><span class="s3">&quot;Página Inicial&quot;</span>
+                                        <span class="s2">)</span>
+                                    <span class="s2">}</span>
+                                <span class="s2">}</span>
+                            <span class="s2">},</span>
+                            <span class="s1">colors </span><span class="s2">= </span><span class="s1">TopAppBarDefaults</span><span class="s2">.</span><span class="s1">centerAlignedTopAppBarColors</span><span class="s2">(</span>
+                                <span class="s1">containerColor </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">primaryContainer</span><span class="s2">,</span>
+                                <span class="s1">titleContentColor </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">onPrimaryContainer</span><span class="s2">,</span>
+                            <span class="s2">)</span>
+                        <span class="s2">)</span>
+                    <span class="s2">},</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxSize</span><span class="s2">()</span>
+                <span class="s2">) { </span><span class="s1">innerPadding </span><span class="s2">-&gt;</span>
+                    <span class="s0">when </span><span class="s2">(</span><span class="s1">currentScreen</span><span class="s2">) {</span>
+                        <span class="s1">Screen</span><span class="s2">.</span><span class="s1">Main </span><span class="s2">-&gt; </span><span class="s1">MainScreen</span><span class="s2">(</span>
+                            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">innerPadding</span><span class="s2">),</span>
+                            <span class="s1">onNavigateToListaEmbutida </span><span class="s2">= { </span><span class="s1">currentScreen </span><span class="s2">= </span><span class="s1">Screen</span><span class="s2">.</span><span class="s1">ListaEmbutida </span><span class="s2">},</span>
+                            <span class="s1">onNavigateToEstados </span><span class="s2">= { </span><span class="s1">currentScreen </span><span class="s2">= </span><span class="s1">Screen</span><span class="s2">.</span><span class="s1">Estados </span><span class="s2">},</span>
+                            <span class="s1">onNavigateToLocation </span><span class="s2">= { </span><span class="s1">currentScreen </span><span class="s2">= </span><span class="s1">Screen</span><span class="s2">.</span><span class="s1">Location </span><span class="s2">},</span>
+                            <span class="s1">viewModel </span><span class="s2">= </span><span class="s1">mainViewModel</span>
+                        <span class="s2">)</span>
+                        <span class="s1">Screen</span><span class="s2">.</span><span class="s1">ListaEmbutida </span><span class="s2">-&gt; </span><span class="s1">ListaEmbutidaScreen</span><span class="s2">(</span>
+                            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">innerPadding</span><span class="s2">),</span>
+                            <span class="s1">allItems </span><span class="s2">= </span><span class="s1">allItems</span><span class="s2">,</span>
+                            <span class="s1">onNavigateBackToMain </span><span class="s2">= { </span><span class="s1">currentScreen </span><span class="s2">= </span><span class="s1">Screen</span><span class="s2">.</span><span class="s1">Main </span><span class="s2">}</span>
+                        <span class="s2">)</span>
+                        <span class="s1">Screen</span><span class="s2">.</span><span class="s1">Estados </span><span class="s2">-&gt; </span><span class="s1">EstadosScreen</span><span class="s2">(</span>
+                            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">innerPadding</span><span class="s2">),</span>
+                            <span class="s1">viewModel </span><span class="s2">= </span><span class="s1">mainViewModel</span><span class="s2">,</span>
+                            <span class="s1">onNavigateBackToMain </span><span class="s2">= { </span><span class="s1">currentScreen </span><span class="s2">= </span><span class="s1">Screen</span><span class="s2">.</span><span class="s1">Main </span><span class="s2">}</span>
+                        <span class="s2">)</span>
+                        <span class="s1">Screen</span><span class="s2">.</span><span class="s1">Location </span><span class="s2">-&gt; </span><span class="s1">LocationScreen</span><span class="s2">(</span>
+                            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">innerPadding</span><span class="s2">),</span>
+                            <span class="s1">viewModel </span><span class="s2">= </span><span class="s1">mainViewModel</span><span class="s2">,</span>
+                            <span class="s1">onNavigateBackToMain </span><span class="s2">= { </span><span class="s1">currentScreen </span><span class="s2">= </span><span class="s1">Screen</span><span class="s2">.</span><span class="s1">Main </span><span class="s2">}</span>
+                        <span class="s2">)</span>
+                    <span class="s2">}</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">MainScreen</span><span class="s2">(</span>
+    <span class="s1">modifier: Modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">,</span>
+    <span class="s1">onNavigateToListaEmbutida: </span><span class="s2">() -&gt; </span><span class="s1">Unit</span><span class="s2">,</span>
+    <span class="s1">onNavigateToEstados: </span><span class="s2">() -&gt; </span><span class="s1">Unit</span><span class="s2">,</span>
+    <span class="s1">onNavigateToLocation: </span><span class="s2">() -&gt; </span><span class="s1">Unit</span><span class="s2">,</span>
+    <span class="s1">viewModel: MainViewModel</span>
+<span class="s2">) {</span>
+    <span class="s0">val </span><span class="s1">uiState by viewModel</span><span class="s2">.</span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">collectAsState</span><span class="s2">()</span>
+    <span class="s0">var </span><span class="s1">nameInput by remember </span><span class="s2">{ </span><span class="s1">mutableStateOf</span><span class="s2">(</span><span class="s3">&quot;&quot;</span><span class="s2">) }</span>
+
+    <span class="s1">Column</span><span class="s2">(</span>
+        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">modifier</span>
+            <span class="s2">.</span><span class="s1">fillMaxSize</span><span class="s2">()</span>
+            <span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+        <span class="s1">verticalArrangement </span><span class="s2">= </span><span class="s1">Arrangement</span><span class="s2">.</span><span class="s1">spacedBy</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+        <span class="s1">horizontalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterHorizontally</span>
+    <span class="s2">) {</span>
+        <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+
+        <span class="s4">// Cartão de boas-vindas</span>
+        <span class="s1">Card</span><span class="s2">(</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+            <span class="s1">elevation </span><span class="s2">= </span><span class="s1">CardDefaults</span><span class="s2">.</span><span class="s1">cardElevation</span><span class="s2">(</span><span class="s1">defaultElevation </span><span class="s2">= </span><span class="s5">4</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+        <span class="s2">) {</span>
+            <span class="s1">Column</span><span class="s2">(</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+                <span class="s1">horizontalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterHorizontally</span>
+            <span class="s2">) {</span>
+                <span class="s1">Text</span><span class="s2">(</span>
+                    <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Olá, </span><span class="s0">${</span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">greeting</span><span class="s0">}</span><span class="s3">!&quot;</span><span class="s2">,</span>
+                    <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">headlineMedium</span><span class="s2">,</span>
+                    <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span><span class="s2">,</span>
+                    <span class="s1">textAlign </span><span class="s2">= </span><span class="s1">TextAlign</span><span class="s2">.</span><span class="s1">Center</span>
+                <span class="s2">)</span>
+                <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                <span class="s1">Text</span><span class="s2">(</span>
+                    <span class="s1">text </span><span class="s2">= </span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">displayTitle</span><span class="s2">,</span>
+                    <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodyLarge</span><span class="s2">,</span>
+                    <span class="s1">textAlign </span><span class="s2">= </span><span class="s1">TextAlign</span><span class="s2">.</span><span class="s1">Center</span><span class="s2">,</span>
+                    <span class="s1">color </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">onSurfaceVariant</span>
+                <span class="s2">)</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+
+        <span class="s4">// Campo para alterar o nome</span>
+        <span class="s1">OutlinedTextField</span><span class="s2">(</span>
+            <span class="s1">value </span><span class="s2">= </span><span class="s1">nameInput</span><span class="s2">,</span>
+            <span class="s1">onValueChange </span><span class="s2">= { </span><span class="s1">nameInput </span><span class="s2">= </span><span class="s1">it </span><span class="s2">},</span>
+            <span class="s1">label </span><span class="s2">= { </span><span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Digite seu nome&quot;</span><span class="s2">) },</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">()</span>
+        <span class="s2">)</span>
+
+        <span class="s1">Button</span><span class="s2">(</span>
+            <span class="s1">onClick </span><span class="s2">= {</span>
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">nameInput</span><span class="s2">.</span><span class="s1">isNotBlank</span><span class="s2">()) {</span>
+                    <span class="s1">viewModel</span><span class="s2">.</span><span class="s1">updateGreeting</span><span class="s2">(</span><span class="s1">nameInput</span><span class="s2">)</span>
+                    <span class="s1">nameInput </span><span class="s2">= </span><span class="s3">&quot;&quot;</span>
+                <span class="s2">}</span>
+            <span class="s2">},</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">()</span>
+        <span class="s2">) {</span>
+            <span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Atualizar Saudação&quot;</span><span class="s2">)</span>
+        <span class="s2">}</span>
+
+        <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+
+        <span class="s4">// Grid de funcionalidades</span>
+        <span class="s1">Card</span><span class="s2">(</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+            <span class="s1">elevation </span><span class="s2">= </span><span class="s1">CardDefaults</span><span class="s2">.</span><span class="s1">cardElevation</span><span class="s2">(</span><span class="s1">defaultElevation </span><span class="s2">= </span><span class="s5">2</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+        <span class="s2">) {</span>
+            <span class="s1">Column</span><span class="s2">(</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+                <span class="s1">verticalArrangement </span><span class="s2">= </span><span class="s1">Arrangement</span><span class="s2">.</span><span class="s1">spacedBy</span><span class="s2">(</span><span class="s5">12</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+            <span class="s2">) {</span>
+                <span class="s1">Text</span><span class="s2">(</span>
+                    <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Funcionalidades Disponíveis&quot;</span><span class="s2">,</span>
+                    <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleMedium</span><span class="s2">,</span>
+                    <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span>
+                <span class="s2">)</span>
+
+                <span class="s4">// Botão para localização</span>
+                <span class="s1">Button</span><span class="s2">(</span>
+                    <span class="s1">onClick </span><span class="s2">= </span><span class="s1">onNavigateToLocation</span><span class="s2">,</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">()</span>
+                <span class="s2">) {</span>
+                    <span class="s1">Icon</span><span class="s2">(</span>
+                        <span class="s1">imageVector </span><span class="s2">= </span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Default</span><span class="s2">.</span><span class="s1">LocationOn</span><span class="s2">,</span>
+                        <span class="s1">contentDescription </span><span class="s2">= </span><span class="s0">null</span><span class="s2">,</span>
+                        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(</span><span class="s5">18</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                    <span class="s2">)</span>
+                    <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">width</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                    <span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Ver Localização GPS&quot;</span><span class="s2">)</span>
+                <span class="s2">}</span>
+
+                <span class="s4">// Botão para Estados IBGE</span>
+                <span class="s1">Button</span><span class="s2">(</span>
+                    <span class="s1">onClick </span><span class="s2">= {</span>
+                        <span class="s4">// Se não há dados carregados ainda, carrega automaticamente</span>
+                        <span class="s0">if </span><span class="s2">(</span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">estados</span><span class="s2">.</span><span class="s1">isEmpty</span><span class="s2">() &amp;&amp; !</span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">isLoading</span><span class="s2">) {</span>
+                            <span class="s1">viewModel</span><span class="s2">.</span><span class="s1">fetchStatesData</span><span class="s2">()</span>
+                        <span class="s2">}</span>
+                        <span class="s1">onNavigateToEstados</span><span class="s2">()</span>
+                    <span class="s2">},</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">()</span>
+                <span class="s2">) {</span>
+                    <span class="s1">Icon</span><span class="s2">(</span>
+                        <span class="s1">imageVector </span><span class="s2">= </span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Default</span><span class="s2">.</span><span class="s1">Place</span><span class="s2">,</span>
+                        <span class="s1">contentDescription </span><span class="s2">= </span><span class="s0">null</span><span class="s2">,</span>
+                        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(</span><span class="s5">18</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                    <span class="s2">)</span>
+                    <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">width</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                    <span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Estados Brasileiros (IBGE)&quot;</span><span class="s2">)</span>
+                <span class="s2">}</span>
+
+                <span class="s4">// Botão para Lista Embutida</span>
+                <span class="s1">Button</span><span class="s2">(</span>
+                    <span class="s1">onClick </span><span class="s2">= </span><span class="s1">onNavigateToListaEmbutida</span><span class="s2">,</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">()</span>
+                <span class="s2">) {</span>
+                    <span class="s1">Icon</span><span class="s2">(</span>
+                        <span class="s1">imageVector </span><span class="s2">= </span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Default</span><span class="s2">.</span><span class="s1">List</span><span class="s2">,</span>
+                        <span class="s1">contentDescription </span><span class="s2">= </span><span class="s0">null</span><span class="s2">,</span>
+                        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(</span><span class="s5">18</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                    <span class="s2">)</span>
+                    <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">width</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                    <span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Lista de Produtos&quot;</span><span class="s2">)</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+
+        <span class="s4">// Status dos dados IBGE (se houver)</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">isLoading </span><span class="s2">|| </span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">estados</span><span class="s2">.</span><span class="s1">isNotEmpty</span><span class="s2">() || </span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">error </span><span class="s2">!= </span><span class="s0">null</span><span class="s2">) {</span>
+            <span class="s1">Card</span><span class="s2">(</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+                <span class="s1">colors </span><span class="s2">= </span><span class="s1">CardDefaults</span><span class="s2">.</span><span class="s1">cardColors</span><span class="s2">(</span>
+                    <span class="s1">containerColor </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">surfaceVariant</span>
+                <span class="s2">)</span>
+            <span class="s2">) {</span>
+                <span class="s1">Column</span><span class="s2">(</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+                    <span class="s1">horizontalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterHorizontally</span>
+                <span class="s2">) {</span>
+                    <span class="s0">when </span><span class="s2">{</span>
+                        <span class="s1">uiState</span><span class="s2">.</span><span class="s1">isLoading </span><span class="s2">-&gt; {</span>
+                            <span class="s1">CircularProgressIndicator</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(</span><span class="s5">24</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                            <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                            <span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Carregando dados do IBGE...&quot;</span><span class="s2">)</span>
+                        <span class="s2">}</span>
+                        <span class="s1">uiState</span><span class="s2">.</span><span class="s1">error </span><span class="s2">!= </span><span class="s0">null </span><span class="s2">-&gt; {</span>
+                            <span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;⚠️ Erro ao carregar dados&quot;</span><span class="s2">, </span><span class="s1">color </span><span class="s2">= </span><span class="s1">Color</span><span class="s2">.</span><span class="s1">Red</span><span class="s2">)</span>
+                        <span class="s2">}</span>
+                        <span class="s1">uiState</span><span class="s2">.</span><span class="s1">estados</span><span class="s2">.</span><span class="s1">isNotEmpty</span><span class="s2">() -&gt; {</span>
+                            <span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;✅ </span><span class="s0">${</span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">estados</span><span class="s2">.</span><span class="s1">size</span><span class="s0">} </span><span class="s3">estados carregados&quot;</span><span class="s2">)</span>
+                        <span class="s2">}</span>
+                    <span class="s2">}</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">LocationScreen</span><span class="s2">(</span>
+    <span class="s1">modifier: Modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">,</span>
+    <span class="s1">viewModel: MainViewModel</span><span class="s2">,</span>
+    <span class="s1">onNavigateBackToMain: </span><span class="s2">() -&gt; </span><span class="s1">Unit</span>
+<span class="s2">) {</span>
+    <span class="s0">val </span><span class="s1">context </span><span class="s2">= </span><span class="s1">LocalContext</span><span class="s2">.</span><span class="s1">current</span>
+    <span class="s0">val </span><span class="s1">uiState by viewModel</span><span class="s2">.</span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">collectAsState</span><span class="s2">()</span>
+
+    <span class="s4">// Estado para controlar permissões</span>
+    <span class="s0">var </span><span class="s1">hasLocationPermission by remember </span><span class="s2">{</span>
+        <span class="s1">mutableStateOf</span><span class="s2">(</span>
+            <span class="s1">ContextCompat</span><span class="s2">.</span><span class="s1">checkSelfPermission</span><span class="s2">(</span><span class="s1">context</span><span class="s2">, </span><span class="s1">Manifest</span><span class="s2">.</span><span class="s1">permission</span><span class="s2">.</span><span class="s1">ACCESS_FINE_LOCATION</span><span class="s2">) == </span><span class="s1">PackageManager</span><span class="s2">.</span><span class="s1">PERMISSION_GRANTED </span><span class="s2">||</span>
+                    <span class="s1">ContextCompat</span><span class="s2">.</span><span class="s1">checkSelfPermission</span><span class="s2">(</span><span class="s1">context</span><span class="s2">, </span><span class="s1">Manifest</span><span class="s2">.</span><span class="s1">permission</span><span class="s2">.</span><span class="s1">ACCESS_COARSE_LOCATION</span><span class="s2">) == </span><span class="s1">PackageManager</span><span class="s2">.</span><span class="s1">PERMISSION_GRANTED</span>
+        <span class="s2">)</span>
+    <span class="s2">}</span>
+
+    <span class="s4">// Launcher para solicitar permissões</span>
+    <span class="s0">val </span><span class="s1">permissionLauncher </span><span class="s2">= </span><span class="s1">rememberLauncherForActivityResult</span><span class="s2">(</span>
+        <span class="s1">contract </span><span class="s2">= </span><span class="s1">ActivityResultContracts</span><span class="s2">.</span><span class="s1">RequestMultiplePermissions</span><span class="s2">()</span>
+    <span class="s2">) { </span><span class="s1">permissions </span><span class="s2">-&gt;</span>
+        <span class="s1">hasLocationPermission </span><span class="s2">= </span><span class="s1">permissions</span><span class="s2">[</span><span class="s1">Manifest</span><span class="s2">.</span><span class="s1">permission</span><span class="s2">.</span><span class="s1">ACCESS_FINE_LOCATION</span><span class="s2">] == </span><span class="s0">true </span><span class="s2">||</span>
+                <span class="s1">permissions</span><span class="s2">[</span><span class="s1">Manifest</span><span class="s2">.</span><span class="s1">permission</span><span class="s2">.</span><span class="s1">ACCESS_COARSE_LOCATION</span><span class="s2">] == </span><span class="s0">true</span>
+
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">hasLocationPermission</span><span class="s2">) {</span>
+            <span class="s1">viewModel</span><span class="s2">.</span><span class="s1">getCurrentLocation</span><span class="s2">()</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s1">Column</span><span class="s2">(</span>
+        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">modifier</span>
+            <span class="s2">.</span><span class="s1">fillMaxSize</span><span class="s2">()</span>
+            <span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+        <span class="s1">verticalArrangement </span><span class="s2">= </span><span class="s1">Arrangement</span><span class="s2">.</span><span class="s1">spacedBy</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+        <span class="s1">horizontalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterHorizontally</span>
+    <span class="s2">) {</span>
+        <span class="s4">// Header com botão de voltar</span>
+        <span class="s1">Row</span><span class="s2">(</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+            <span class="s1">verticalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterVertically</span>
+        <span class="s2">) {</span>
+            <span class="s1">IconButton</span><span class="s2">(</span><span class="s1">onClick </span><span class="s2">= </span><span class="s1">onNavigateBackToMain</span><span class="s2">) {</span>
+                <span class="s1">Icon</span><span class="s2">(</span>
+                    <span class="s1">imageVector </span><span class="s2">= </span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Default</span><span class="s2">.</span><span class="s1">ArrowBack</span><span class="s2">,</span>
+                    <span class="s1">contentDescription </span><span class="s2">= </span><span class="s3">&quot;Voltar&quot;</span>
+                <span class="s2">)</span>
+            <span class="s2">}</span>
+            <span class="s1">Text</span><span class="s2">(</span>
+                <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Localização Atual&quot;</span><span class="s2">,</span>
+                <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">headlineSmall</span><span class="s2">,</span>
+                <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span><span class="s2">,</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">start </span><span class="s2">= </span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+            <span class="s2">)</span>
+        <span class="s2">}</span>
+
+        <span class="s1">Card</span><span class="s2">(</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+            <span class="s1">elevation </span><span class="s2">= </span><span class="s1">CardDefaults</span><span class="s2">.</span><span class="s1">cardElevation</span><span class="s2">(</span><span class="s1">defaultElevation </span><span class="s2">= </span><span class="s5">4</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+        <span class="s2">) {</span>
+            <span class="s1">Column</span><span class="s2">(</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+                <span class="s1">horizontalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterHorizontally</span>
+            <span class="s2">) {</span>
+                <span class="s0">when </span><span class="s2">{</span>
+                    <span class="s1">uiState</span><span class="s2">.</span><span class="s1">isLoadingLocation </span><span class="s2">-&gt; {</span>
+                        <span class="s1">CircularProgressIndicator</span><span class="s2">()</span>
+                        <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                        <span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Obtendo localização...&quot;</span><span class="s2">)</span>
+                    <span class="s2">}</span>
+
+                    <span class="s1">uiState</span><span class="s2">.</span><span class="s1">currentLocation </span><span class="s2">!= </span><span class="s0">null </span><span class="s2">-&gt; {</span>
+                        <span class="s1">Text</span><span class="s2">(</span>
+                            <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;📍 Localização encontrada&quot;</span><span class="s2">,</span>
+                            <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleMedium</span><span class="s2">,</span>
+                            <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span>
+                        <span class="s2">)</span>
+                        <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                        <span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Latitude: </span><span class="s0">${</span><span class="s1">String</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span><span class="s3">&quot;%.6f&quot;</span><span class="s2">, </span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">currentLocation</span><span class="s2">!!.</span><span class="s1">latitude</span><span class="s2">)</span><span class="s0">}</span><span class="s3">&quot;</span><span class="s2">)</span>
+                        <span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Longitude: </span><span class="s0">${</span><span class="s1">String</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span><span class="s3">&quot;%.6f&quot;</span><span class="s2">, </span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">currentLocation</span><span class="s2">!!.</span><span class="s1">longitude</span><span class="s2">)</span><span class="s0">}</span><span class="s3">&quot;</span><span class="s2">)</span>
+                        <span class="s1">uiState</span><span class="s2">.</span><span class="s1">currentLocation</span><span class="s2">!!.</span><span class="s1">accuracy?</span><span class="s2">.</span><span class="s1">let </span><span class="s2">{ </span><span class="s1">accuracy </span><span class="s2">-&gt;</span>
+                            <span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Precisão: </span><span class="s0">${</span><span class="s1">String</span><span class="s2">.</span><span class="s1">format</span><span class="s2">(</span><span class="s3">&quot;%.0f&quot;</span><span class="s2">, </span><span class="s1">accuracy</span><span class="s2">)</span><span class="s0">}</span><span class="s3">m&quot;</span><span class="s2">)</span>
+                        <span class="s2">}</span>
+                    <span class="s2">}</span>
+
+                    <span class="s0">else </span><span class="s2">-&gt; {</span>
+                        <span class="s1">Text</span><span class="s2">(</span>
+                            <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;📍 Localização não disponível&quot;</span><span class="s2">,</span>
+                            <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleMedium</span>
+                        <span class="s2">)</span>
+                        <span class="s1">Text</span><span class="s2">(</span>
+                            <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Toque no botão abaixo para obter sua localização atual&quot;</span><span class="s2">,</span>
+                            <span class="s1">textAlign </span><span class="s2">= </span><span class="s1">TextAlign</span><span class="s2">.</span><span class="s1">Center</span><span class="s2">,</span>
+                            <span class="s1">color </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">onSurfaceVariant</span>
+                        <span class="s2">)</span>
+                    <span class="s2">}</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+
+        <span class="s4">// Botão para obter localização</span>
+        <span class="s1">Button</span><span class="s2">(</span>
+            <span class="s1">onClick </span><span class="s2">= {</span>
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">hasLocationPermission</span><span class="s2">) {</span>
+                    <span class="s1">viewModel</span><span class="s2">.</span><span class="s1">getCurrentLocation</span><span class="s2">()</span>
+                <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+                    <span class="s1">permissionLauncher</span><span class="s2">.</span><span class="s1">launch</span><span class="s2">(</span>
+                        <span class="s1">arrayOf</span><span class="s2">(</span>
+                            <span class="s1">Manifest</span><span class="s2">.</span><span class="s1">permission</span><span class="s2">.</span><span class="s1">ACCESS_FINE_LOCATION</span><span class="s2">,</span>
+                            <span class="s1">Manifest</span><span class="s2">.</span><span class="s1">permission</span><span class="s2">.</span><span class="s1">ACCESS_COARSE_LOCATION</span>
+                        <span class="s2">)</span>
+                    <span class="s2">)</span>
+                <span class="s2">}</span>
+            <span class="s2">},</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+            <span class="s1">enabled </span><span class="s2">= !</span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">isLoadingLocation</span>
+        <span class="s2">) {</span>
+            <span class="s1">Icon</span><span class="s2">(</span>
+                <span class="s1">imageVector </span><span class="s2">= </span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Default</span><span class="s2">.</span><span class="s1">LocationOn</span><span class="s2">,</span>
+                <span class="s1">contentDescription </span><span class="s2">= </span><span class="s0">null</span><span class="s2">,</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(</span><span class="s5">18</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+            <span class="s2">)</span>
+            <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">width</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+            <span class="s1">Text</span><span class="s2">(</span>
+                <span class="s0">if </span><span class="s2">(</span><span class="s1">hasLocationPermission</span><span class="s2">) </span><span class="s3">&quot;Obter Localização&quot;</span>
+                <span class="s0">else </span><span class="s3">&quot;Solicitar Permissão&quot;</span>
+            <span class="s2">)</span>
+        <span class="s2">}</span>
+
+        <span class="s4">// Dialog de erro</span>
+        <span class="s1">uiState</span><span class="s2">.</span><span class="s1">locationError?</span><span class="s2">.</span><span class="s1">let </span><span class="s2">{ </span><span class="s1">error </span><span class="s2">-&gt;</span>
+            <span class="s1">AlertDialog</span><span class="s2">(</span>
+                <span class="s1">onDismissRequest </span><span class="s2">= { </span><span class="s1">viewModel</span><span class="s2">.</span><span class="s1">clearLocationError</span><span class="s2">() },</span>
+                <span class="s1">title </span><span class="s2">= { </span><span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Erro de Localização&quot;</span><span class="s2">) },</span>
+                <span class="s1">text </span><span class="s2">= { </span><span class="s1">Text</span><span class="s2">(</span><span class="s1">error</span><span class="s2">) },</span>
+                <span class="s1">confirmButton </span><span class="s2">= {</span>
+                    <span class="s1">TextButton</span><span class="s2">(</span><span class="s1">onClick </span><span class="s2">= { </span><span class="s1">viewModel</span><span class="s2">.</span><span class="s1">clearLocationError</span><span class="s2">() }) {</span>
+                        <span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;OK&quot;</span><span class="s2">)</span>
+                    <span class="s2">}</span>
+                <span class="s2">}</span>
+            <span class="s2">)</span>
+        <span class="s2">}</span>
+
+        <span class="s4">// Explicação sobre permissões</span>
+        <span class="s0">if </span><span class="s2">(!</span><span class="s1">hasLocationPermission</span><span class="s2">) {</span>
+            <span class="s1">Card</span><span class="s2">(</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+                <span class="s1">colors </span><span class="s2">= </span><span class="s1">CardDefaults</span><span class="s2">.</span><span class="s1">cardColors</span><span class="s2">(</span>
+                    <span class="s1">containerColor </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">secondaryContainer</span>
+                <span class="s2">)</span>
+            <span class="s2">) {</span>
+                <span class="s1">Column</span><span class="s2">(</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                <span class="s2">) {</span>
+                    <span class="s1">Text</span><span class="s2">(</span>
+                        <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;ℹ️ Sobre a Permissão de Localização&quot;</span><span class="s2">,</span>
+                        <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span><span class="s2">,</span>
+                        <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleSmall</span>
+                    <span class="s2">)</span>
+                    <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                    <span class="s1">Text</span><span class="s2">(</span>
+                        <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Este aplicativo precisa de acesso à sua localização para mostrar suas coordenadas GPS atuais. Suas informações de localização não são armazenadas nem compartilhadas.&quot;</span><span class="s2">,</span>
+                        <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodySmall</span>
+                    <span class="s2">)</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">EstadosScreen</span><span class="s2">(</span>
+    <span class="s1">modifier: Modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">,</span>
+    <span class="s1">viewModel: MainViewModel</span><span class="s2">,</span>
+    <span class="s1">onNavigateBackToMain: </span><span class="s2">() -&gt; </span><span class="s1">Unit</span>
+<span class="s2">) {</span>
+    <span class="s0">val </span><span class="s1">uiState by viewModel</span><span class="s2">.</span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">collectAsState</span><span class="s2">()</span>
+
+    <span class="s4">// Fazer a busca automaticamente quando a tela é aberta (se não há dados)</span>
+    <span class="s1">LaunchedEffect</span><span class="s2">(</span><span class="s1">Unit</span><span class="s2">) {</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">estados</span><span class="s2">.</span><span class="s1">isEmpty</span><span class="s2">() &amp;&amp; !</span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">isLoading </span><span class="s2">&amp;&amp; </span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">error </span><span class="s2">== </span><span class="s0">null</span><span class="s2">) {</span>
+            <span class="s1">viewModel</span><span class="s2">.</span><span class="s1">fetchStatesData</span><span class="s2">()</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s1">Column</span><span class="s2">(</span>
+        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">modifier</span>
+            <span class="s2">.</span><span class="s1">fillMaxSize</span><span class="s2">()</span>
+            <span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+    <span class="s2">) {</span>
+        <span class="s4">// Header com botão de voltar</span>
+        <span class="s1">Row</span><span class="s2">(</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+            <span class="s1">verticalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterVertically</span>
+        <span class="s2">) {</span>
+            <span class="s1">IconButton</span><span class="s2">(</span><span class="s1">onClick </span><span class="s2">= </span><span class="s1">onNavigateBackToMain</span><span class="s2">) {</span>
+                <span class="s1">Icon</span><span class="s2">(</span>
+                    <span class="s1">imageVector </span><span class="s2">= </span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Default</span><span class="s2">.</span><span class="s1">ArrowBack</span><span class="s2">,</span>
+                    <span class="s1">contentDescription </span><span class="s2">= </span><span class="s3">&quot;Voltar&quot;</span>
+                <span class="s2">)</span>
+            <span class="s2">}</span>
+            <span class="s1">Text</span><span class="s2">(</span>
+                <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Estados Brasileiros&quot;</span><span class="s2">,</span>
+                <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">headlineSmall</span><span class="s2">,</span>
+                <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span><span class="s2">,</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">start </span><span class="s2">= </span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+            <span class="s2">)</span>
+        <span class="s2">}</span>
+
+        <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+
+        <span class="s0">when </span><span class="s2">{</span>
+            <span class="s1">uiState</span><span class="s2">.</span><span class="s1">isLoading </span><span class="s2">-&gt; {</span>
+                <span class="s4">// Estado de loading</span>
+                <span class="s1">Column</span><span class="s2">(</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxSize</span><span class="s2">(),</span>
+                    <span class="s1">horizontalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterHorizontally</span><span class="s2">,</span>
+                    <span class="s1">verticalArrangement </span><span class="s2">= </span><span class="s1">Arrangement</span><span class="s2">.</span><span class="s1">Center</span>
+                <span class="s2">) {</span>
+                    <span class="s1">CircularProgressIndicator</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">size</span><span class="s2">(</span><span class="s5">48</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                    <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                    <span class="s1">Text</span><span class="s2">(</span>
+                        <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Buscando estados...&quot;</span><span class="s2">,</span>
+                        <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodyLarge</span><span class="s2">,</span>
+                        <span class="s1">textAlign </span><span class="s2">= </span><span class="s1">TextAlign</span><span class="s2">.</span><span class="s1">Center</span>
+                    <span class="s2">)</span>
+                    <span class="s1">Text</span><span class="s2">(</span>
+                        <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Consultando API do IBGE&quot;</span><span class="s2">,</span>
+                        <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodyMedium</span><span class="s2">,</span>
+                        <span class="s1">color </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">onSurface</span><span class="s2">.</span><span class="s1">copy</span><span class="s2">(</span><span class="s1">alpha </span><span class="s2">= </span><span class="s5">0.7f</span><span class="s2">),</span>
+                        <span class="s1">textAlign </span><span class="s2">= </span><span class="s1">TextAlign</span><span class="s2">.</span><span class="s1">Center</span>
+                    <span class="s2">)</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+
+            <span class="s1">uiState</span><span class="s2">.</span><span class="s1">error </span><span class="s2">!= </span><span class="s0">null </span><span class="s2">-&gt; {</span>
+                <span class="s4">// Estado de erro</span>
+                <span class="s1">Column</span><span class="s2">(</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxSize</span><span class="s2">(),</span>
+                    <span class="s1">horizontalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterHorizontally</span><span class="s2">,</span>
+                    <span class="s1">verticalArrangement </span><span class="s2">= </span><span class="s1">Arrangement</span><span class="s2">.</span><span class="s1">Center</span>
+                <span class="s2">) {</span>
+                    <span class="s1">Card</span><span class="s2">(</span>
+                        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+                        <span class="s1">colors </span><span class="s2">= </span><span class="s1">CardDefaults</span><span class="s2">.</span><span class="s1">cardColors</span><span class="s2">(</span>
+                            <span class="s1">containerColor </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">errorContainer</span>
+                        <span class="s2">)</span>
+                    <span class="s2">) {</span>
+                        <span class="s1">Column</span><span class="s2">(</span>
+                            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">24</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+                            <span class="s1">horizontalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterHorizontally</span>
+                        <span class="s2">) {</span>
+                            <span class="s1">Text</span><span class="s2">(</span><span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;⚠️&quot;</span><span class="s2">, </span><span class="s1">fontSize </span><span class="s2">= </span><span class="s5">48</span><span class="s2">.</span><span class="s1">sp</span><span class="s2">)</span>
+                            <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                            <span class="s1">Text</span><span class="s2">(</span>
+                                <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Erro ao carregar dados&quot;</span><span class="s2">,</span>
+                                <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleMedium</span><span class="s2">,</span>
+                                <span class="s1">textAlign </span><span class="s2">= </span><span class="s1">TextAlign</span><span class="s2">.</span><span class="s1">Center</span>
+                            <span class="s2">)</span>
+                            <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                            <span class="s1">Text</span><span class="s2">(</span>
+                                <span class="s1">text </span><span class="s2">= </span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">error</span><span class="s2">!!,</span>
+                                <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodyMedium</span><span class="s2">,</span>
+                                <span class="s1">textAlign </span><span class="s2">= </span><span class="s1">TextAlign</span><span class="s2">.</span><span class="s1">Center</span><span class="s2">,</span>
+                                <span class="s1">color </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">onErrorContainer</span>
+                            <span class="s2">)</span>
+                            <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                            <span class="s1">Button</span><span class="s2">(</span>
+                                <span class="s1">onClick </span><span class="s2">= { </span><span class="s1">viewModel</span><span class="s2">.</span><span class="s1">fetchStatesData</span><span class="s2">() }</span>
+                            <span class="s2">) {</span>
+                                <span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Tentar Novamente&quot;</span><span class="s2">)</span>
+                            <span class="s2">}</span>
+                        <span class="s2">}</span>
+                    <span class="s2">}</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+
+            <span class="s1">uiState</span><span class="s2">.</span><span class="s1">estados</span><span class="s2">.</span><span class="s1">isNotEmpty</span><span class="s2">() -&gt; {</span>
+                <span class="s4">// Estados carregados com sucesso</span>
+                <span class="s1">Card</span><span class="s2">(</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span>
+                        <span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">()</span>
+                        <span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">bottom </span><span class="s2">= </span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+                    <span class="s1">colors </span><span class="s2">= </span><span class="s1">CardDefaults</span><span class="s2">.</span><span class="s1">cardColors</span><span class="s2">(</span><span class="s1">containerColor </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">primaryContainer</span><span class="s2">)</span>
+                <span class="s2">) {</span>
+                    <span class="s1">Column</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)) {</span>
+                        <span class="s1">Text</span><span class="s2">(</span>
+                            <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Total: </span><span class="s0">${</span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">estados</span><span class="s2">.</span><span class="s1">size</span><span class="s0">} </span><span class="s3">estados&quot;</span><span class="s2">,</span>
+                            <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleMedium</span><span class="s2">,</span>
+                            <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span>
+                        <span class="s2">)</span>
+                        <span class="s1">Text</span><span class="s2">(</span>
+                            <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Dados obtidos da API do IBGE&quot;</span><span class="s2">,</span>
+                            <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodySmall</span><span class="s2">,</span>
+                            <span class="s1">color </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">onPrimaryContainer</span><span class="s2">.</span><span class="s1">copy</span><span class="s2">(</span><span class="s1">alpha </span><span class="s2">= </span><span class="s5">0.7f</span><span class="s2">)</span>
+                        <span class="s2">)</span>
+                    <span class="s2">}</span>
+                <span class="s2">}</span>
+
+                <span class="s4">// Lista de estados</span>
+                <span class="s1">LazyColumn</span><span class="s2">(</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">weight</span><span class="s2">(</span><span class="s5">1f</span><span class="s2">),</span>
+                    <span class="s1">verticalArrangement </span><span class="s2">= </span><span class="s1">Arrangement</span><span class="s2">.</span><span class="s1">spacedBy</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                <span class="s2">) {</span>
+                    <span class="s1">items</span><span class="s2">(</span><span class="s1">uiState</span><span class="s2">.</span><span class="s1">estados</span><span class="s2">.</span><span class="s1">sortedBy </span><span class="s2">{ </span><span class="s1">it</span><span class="s2">.</span><span class="s1">nome </span><span class="s2">}) { </span><span class="s1">estado </span><span class="s2">-&gt;</span>
+                        <span class="s1">EstadoCard</span><span class="s2">(</span><span class="s1">estado </span><span class="s2">= </span><span class="s1">estado</span><span class="s2">)</span>
+                    <span class="s2">}</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">EstadoCard</span><span class="s2">(</span><span class="s1">estado: Estado</span><span class="s2">) {</span>
+    <span class="s1">Card</span><span class="s2">(</span>
+        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+        <span class="s1">elevation </span><span class="s2">= </span><span class="s1">CardDefaults</span><span class="s2">.</span><span class="s1">cardElevation</span><span class="s2">(</span><span class="s1">defaultElevation </span><span class="s2">= </span><span class="s5">2</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+    <span class="s2">) {</span>
+        <span class="s1">Row</span><span class="s2">(</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span>
+                <span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">()</span>
+                <span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+            <span class="s1">verticalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterVertically</span>
+        <span class="s2">) {</span>
+            <span class="s4">// Sigla do estado em destaque</span>
+            <span class="s1">Box</span><span class="s2">(</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span>
+                    <span class="s2">.</span><span class="s1">size</span><span class="s2">(</span><span class="s5">48</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                    <span class="s2">.</span><span class="s1">clip</span><span class="s2">(</span><span class="s1">RoundedCornerShape</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                    <span class="s2">.</span><span class="s1">background</span><span class="s2">(</span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">primary</span><span class="s2">),</span>
+                <span class="s1">contentAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">Center</span>
+            <span class="s2">) {</span>
+                <span class="s1">Text</span><span class="s2">(</span>
+                    <span class="s1">text </span><span class="s2">= </span><span class="s1">estado</span><span class="s2">.</span><span class="s1">sigla</span><span class="s2">,</span>
+                    <span class="s1">color </span><span class="s2">= </span><span class="s1">Color</span><span class="s2">.</span><span class="s1">White</span><span class="s2">,</span>
+                    <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span><span class="s2">,</span>
+                    <span class="s1">fontSize </span><span class="s2">= </span><span class="s5">16</span><span class="s2">.</span><span class="s1">sp</span>
+                <span class="s2">)</span>
+            <span class="s2">}</span>
+
+            <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">width</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+
+            <span class="s4">// Informações do estado</span>
+            <span class="s1">Column</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">weight</span><span class="s2">(</span><span class="s5">1f</span><span class="s2">)) {</span>
+                <span class="s1">Text</span><span class="s2">(</span>
+                    <span class="s1">text </span><span class="s2">= </span><span class="s1">estado</span><span class="s2">.</span><span class="s1">nome</span><span class="s2">,</span>
+                    <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleMedium</span><span class="s2">,</span>
+                    <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">SemiBold</span>
+                <span class="s2">)</span>
+                <span class="s1">Text</span><span class="s2">(</span>
+                    <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Região: </span><span class="s0">${</span><span class="s1">estado</span><span class="s2">.</span><span class="s1">regiao</span><span class="s2">.</span><span class="s1">nome</span><span class="s0">}</span><span class="s3">&quot;</span><span class="s2">,</span>
+                    <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodyMedium</span><span class="s2">,</span>
+                    <span class="s1">color </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">onSurface</span><span class="s2">.</span><span class="s1">copy</span><span class="s2">(</span><span class="s1">alpha </span><span class="s2">= </span><span class="s5">0.7f</span><span class="s2">)</span>
+                <span class="s2">)</span>
+                <span class="s1">Text</span><span class="s2">(</span>
+                    <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;ID: </span><span class="s0">${</span><span class="s1">estado</span><span class="s2">.</span><span class="s1">id</span><span class="s0">}</span><span class="s3">&quot;</span><span class="s2">,</span>
+                    <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodySmall</span><span class="s2">,</span>
+                    <span class="s1">color </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">onSurface</span><span class="s2">.</span><span class="s1">copy</span><span class="s2">(</span><span class="s1">alpha </span><span class="s2">= </span><span class="s5">0.5f</span><span class="s2">)</span>
+                <span class="s2">)</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+<span class="s1">@Composable</span>
+<span class="s0">fun </span><span class="s1">ListaEmbutidaScreen</span><span class="s2">(</span>
+    <span class="s1">modifier: Modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">,</span>
+    <span class="s1">allItems: List</span><span class="s2">&lt;</span><span class="s1">Item</span><span class="s2">&gt;,</span>
+    <span class="s1">onNavigateBackToMain: </span><span class="s2">() -&gt; </span><span class="s1">Unit</span>
+<span class="s2">) {</span>
+    <span class="s0">var </span><span class="s1">filterText by remember </span><span class="s2">{ </span><span class="s1">mutableStateOf</span><span class="s2">(</span><span class="s3">&quot;&quot;</span><span class="s2">) }</span>
+    <span class="s0">var </span><span class="s1">displayedItems by remember </span><span class="s2">{ </span><span class="s1">mutableStateOf</span><span class="s2">(</span><span class="s1">allItems</span><span class="s2">) }</span>
+
+    <span class="s0">fun </span><span class="s1">filterItems</span><span class="s2">() {</span>
+        <span class="s0">val </span><span class="s1">query </span><span class="s2">= </span><span class="s1">filterText</span><span class="s2">.</span><span class="s1">trim</span><span class="s2">()</span>
+        <span class="s1">displayedItems </span><span class="s2">= </span><span class="s0">if </span><span class="s2">(</span><span class="s1">query</span><span class="s2">.</span><span class="s1">isBlank</span><span class="s2">()) {</span>
+            <span class="s1">allItems</span>
+        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+            <span class="s1">allItems</span><span class="s2">.</span><span class="s1">filter </span><span class="s2">{ </span><span class="s1">item </span><span class="s2">-&gt;</span>
+                <span class="s1">item</span><span class="s2">.</span><span class="s1">name</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s1">query</span><span class="s2">, </span><span class="s1">ignoreCase </span><span class="s2">= </span><span class="s0">true</span><span class="s2">) ||</span>
+                        <span class="s1">item</span><span class="s2">.</span><span class="s1">description</span><span class="s2">.</span><span class="s1">contains</span><span class="s2">(</span><span class="s1">query</span><span class="s2">, </span><span class="s1">ignoreCase </span><span class="s2">= </span><span class="s0">true</span><span class="s2">)</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s1">Column</span><span class="s2">(</span>
+        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">modifier</span>
+            <span class="s2">.</span><span class="s1">fillMaxSize</span><span class="s2">()</span>
+            <span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+    <span class="s2">) {</span>
+        <span class="s4">// Header com botão de voltar</span>
+        <span class="s1">Row</span><span class="s2">(</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+            <span class="s1">verticalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterVertically</span>
+        <span class="s2">) {</span>
+            <span class="s1">IconButton</span><span class="s2">(</span><span class="s1">onClick </span><span class="s2">= </span><span class="s1">onNavigateBackToMain</span><span class="s2">) {</span>
+                <span class="s1">Icon</span><span class="s2">(</span>
+                    <span class="s1">imageVector </span><span class="s2">= </span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Default</span><span class="s2">.</span><span class="s1">ArrowBack</span><span class="s2">,</span>
+                    <span class="s1">contentDescription </span><span class="s2">= </span><span class="s3">&quot;Voltar&quot;</span>
+                <span class="s2">)</span>
+            <span class="s2">}</span>
+            <span class="s1">Text</span><span class="s2">(</span>
+                <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Lista de Produtos&quot;</span><span class="s2">,</span>
+                <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">headlineSmall</span><span class="s2">,</span>
+                <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span><span class="s2">,</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">start </span><span class="s2">= </span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+            <span class="s2">)</span>
+        <span class="s2">}</span>
+
+        <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+
+        <span class="s1">OutlinedTextField</span><span class="s2">(</span>
+            <span class="s1">value </span><span class="s2">= </span><span class="s1">filterText</span><span class="s2">,</span>
+            <span class="s1">onValueChange </span><span class="s2">= { </span><span class="s1">filterText </span><span class="s2">= </span><span class="s1">it</span><span class="s2">; </span><span class="s1">filterItems</span><span class="s2">() },</span>
+            <span class="s1">label </span><span class="s2">= { </span><span class="s1">Text</span><span class="s2">(</span><span class="s3">&quot;Filtrar por nome ou descrição&quot;</span><span class="s2">) },</span>
+            <span class="s1">leadingIcon </span><span class="s2">= {</span>
+                <span class="s1">Icon</span><span class="s2">(</span><span class="s1">Icons</span><span class="s2">.</span><span class="s1">Default</span><span class="s2">.</span><span class="s1">Search</span><span class="s2">, </span><span class="s1">contentDescription </span><span class="s2">= </span><span class="s3">&quot;Buscar&quot;</span><span class="s2">)</span>
+            <span class="s2">},</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+            <span class="s1">singleLine </span><span class="s2">= </span><span class="s0">true</span>
+        <span class="s2">)</span>
+
+        <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+
+        <span class="s4">// Contador de itens</span>
+        <span class="s1">Card</span><span class="s2">(</span>
+            <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span>
+                <span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">()</span>
+                <span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s1">bottom </span><span class="s2">= </span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+            <span class="s1">colors </span><span class="s2">= </span><span class="s1">CardDefaults</span><span class="s2">.</span><span class="s1">cardColors</span><span class="s2">(</span><span class="s1">containerColor </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">secondaryContainer</span><span class="s2">)</span>
+        <span class="s2">) {</span>
+            <span class="s1">Text</span><span class="s2">(</span>
+                <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Mostrando </span><span class="s0">${</span><span class="s1">displayedItems</span><span class="s2">.</span><span class="s1">size</span><span class="s0">} </span><span class="s3">de </span><span class="s0">${</span><span class="s1">allItems</span><span class="s2">.</span><span class="s1">size</span><span class="s0">} </span><span class="s3">produtos&quot;</span><span class="s2">,</span>
+                <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodyMedium</span><span class="s2">,</span>
+                <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Medium</span><span class="s2">,</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+            <span class="s2">)</span>
+        <span class="s2">}</span>
+
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">displayedItems</span><span class="s2">.</span><span class="s1">isEmpty</span><span class="s2">() &amp;&amp; </span><span class="s1">filterText</span><span class="s2">.</span><span class="s1">isNotBlank</span><span class="s2">()) {</span>
+            <span class="s1">Card</span><span class="s2">(</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+                <span class="s1">colors </span><span class="s2">= </span><span class="s1">CardDefaults</span><span class="s2">.</span><span class="s1">cardColors</span><span class="s2">(</span><span class="s1">containerColor </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">surfaceVariant</span><span class="s2">)</span>
+            <span class="s2">) {</span>
+                <span class="s1">Column</span><span class="s2">(</span>
+                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">24</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">),</span>
+                    <span class="s1">horizontalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterHorizontally</span>
+                <span class="s2">) {</span>
+                    <span class="s1">Text</span><span class="s2">(</span><span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;🔍&quot;</span><span class="s2">, </span><span class="s1">fontSize </span><span class="s2">= </span><span class="s5">48</span><span class="s2">.</span><span class="s1">sp</span><span class="s2">)</span>
+                    <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">height</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                    <span class="s1">Text</span><span class="s2">(</span>
+                        <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Nenhum produto encontrado&quot;</span><span class="s2">,</span>
+                        <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleMedium</span><span class="s2">,</span>
+                        <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span>
+                    <span class="s2">)</span>
+                    <span class="s1">Text</span><span class="s2">(</span>
+                        <span class="s1">text </span><span class="s2">= </span><span class="s3">&quot;Tente uma busca diferente para </span><span class="s0">\&quot;$</span><span class="s1">filterText</span><span class="s0">\&quot;</span><span class="s3">&quot;</span><span class="s2">,</span>
+                        <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodyMedium</span><span class="s2">,</span>
+                        <span class="s1">textAlign </span><span class="s2">= </span><span class="s1">TextAlign</span><span class="s2">.</span><span class="s1">Center</span><span class="s2">,</span>
+                        <span class="s1">color </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">onSurfaceVariant</span>
+                    <span class="s2">)</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
+            <span class="s1">LazyColumn</span><span class="s2">(</span>
+                <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">weight</span><span class="s2">(</span><span class="s5">1f</span><span class="s2">),</span>
+                <span class="s1">verticalArrangement </span><span class="s2">= </span><span class="s1">Arrangement</span><span class="s2">.</span><span class="s1">spacedBy</span><span class="s2">(</span><span class="s5">8</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+            <span class="s2">) {</span>
+                <span class="s1">items</span><span class="s2">(</span><span class="s1">displayedItems</span><span class="s2">) { </span><span class="s1">item </span><span class="s2">-&gt;</span>
+                    <span class="s1">Card</span><span class="s2">(</span>
+                        <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">fillMaxWidth</span><span class="s2">(),</span>
+                        <span class="s1">elevation </span><span class="s2">= </span><span class="s1">CardDefaults</span><span class="s2">.</span><span class="s1">cardElevation</span><span class="s2">(</span><span class="s1">defaultElevation </span><span class="s2">= </span><span class="s5">2</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                    <span class="s2">) {</span>
+                        <span class="s1">Column</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">padding</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)) {</span>
+                            <span class="s1">Row</span><span class="s2">(</span>
+                                <span class="s1">verticalAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">CenterVertically</span>
+                            <span class="s2">) {</span>
+                                <span class="s1">Box</span><span class="s2">(</span>
+                                    <span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span>
+                                        <span class="s2">.</span><span class="s1">size</span><span class="s2">(</span><span class="s5">36</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">)</span>
+                                        <span class="s2">.</span><span class="s1">clip</span><span class="s2">(</span><span class="s1">RoundedCornerShape</span><span class="s2">(</span><span class="s5">6</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                                        <span class="s2">.</span><span class="s1">background</span><span class="s2">(</span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">primary</span><span class="s2">),</span>
+                                    <span class="s1">contentAlignment </span><span class="s2">= </span><span class="s1">Alignment</span><span class="s2">.</span><span class="s1">Center</span>
+                                <span class="s2">) {</span>
+                                    <span class="s1">Text</span><span class="s2">(</span>
+                                        <span class="s1">text </span><span class="s2">= </span><span class="s1">item</span><span class="s2">.</span><span class="s1">id</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">(),</span>
+                                        <span class="s1">color </span><span class="s2">= </span><span class="s1">Color</span><span class="s2">.</span><span class="s1">White</span><span class="s2">,</span>
+                                        <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">Bold</span><span class="s2">,</span>
+                                        <span class="s1">fontSize </span><span class="s2">= </span><span class="s5">16</span><span class="s2">.</span><span class="s1">sp</span>
+                                    <span class="s2">)</span>
+                                <span class="s2">}</span>
+                                <span class="s1">Spacer</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">width</span><span class="s2">(</span><span class="s5">16</span><span class="s2">.</span><span class="s1">dp</span><span class="s2">))</span>
+                                <span class="s1">Column</span><span class="s2">(</span><span class="s1">modifier </span><span class="s2">= </span><span class="s1">Modifier</span><span class="s2">.</span><span class="s1">weight</span><span class="s2">(</span><span class="s5">1f</span><span class="s2">)) {</span>
+                                    <span class="s1">Text</span><span class="s2">(</span>
+                                        <span class="s1">text </span><span class="s2">= </span><span class="s1">item</span><span class="s2">.</span><span class="s1">name</span><span class="s2">,</span>
+                                        <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">titleMedium</span><span class="s2">,</span>
+                                        <span class="s1">fontWeight </span><span class="s2">= </span><span class="s1">FontWeight</span><span class="s2">.</span><span class="s1">SemiBold</span>
+                                    <span class="s2">)</span>
+                                    <span class="s1">Text</span><span class="s2">(</span>
+                                        <span class="s1">text </span><span class="s2">= </span><span class="s1">item</span><span class="s2">.</span><span class="s1">description</span><span class="s2">,</span>
+                                        <span class="s1">style </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">typography</span><span class="s2">.</span><span class="s1">bodyMedium</span><span class="s2">,</span>
+                                        <span class="s1">color </span><span class="s2">= </span><span class="s1">MaterialTheme</span><span class="s2">.</span><span class="s1">colorScheme</span><span class="s2">.</span><span class="s1">onSurface</span><span class="s2">.</span><span class="s1">copy</span><span class="s2">(</span><span class="s1">alpha </span><span class="s2">= </span><span class="s5">0.7f</span><span class="s2">)</span>
+                                    <span class="s2">)</span>
+                                <span class="s2">}</span>
+                            <span class="s2">}</span>
+                        <span class="s2">}</span>
+                    <span class="s2">}</span>
+                <span class="s2">}</span>
+            <span class="s2">}</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>

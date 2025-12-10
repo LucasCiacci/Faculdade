@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_Paridade.Views.HomePage"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}">
+
+    <Grid RowDefinitions="Auto,*" Padding="15">
+
+        <!-- HEADER -->
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto" Padding="0,10">
+            <Label Text=".NET MAUI"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"
+                   Grid.Column="0"/>
+        </Grid>
+
+        <!-- CONTEÚDO -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="20">
+
+                <!-- CARD DE SAUDAÇÃO -->
+                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LightCardColor}, Dark={StaticResource DarkCardColor}}"
+                       CornerRadius="15"
+                       Padding="15"
+                       HasShadow="True">
+                    <VerticalStackLayout>
+                        <Label x:Name="GreetingLabel"
+                               Text="Olá, Android!"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"/>
+                        <Label Text="Bem-vindo ao AtivMob!"
+                               FontSize="14"
+                               TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- INPUT MAIS BONITO (com borda arredondada) -->
+                <Frame CornerRadius="12"
+                       Padding="8"
+                       BackgroundColor="{AppThemeBinding Light={StaticResource LightCardColor}, Dark={StaticResource DarkCardColor}}"
+                       BorderColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
+                       HasShadow="False"
+                       Margin="0,0,0,5">
+                    <Entry x:Name="NameEntry"
+                           Placeholder="Digite seu nome"
+                           TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"
+                           PlaceholderColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
+                           BackgroundColor="Transparent"
+                           FontSize="14"/>
+                </Frame>
+
+                <!-- BOTÃO DE ATUALIZAR -->
+                <Button Text="Atualizar Saudação"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LightAccentColor}, Dark={StaticResource DarkAccentColor}}"
+                        TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#000000}"
+                        FontAttributes="Bold"
+                        CornerRadius="25"
+                        HeightRequest="45"
+                        Clicked="OnUpdateGreetingClicked"/>
+
+                <!-- CARD DE FUNCIONALIDADES -->
+                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LightCardColor}, Dark={StaticResource DarkCardColor}}"
+       CornerRadius="15"
+       Padding="15"
+       HasShadow="True"
+       Margin="0,80,0,0">
+                    <!-- 🔹 AQUI: empurra 20px para baixo -->
+                    <VerticalStackLayout Spacing="15">
+                        <Label Text="Funcionalidades Disponíveis"
+               FontAttributes="Bold"
+               FontSize="16"
+               TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"
+               Margin="0,0,0,10"/>
+
+                        <!-- Botões de Navegação -->
+                        <Button Text="Ver Localização GPS"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LightAccentColor}, Dark={StaticResource DarkAccentColor}}"
+                                TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#000000}"
+                                ImageSource="{AppThemeBinding Light=loc_light.png, Dark=loc_dark.png}"
+                                FontAttributes="Bold"
+                                CornerRadius="25"
+                                HeightRequest="45"
+                                Clicked="OnLocationClicked"/>
+                        <Button Text="Estados Brasileiros (IBGE)"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LightAccentColor}, Dark={StaticResource DarkAccentColor}}"
+                                TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#000000}"
+                                ImageSource="{AppThemeBinding Light=loc_light.png, Dark=loc_dark.png}"
+                                FontAttributes="Bold"
+                                CornerRadius="25"
+                                HeightRequest="45"
+                                Clicked="OnApiDataClicked"/>    
+                        <Button Text="Lista de Produtos"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LightAccentColor}, Dark={StaticResource DarkAccentColor}}"
+                                TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#000000}"
+                                ImageSource="{AppThemeBinding Light=menu_light.png, Dark=menu_dark.png}"
+                                FontAttributes="Bold"
+                                CornerRadius="25"
+                                HeightRequest="45"
+                                Clicked="OnItemsClicked"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

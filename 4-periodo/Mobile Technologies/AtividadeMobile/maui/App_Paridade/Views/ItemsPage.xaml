@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_Paridade.Views.ItemsPage"
+             Title="Lista de Itens"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}">
+    
+    <!-- Esconde o botão de voltar nativo -->
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" />
+    </Shell.BackButtonBehavior>
+
+    <!-- Barra de título custom -->
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="Auto,*" VerticalOptions="Center" Padding="10,0">
+            <!-- Seta customizada -->
+            <ImageButton Source="{AppThemeBinding Light=back_dark.png, Dark=back_light.png}"
+                         WidthRequest="28"
+                         HeightRequest="28"
+                         BackgroundColor="Transparent"
+                         Clicked="OnCustomBackClicked"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Start"/>
+            <!-- Título -->
+            <Label Grid.Column="1"
+                   Text="Lista de Itens"
+                   FontAttributes="Bold"
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"/>
+        </Grid>
+    </Shell.TitleView>
+
+    <Grid Padding="15" RowDefinitions="Auto,Auto,*" RowSpacing="15">
+
+        <!-- Barra de Busca ocupando toda largura (fundo agora usa CardColor do tema) -->
+        <Frame Grid.Row="0"
+               CornerRadius="25"
+               Padding="10"
+               HasShadow="True"
+               BackgroundColor="{AppThemeBinding Light={StaticResource LightCardColor}, Dark={StaticResource DarkCardColor}}"
+               HorizontalOptions="FillAndExpand">
+            <Grid ColumnDefinitions="Auto,*">
+                <Image Source="icon_search.png"
+                       WidthRequest="20"
+                       HeightRequest="20"
+                       VerticalOptions="Center"
+                       Margin="5,0"/>
+                <SearchBar Grid.Column="1"
+                           Placeholder="Filtrar por nome ou descrição"
+                           Text="{Binding SearchText, Mode=TwoWay}"
+                           BackgroundColor="Transparent"
+                           TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"
+                           PlaceholderColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"/>
+            </Grid>
+        </Frame>
+
+        <!-- Barra de Contagem (mantive como destaque primário do tema) -->
+        <Frame Grid.Row="1"
+               BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}"
+               CornerRadius="20"
+               Padding="10,5"
+               HasShadow="False"
+               HorizontalOptions="Center">
+            <Label Text="Mostrando 20 de 20 produtos"
+                   TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"
+                   FontSize="14"
+                   HorizontalOptions="Center"/>
+        </Frame>
+
+        <!-- Lista de Produtos ocupa até o fim -->
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding Items}"
+                        SelectionMode="Single"
+                        SelectionChanged="OnSelectionChanged"
+                        VerticalOptions="FillAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="8"
+         Margin="0,5"
+         HasShadow="True"
+         CornerRadius="15"
+         BackgroundColor="{AppThemeBinding Light={StaticResource LightCardColor}, Dark={StaticResource DarkCardColor}}"
+         BorderColor="{AppThemeBinding Light={StaticResource LightBorderColor}, Dark={StaticResource DarkBorderColor}}">
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalOptions="Center">
+
+                            <!-- BOX DO NÚMERO -->
+                            <Frame WidthRequest="44"
+             HeightRequest="44"
+             CornerRadius="10"
+             Padding="0"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightAccentColor}, Dark={StaticResource DarkAccentColor}}"
+             HasShadow="False"
+             VerticalOptions="Center"
+             HorizontalOptions="Start">
+                                <Label Text="{Binding Id, TargetNullValue='-'}"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               FontSize="16"
+               FontAttributes="Bold"
+               LineBreakMode="NoWrap"
+               TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#000000}" />
+                            </Frame>
+
+                            <!-- BLOCO DE TEXTO -->
+                            <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                <Label Text="{Binding Title}"
+               FontSize="16"
+               FontAttributes="Bold"
+               TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"/>
+                                <Label Text="{Binding Description}"
+               FontSize="13"
+               TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"/>
+                                
+                            </VerticalStackLayout>
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_Paridade.Views.ApiDataPage"
+             Title="Estados Brasileiros"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}">
+
+    <!-- Esconde o botão de voltar nativo -->
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" />
+    </Shell.BackButtonBehavior>
+
+    <!-- Barra de título custom -->
+    <Shell.TitleView>
+        <Grid ColumnDefinitions="Auto,*" VerticalOptions="Center" Padding="10,0">
+            <!-- Seta customizada -->
+            <ImageButton Source="{AppThemeBinding Light=back_dark.png, Dark=back_light.png}"
+                     WidthRequest="28"
+                     HeightRequest="28"
+                     BackgroundColor="Transparent"
+                     Clicked="OnCustomBackClicked"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Start"/>
+            <!-- Título -->
+            <Label Grid.Column="1"
+               Text="Estados Brasileiros"
+               FontAttributes="Bold"
+               FontSize="18"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"/>
+        </Grid>
+    </Shell.TitleView>
+
+    <Grid Padding="15" RowDefinitions="Auto,Auto,*" RowSpacing="15">
+
+        <!-- Card de Resumo -->
+        <Frame Grid.Row="0"
+               BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}"
+               CornerRadius="20"
+               Padding="12"
+               HasShadow="False"
+               HorizontalOptions="FillAndExpand">
+            <VerticalStackLayout Spacing="3">
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Total: " />
+                            <Span Text="27 estados" FontAttributes="Bold" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Text="Dados obtidos da API do IBGE"
+                       TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
+                       FontSize="13"/>
+            </VerticalStackLayout>
+        </Frame>
+
+        <!-- Lista de Estados -->
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding Estados}"
+                        VerticalOptions="FillAndExpand">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="12"
+                           Margin="0,6"
+                           HasShadow="True"
+                           CornerRadius="14"
+                           BackgroundColor="{AppThemeBinding Light={StaticResource LightCardColor}, Dark={StaticResource DarkCardColor}}"
+                           BorderColor="{AppThemeBinding Light={StaticResource LightBorderColor}, Dark={StaticResource DarkBorderColor}}">
+                        <Grid ColumnDefinitions="Auto,*" ColumnSpacing="12" VerticalOptions="Center">
+
+                            <!-- BOX DA SIGLA: padding zero, label centralizada e font maior -->
+                            <Frame WidthRequest="56"
+                                   HeightRequest="56"
+                                   CornerRadius="12"
+                                   BackgroundColor="{AppThemeBinding Light={StaticResource LightAccentColor}, Dark={StaticResource DarkAccentColor}}"
+                                   Padding="0"
+                                   HasShadow="False"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start">
+                                <Label Text="{Binding Sigla, TargetNullValue=''}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center"
+                                       FontSize="20"
+                                       FontAttributes="Bold"
+                                       FontFamily="OpenSansSemibold"
+                                       LineBreakMode="NoWrap"
+                                       TextColor="{AppThemeBinding Light=#FFFFFF, Dark=#000000}"
+                                       Margin="0"/>
+                            </Frame>
+
+                            <!-- Bloco de Texto -->
+                            <VerticalStackLayout Grid.Column="1" Spacing="2">
+                                <Label Text="{Binding Nome}"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"/>
+
+                                <Label Text="{Binding Regiao.Nome, StringFormat='Região: {0}'}"
+                                       FontSize="13"
+                                       TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"
+                                       LineBreakMode="TailTruncation" />
+
+                                <Label Text="{Binding Id, StringFormat='ID: {0}'}"
+                                       FontSize="13"
+                                       TextColor="{AppThemeBinding Light={StaticResource LightSecondaryTextColor}, Dark={StaticResource DarkSecondaryTextColor}}"/>
+                            </VerticalStackLayout>
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,16 @@
+<Shell 
+    x:Class="App_Paridade.AppShell" 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:views="clr-namespace:App_Paridade.Views" 
+    Shell.BackgroundColor="{AppThemeBinding Light={StaticResource LightHeaderColor}, Dark={StaticResource DarkHeaderColor}}" 
+    Shell.TitleColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}">
+    
+    <!-- Tela inicial (Home) -->
+    <ShellContent Route="home" Title="Inicio" ContentTemplate="{DataTemplate views:HomePage}" />
+
+    <!-- Botao da Toolbar -->
+    <Shell.ToolbarItems>
+        <ToolbarItem x:Name="ThemeToggleButton" IconImageSource="moon.png" Clicked="OnThemeToggleClicked" />
+    </Shell.ToolbarItems>
+</Shell>

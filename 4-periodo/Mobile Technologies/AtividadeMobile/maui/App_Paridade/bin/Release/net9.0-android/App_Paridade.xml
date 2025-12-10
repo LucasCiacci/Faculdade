@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>App_Paridade</name>
+    </assembly>
+    <members>
+        <member name="M:App_Paridade.ViewModels.ItemsViewModel.LoadItemsAsync">
+            <summary>
+            Carrega os itens do JSON local.
+            Deve ser chamado no OnAppearing da View.
+            </summary>
+        </member>
+        <member name="M:App_Paridade.ViewModels.ItemsViewModel.ApplyFilter">
+            <summary>
+            Aplica o filtro de busca em tempo real.
+            </summary>
+        </member>
+        <member name="T:App_Paridade.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
+        </member>
+    </members>
+</doc>

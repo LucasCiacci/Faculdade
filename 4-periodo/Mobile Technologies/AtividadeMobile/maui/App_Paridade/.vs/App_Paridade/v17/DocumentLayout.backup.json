@@ -1,0 +1,85 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Visual Studio 2022 - 3\\App_Paridade\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2148CBD3-C0EA-4C13-A72C-E44BAD0AA30E}|App_Paridade.csproj|c:\\visual studio 2022 - 3\\app_paridade\\views\\itemdetailpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2148CBD3-C0EA-4C13-A72C-E44BAD0AA30E}|App_Paridade.csproj|solutionrelative:views\\itemdetailpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2148CBD3-C0EA-4C13-A72C-E44BAD0AA30E}|App_Paridade.csproj|c:\\visual studio 2022 - 3\\app_paridade\\views\\itemspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2148CBD3-C0EA-4C13-A72C-E44BAD0AA30E}|App_Paridade.csproj|solutionrelative:views\\itemspage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2148CBD3-C0EA-4C13-A72C-E44BAD0AA30E}|App_Paridade.csproj|c:\\visual studio 2022 - 3\\app_paridade\\views\\itemdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2148CBD3-C0EA-4C13-A72C-E44BAD0AA30E}|App_Paridade.csproj|solutionrelative:views\\itemdetailpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2148CBD3-C0EA-4C13-A72C-E44BAD0AA30E}|App_Paridade.csproj|c:\\visual studio 2022 - 3\\app_paridade\\views\\itemspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2148CBD3-C0EA-4C13-A72C-E44BAD0AA30E}|App_Paridade.csproj|solutionrelative:views\\itemspage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ItemDetailPage.xaml.cs",
+              "DocumentMoniker": "C:\\Visual Studio 2022 - 3\\App_Paridade\\Views\\ItemDetailPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\ItemDetailPage.xaml.cs",
+              "ToolTip": "C:\\Visual Studio 2022 - 3\\App_Paridade\\Views\\ItemDetailPage.xaml.cs",
+              "RelativeToolTip": "Views\\ItemDetailPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T18:36:09.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ItemDetailPage.xaml",
+              "DocumentMoniker": "C:\\Visual Studio 2022 - 3\\App_Paridade\\Views\\ItemDetailPage.xaml",
+              "RelativeDocumentMoniker": "Views\\ItemDetailPage.xaml",
+              "ToolTip": "C:\\Visual Studio 2022 - 3\\App_Paridade\\Views\\ItemDetailPage.xaml",
+              "RelativeToolTip": "Views\\ItemDetailPage.xaml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABkAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-09-18T18:36:08.656Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ItemsPage.xaml",
+              "DocumentMoniker": "C:\\Visual Studio 2022 - 3\\App_Paridade\\Views\\ItemsPage.xaml",
+              "RelativeDocumentMoniker": "Views\\ItemsPage.xaml",
+              "ToolTip": "C:\\Visual Studio 2022 - 3\\App_Paridade\\Views\\ItemsPage.xaml",
+              "RelativeToolTip": "Views\\ItemsPage.xaml",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAAAcAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-09-18T18:27:22.433Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ItemsPage.xaml.cs",
+              "DocumentMoniker": "C:\\Visual Studio 2022 - 3\\App_Paridade\\Views\\ItemsPage.xaml.cs",
+              "RelativeDocumentMoniker": "Views\\ItemsPage.xaml.cs",
+              "ToolTip": "C:\\Visual Studio 2022 - 3\\App_Paridade\\Views\\ItemsPage.xaml.cs",
+              "RelativeToolTip": "Views\\ItemsPage.xaml.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAgwB8AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-18T14:13:20.343Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
