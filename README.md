@@ -99,7 +99,7 @@ Atividades complementares realizadas dentro das disciplinas, listadas de forma d
 * **AppParidade**
   * *Período 4 — Disciplina: Mobile Technologies*
   * Comparação prática entre .NET MAUI e Android Nativo ao implementar as mesmas funcionalidades em ambos.
-  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/4-periodo/Mobile%20Technologies/AtividadeMobile)**
+  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/4-periodo/Mobile%20Technologies/AppParidade)**
 
 ---
 
