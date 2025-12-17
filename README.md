@@ -74,7 +74,7 @@ Atividades complementares realizadas dentro das disciplinas, listadas de forma d
 * **CRUD**
   * *Período 1 — Disciplina: Introdução a Algoritmos e Programação para Web*
   * Implementação de um CRUD completo como prática inicial de desenvolvimento web e manipulação de dados.
-  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/1-periodo/Introdu%C3%A7%C3%A3o%20a%20Algor%C3%ADtmos%20e%20Programa%C3%A7%C3%A3o%20para%20Web/CRUD)**
+  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/1-periodo/Introdu%C3%A7%C3%A3o%20a%20Algoritmos%20e%20Programa%C3%A7%C3%A3o%20para%20Web/CRUD)**
 
 * **Atividade POO Final**
   * *Período 1 — Disciplina: Programação Orientada a Objetos*
