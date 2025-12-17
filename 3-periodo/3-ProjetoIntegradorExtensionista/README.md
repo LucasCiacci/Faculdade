@@ -55,9 +55,9 @@ O processo envolveu:
 * Criação de um relatório robusto com recomendações estratégicas.
 * Proposta de uma Política de Segurança da Informação.
 
-> *Documentação consultada:* [`Relatório Final.pdf`](https://github.com/LucasCiacci/Faculdade/blob/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Parte%20Final%20do%20Projeto/Desenvolvendo%20o%20relat%C3%B3rio/Relat%C3%B3rio%20Final.pdf)
+> *Documentação consultada:* [`Relatório Final.pdf`](https://github.com/LucasCiacci/Faculdade/blob/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Parte_Final_do_Projeto/Desenvolvendo_o_relatorio/Relatorio_Final.pdf)
 
-> *Slides utilizados na apresentação final:* [`Apresentação do Projeto Extensionista SI.pdf`](https://github.com/LucasCiacci/Faculdade/blob/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Apresenta%C3%A7%C3%B5es/Apresenta%C3%A7%C3%A3o%20do%20projeto%20extensionista%20de%20Seguran%C3%A7a%20da%20Informa%C3%A7%C3%A3o.pdf)
+> *Slides utilizados na apresentação final:* [`Apresentação do Projeto Extensionista SI.pdf`](https://github.com/LucasCiacci/Faculdade/blob/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Apresentacoes/Apresentacao_do_projeto_extensionista_de_Seguranca_da_Informacao.pdf)
 
 ---
 
@@ -161,17 +161,17 @@ O processo envolveu:
 Substitua os links abaixo pelos caminhos reais do seu repositório:
 
 * 📘 **Relatório oficial:**
-  👉 [Acessar relatório](https://github.com/LucasCiacci/Faculdade/blob/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Parte%20Final%20do%20Projeto/Desenvolvendo%20o%20relat%C3%B3rio/Relat%C3%B3rio%20Final.pdf)
+  👉 [Acessar relatório](https://github.com/LucasCiacci/Faculdade/blob/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Parte_Final_do_Projeto/Desenvolvendo_o_relatorio/Relatorio_Final.pdf)
 
 * 🖼 **Apresentação final:**
-  👉 [Abrir slides](https://github.com/LucasCiacci/Faculdade/blob/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Apresenta%C3%A7%C3%B5es/Apresenta%C3%A7%C3%A3o%20do%20projeto%20extensionista%20de%20Seguran%C3%A7a%20da%20Informa%C3%A7%C3%A3o.pdf)
+  👉 [Abrir slides](https://github.com/LucasCiacci/Faculdade/blob/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Apresentacoes/Apresentacao_do_projeto_extensionista_de_Seguranca_da_Informacao.pdf)
 
 * 📊 **Formulários:**
-  👉 [Ver formulários](https://github.com/LucasCiacci/Faculdade/tree/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Formul%C3%A1rios)
+  👉 [Ver formulários](https://github.com/LucasCiacci/Faculdade/tree/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Formularios)
 
 * ⚠️ **Diagnóstico e análises:**
-  👉 [Abrir Planilha com as vulnerabilidades](https://github.com/LucasCiacci/Faculdade/blob/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Parte%20Final%20do%20Projeto/Planilha%20com%20as%20vulnerabilidades.xlsx)
-  👉 [Abrir Planilha com o mapeamento de risco](https://github.com/LucasCiacci/Faculdade/blob/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Parte%20Final%20do%20Projeto/Planilha%20com%20o%20mapeamento%20de%20risco.xlsx)
+  👉 [Abrir Planilha com as vulnerabilidades](https://github.com/LucasCiacci/Faculdade/blob/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Parte_Final_do_Projeto/Planilha_com_as_vulnerabilidades.xlsx)
+  👉 [Abrir Planilha com o mapeamento de risco](https://github.com/LucasCiacci/Faculdade/blob/main/3-periodo/3-ProjetoIntegradorExtensionista/Projeto-Seguranca-da-Informacao/Parte_Final_do_Projeto/Planilha_com_o_mapeamento_de_risco.xlsx)
 
 ---
 
