@@ -58,9 +58,9 @@ O projeto evoluiu em ciclos: planejamento → prototipação → desenvolvimento
 
 A documentação oficial do projeto detalha todo o processo, incluindo histórias de usuário, backlog, protótipos, testes e projeções futuras.
 
-> *Documentação consultada:* [`Documentação do Software de Estatística.pdf`](https://github.com/LucasCiacci/Faculdade/blob/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Documenta%C3%A7%C3%A3o%20Final%20do%20Projeto/Documenta%C3%A7%C3%A3o%20do%20Software%20de%20Estat%C3%ADstica.docx.pdf)
+> *Documentação consultada:* [`Documentação do Software de Estatística.pdf`](https://github.com/LucasCiacci/Faculdade/blob/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Documentacao_Final_do_Projeto/Documentacao_do_Software_de_Estatistica.pdf)
 
-> *Slides utilizados na apresentação final:* [`Apresentação Final Software Estatística.pdf`](https://github.com/LucasCiacci/Faculdade/blob/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Documenta%C3%A7%C3%A3o%20Final%20do%20Projeto/Apresenta%C3%A7%C3%A3o%20Final/Apresenta%C3%A7%C3%A3o%20Final%20Software%20Estat%C3%ADstica.pdf)
+> *Slides utilizados na apresentação final:* [`Apresentação Final Software Estatística.pdf`](https://github.com/LucasCiacci/Faculdade/blob/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Documentacao_Final_do_Projeto/Apresentacao_Final/Apresentacao_Final_Software_Estatistica.pdf)
 
 ---
 
@@ -179,19 +179,19 @@ Interface visual que reúne conteúdos como:
 ## 📂 Como navegar neste projeto
 
 * 📘 **Documentação oficial:**
-  👉 [Acessar documentação](https://github.com/LucasCiacci/Faculdade/blob/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Documenta%C3%A7%C3%A3o%20Final%20do%20Projeto/Documenta%C3%A7%C3%A3o%20do%20Software%20de%20Estat%C3%ADstica.docx.pdf)
+  👉 [Acessar documentação](https://github.com/LucasCiacci/Faculdade/blob/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Documentacao_Final_do_Projeto/Documentacao_do_Software_de_Estatistica.pdf)
 
 * 🖼 **Apresentação final:**
-  👉 [Abrir slides da apresentação](https://github.com/LucasCiacci/Faculdade/blob/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Documenta%C3%A7%C3%A3o%20Final%20do%20Projeto/Apresenta%C3%A7%C3%A3o%20Final/Apresenta%C3%A7%C3%A3o%20Final%20Software%20Estat%C3%ADstica.pdf)
+  👉 [Abrir slides da apresentação](https://github.com/LucasCiacci/Faculdade/blob/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Documentacao_Final_do_Projeto/Apresentacao_Final/Apresentacao_Final_Software_Estatistica.pdf)
 
 * 🧪 **Testes (MAC, usabilidade, funcionalidade):**
-  👉 [Vídeo do teste com usuário real](https://github.com/LucasCiacci/Faculdade/tree/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/V%C3%ADdeo%20de%20Teste%20de%20Aplica%C3%A7%C3%A3o)
+  👉 [Vídeo do teste com usuário real](https://github.com/LucasCiacci/Faculdade/tree/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Video_de_Teste_de_Aplicacao)
 
 * 💻 **Código-fonte:**
-  👉 [Pasta com todo o código](https://github.com/LucasCiacci/Faculdade/tree/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Programando/Desenvolvendo%20o%20Projeto)
+  👉 [Pasta com todo o código](https://github.com/LucasCiacci/Faculdade/tree/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Programando/Desenvolvendo_o_Projeto)
 
 * 📱 **Protótipos e design das telas :**
-  👉 [Ver protótipos e design](https://github.com/LucasCiacci/Faculdade/tree/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Prot%C3%B3tipo%20Naveg%C3%A1vel)
+  👉 [Ver protótipos e design](https://github.com/LucasCiacci/Faculdade/tree/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Prototipo_Navegavel)
 
 ---
 
@@ -206,7 +206,7 @@ Ideal para visualizar o layout, navegação e fluxo geral do Statify.
 
 📁 **Pasta correta para download do projeto**
 Baixe o `.zip` da seguinte pasta:
-👉 [Acessar pasta de desenvolvimento](https://github.com/LucasCiacci/Faculdade/tree/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Programando/Desenvolvendo%20o%20Projeto)
+👉 [Acessar pasta de desenvolvimento](https://github.com/LucasCiacci/Faculdade/tree/main/2-periodo/2-ProjetoIntegradorExtensionista/Projeto-Software-Estatistica/Programando/Desenvolvendo_o_Projeto)
 
 **Caminho interno da pasta:**
 `Projeto-Software-Estatistica/Programando/Desenvolvendo o Projeto/`
