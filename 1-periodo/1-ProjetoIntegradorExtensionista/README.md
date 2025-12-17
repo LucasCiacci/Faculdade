@@ -135,9 +135,9 @@ Após feedback direto da Empresa Parceira (nome anonimizado), foram consolidadas
 Para visualizar as etapas e materiais completos do projeto:
 
 * Acesse a pasta **fase-1** para ver as primeiras propostas.
-  👉 [Link para a pasta fase-1](https://github.com/LucasCiacci/Faculdade/tree/main/1-periodo/1-ProjetoIntegradorExtensionista/Projeto-EmpresaSecadorCabelo/PROJETO%201%C2%BA%20Apresenta%C3%A7%C3%A3o)
+  👉 [Link para a pasta fase-1](https://github.com/LucasCiacci/Faculdade/tree/main/1-periodo/1-ProjetoIntegradorExtensionista/Projeto-EmpresaSecadorCabelo/PROJETO_1-Apresentacao)
 * Acesse a pasta **fase-2** para ver a versão final entregue à empresa.
-  👉 [Link para a pasta fase-2](https://github.com/LucasCiacci/Faculdade/tree/main/1-periodo/1-ProjetoIntegradorExtensionista/Projeto-EmpresaSecadorCabelo/PROJETO%202%C2%BA%20Apresenta%C3%A7%C3%A3o)
+  👉 [Link para a pasta fase-2](https://github.com/LucasCiacci/Faculdade/tree/main/1-periodo/1-ProjetoIntegradorExtensionista/Projeto-EmpresaSecadorCabelo/PROJETO_2-Apresentacao)
 * Consulte as subpastas para visualizar slides, vídeos, EAP e protótipos.
 
 ---
