@@ -69,37 +69,37 @@ Atividades complementares realizadas dentro das disciplinas, listadas de forma d
 * **Projeto UX**
   * *Período 1 — Disciplina: Interação Humano–Computador*
   * Desenvolvimento de solução baseada em estudo de caso, incluindo pesquisa, wireframes e protótipo de alta fidelidade.
-  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/1-periodo/Intera%C3%A7%C3%A3o%20Humano%20Computador/Projeto%20UX)**
+  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/1-periodo/Interacao_Humano_Computador/Projeto_UX)**
 
 * **CRUD**
   * *Período 1 — Disciplina: Introdução a Algoritmos e Programação para Web*
   * Implementação de um CRUD completo como prática inicial de desenvolvimento web e manipulação de dados.
-  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/1-periodo/Introdu%C3%A7%C3%A3o%20a%20Algoritmos%20e%20Programa%C3%A7%C3%A3o%20para%20Web/CRUD)**
+  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/1-periodo/Introducao_a_Algoritmos_e_Programacao_para_Web/CRUD)**
 
 * **Atividade POO Final**
   * *Período 1 — Disciplina: Programação Orientada a Objetos*
   * Desenvolvimento de sistema aplicando princípios fundamentais de POO e seus principais conceitos.
-  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/1-periodo/Programa%C3%A7%C3%A3o%20Orientada%20a%20Objetos/atividade-POO-final)**
+  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/1-periodo/Programacao_Orientada_a_Objetos/atividade-POO-final)**
 
 * **Aplicabilidade do Cálculo Diferencial e Integral na Computação**
   * *Período 2 — Disciplina: Cálculos e Estatística Básica*
   * Relatório e apresentação explicando como conceitos de cálculo se aplicam em áreas da TI.
-  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/2-periodo/C%C3%A1lculos%20e%20Estat%C3%ADstica%20B%C3%A1sica/Aplicabilidade%20do%20C%C3%A1lculo%20Diferencial%20e%20Integral%20na%20Computa%C3%A7%C3%A3o%20e%20Tecnologia%20da%20Informa%C3%A7%C3%A3o)**
+  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/2-periodo/Calculos_e_Estatistica_Basica/Aplicabilidade_do_Calculo_Diferencial_e_Integral_na_Computacao_e_Tecnologia_da_Informacao)**
  
 * **Sistema de Gerenciamento de Biblioteca**
   * *Período 2 — Disciplina: Engenharia de Software*
   * Relatório técnico com diagramas UML ilustrando a estrutura de um sistema de biblioteca.
-  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/2-periodo/Engenharia%20de%20Software/Sistema%20de%20Gerenciamento%20de%20Biblioteca)**
+  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/2-periodo/Engenharia_de_Software/Sistema_de_Gerenciamento_de_Biblioteca)**
 
 * **AppNomesBr**
   * *Período 4 — Disciplina: Mobile Technologies*
   * Aplicativo .NET MAUI que consome dados do IBGE sobre os nomes mais comuns no Brasil, permitindo consultar rankings e criar listas personalizadas.
-  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/4-periodo/Mobile%20Technologies/AppNomesBr)**
+  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/4-periodo/Mobile_Technologies/AppNomesBr)**
  
 * **AppParidade**
   * *Período 4 — Disciplina: Mobile Technologies*
   * Comparação prática entre .NET MAUI e Android Nativo ao implementar as mesmas funcionalidades em ambos.
-  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/4-periodo/Mobile%20Technologies/AppParidade)**
+  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/4-periodo/Mobile_Technologies/AppParidade)**
 
 ---
 
