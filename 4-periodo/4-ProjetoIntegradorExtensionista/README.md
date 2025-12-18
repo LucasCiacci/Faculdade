@@ -224,7 +224,7 @@ O banco fornecido não possuía dados suficientes para implementar permissões c
 ### **1. Baixar o Projeto**
 
 Baixe o `.zip` da pasta do aplicativo no repositório:
-👉 **[Clique aqui para ir até a pasta](https://github.com/LucasCiacci/Faculdade/tree/main/4-periodo/4-ProjetoIntegradorExtensionista/MVP-de-App-BI-Dashboards-Mobile-First/Programando%20o%20App/Heicomp_2025_2)**
+👉 **[Clique aqui para ir até a pasta](https://github.com/LucasCiacci/Faculdade/tree/main/4-periodo/4-ProjetoIntegradorExtensionista/MVP-de-App-BI-Dashboards-Mobile-First/Programando_o_App/Heicomp_2025_2)**
 
 Extraia os arquivos em seu computador.
 
@@ -277,9 +277,9 @@ Pronto! O aplicativo será inicializado com todas as funcionalidades disponívei
 
 ## 🔗 Materiais Relacionados
 
-* **Documentação oficial:** 👉 *[clique aqui para acessar a documentação](https://github.com/LucasCiacci/Faculdade/blob/main/4-periodo/4-ProjetoIntegradorExtensionista/MVP-de-App-BI-Dashboards-Mobile-First/Documenta%C3%A7%C3%B5es%20Finais/Documenta%C3%A7%C3%A3o%20geral%20do%20projeto.pdf)*
+* **Documentação oficial:** 👉 *[clique aqui para acessar a documentação](https://github.com/LucasCiacci/Faculdade/blob/main/4-periodo/4-ProjetoIntegradorExtensionista/MVP-de-App-BI-Dashboards-Mobile-First/Documentacoes_Finais/Documentacao_geral_do_projeto.pdf)*
 * **Repositório oficial do app:** 👉 [clique aqui para acessar o repositório](https://github.com/PalmutiUnis/Heicomp_2025_2)
-* **Slides da apresentação:** 👉 *[clique aqui para acessar os slides](https://github.com/LucasCiacci/Faculdade/blob/main/4-periodo/4-ProjetoIntegradorExtensionista/MVP-de-App-BI-Dashboards-Mobile-First/Documenta%C3%A7%C3%B5es%20Finais/Slide%20Final%20Heicomp%202025-2.pdf)*
+* **Slides da apresentação:** 👉 *[clique aqui para acessar os slides](https://github.com/LucasCiacci/Faculdade/blob/main/4-periodo/4-ProjetoIntegradorExtensionista/MVP-de-App-BI-Dashboards-Mobile-First/Documentacoes_Finais/Slide_Final_Heicomp_2025-2.pdf)*
 
 ---
 
