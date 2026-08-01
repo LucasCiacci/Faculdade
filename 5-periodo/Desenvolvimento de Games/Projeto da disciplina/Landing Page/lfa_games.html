@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Ray — LFA GAMES | Store Page</title>
+    <meta name="description" content="Project Ray é um jogo de plataforma 2D retrô onde três cientistas enfrentam Rattus, um experimento que deu errado. Desenvolvido pela LFA GAMES.">
+
+    <link rel="shortcut icon" href="https://portal.unis.edu.br/hubfs/favicon-2021.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <!-- SCR-N Seven (pixel font used in the game menus) -->
+    <link href="https://fonts.cdnfonts.com/css/scr-n-seven" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+
+    <style>
+        /* ══════════════════════════════════════════════════════
+           RESET & TOKENS
+        ══════════════════════════════════════════════════════ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            /* ── Brand Palette ── */
+            --g:        #6ad945;   /* green */
+            --g-dim:    rgba(106,217,69,.14);
+            --g-glow:   rgba(106,217,69,.55);
+            --g-dark:   #3fa520;
+
+            --p:        #bf68ff;   /* purple */
+            --p-dim:    rgba(191,104,255,.14);
+            --p-glow:   rgba(191,104,255,.50);
+            --p-dark:   #8830d4;
+
+            --white:    #f4f0ff;
+            --black:    #000000;
+
+            /* ── Backgrounds ── */
+            --bg0:  #030206;   /* near black */
+            --bg1:  #080511;   /* surface */
+            --bg2:  #0d0818;   /* card */
+            --bg3:  #130d22;   /* card hover */
+
+            /* ── Text ── */
+            --t1:   #f0eaff;
+            --t2:   rgba(240,234,255,.58);
+            --t3:   rgba(240,234,255,.30);
+
+            /* ── Borders ── */
+            --b1:   rgba(191,104,255,.10);
+            --b2:   rgba(191,104,255,.25);
+            --b3:   rgba(106,217,69,.30);
+
+            /* ── Fonts ── */
+            --f-game:  'SCR-N Seven', 'Share Tech Mono', monospace;
+            --f-body:  'Outfit', sans-serif;
+            --f-mono:  'Share Tech Mono', monospace;
+        }
+
+        body {
+            font-family: var(--f-body);
+            background: var(--bg0);
+            color: var(--t1);
+            overflow-x: hidden;
+            line-height: 1.65;
+            font-size: 18px;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           LAB BACKGROUND SYSTEM
+           Persistent dark lab atmosphere across entire page
+        ══════════════════════════════════════════════════════ */
+
+        /* Horizontal scan line sweep */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                180deg,
+                transparent 0px,
+                transparent 3px,
+                rgba(0,0,0,.06) 3px,
+                rgba(0,0,0,.06) 4px
+            );
+        }
+
+        /* Green/purple lab atmosphere glow */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 10% 20%,  rgba(106,217,69,.04) 0%, transparent 60%),
+                radial-gradient(circle at 90% 80%,  rgba(191,104,255,.04) 0%, transparent 60%),
+                radial-gradient(circle at 50% 50%,  rgba(106,217,69,.02) 0%, transparent 70%);
+        }
+
+        /* Slime/goo background pattern */
+        .lab-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-color: #040206;
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(106, 217, 69, 0.06) 0%, transparent 55%),
+                radial-gradient(circle at 85% 75%, rgba(106, 217, 69, 0.05) 0%, transparent 60%),
+                radial-gradient(circle at 50% 50%, rgba(106, 217, 69, 0.03) 0%, transparent 70%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cpath d='M-10%2C-10 L120%2C-10 C110%2C30 90%2C40 80%2C60 C70%2C80 85%2C90 70%2C110 C55%2C130 30%2C120 15%2C100 C0%2C80 -5%2C50 -10%2C20 Z' fill='%236ad945' opacity='0.035'/%3E%3Cpath d='M180%2C150 C210%2C130 250%2C140 270%2C170 C290%2C200 270%2C240 240%2C250 C210%2C260 170%2C230 160%2C200 C150%2C170 160%2C160 180%2C150 Z' fill='%236ad945' opacity='0.025'/%3E%3Cpath d='M320%2C-10 C340%2C30 350%2C60 345%2C90 C340%2C110 325%2C120 325%2C135 C325%2C150 335%2C160 330%2C170 C320%2C185 305%2C175 305%2C150 C305%2C120 315%2C80 310%2C-10 Z' fill='%236ad945' opacity='0.03'/%3E%3Cpath d='M350%2C300 C380%2C280 410%2C290 410%2C330 L410%2C410 L310%2C410 C310%2C380 320%2C350 330%2C330 C340%2C310 335%2C310 350%2C300 Z' fill='%236ad945' opacity='0.04'/%3E%3Cpath d='M50%2C250 C65%2C240 75%2C255 70%2C265 C65%2C275 45%2C280 40%2C270 C35%2C260 40%2C255 50%2C250 Z' fill='%236ad945' opacity='0.03'/%3E%3Cpath d='M110%2C320 C120%2C315 130%2C320 128%2C330 C125%2C340 115%2C345 108%2C335 C100%2C325 105%2C320 110%2C320 Z' fill='%236ad945' opacity='0.03'/%3E%3Cpath d='M280%2C70 C290%2C65 300%2C70 298%2C80 C295%2C90 285%2C95 278%2C85 C270%2C75 275%2C70 280%2C70 Z' fill='%236ad945' opacity='0.03'/%3E%3Ccircle cx='90' cy='180' r='14' fill='%236ad945' opacity='0.035'/%3E%3Ccircle cx='90' cy='180' r='12' stroke='%236ad945' stroke-width='1.5' fill='none' opacity='0.05'/%3E%3Cpath d='M84%2C174 A 8 8 0 0 1 94 170' stroke='%23ffffff' stroke-width='1' fill='none' opacity='0.08'/%3E%3Ccircle cx='230' cy='80' r='8' fill='%236ad945' opacity='0.03'/%3E%3Ccircle cx='230' cy='80' r='7' stroke='%236ad945' stroke-width='1.2' fill='none' opacity='0.04'/%3E%3Cpath d='M226%2C76 A 4 4 0 0 1 232 74' stroke='%23ffffff' stroke-width='0.8' fill='none' opacity='0.06'/%3E%3Ccircle cx='150' cy='310' r='10' fill='%236ad945' opacity='0.03'/%3E%3Ccircle cx='150' cy='310' r='9' stroke='%236ad945' stroke-width='1.2' fill='none' opacity='0.045'/%3E%3Cpath d='M146%2C306 A 5 5 0 0 1 152 304' stroke='%23ffffff' stroke-width='0.8' fill='none' opacity='0.07'/%3E%3Ccircle cx='40' cy='50' r='5' fill='%236ad945' opacity='0.025'/%3E%3Ccircle cx='310' cy='250' r='6' fill='%236ad945' opacity='0.03'/%3E%3Cpath d='M80%2C60 C120%2C90 140%2C110 180%2C150' stroke='%236ad945' stroke-width='1.5' fill='none' opacity='0.015'/%3E%3Cpath d='M240%2C250 C260%2C280 280%2C290 330%2C330' stroke='%236ad945' stroke-width='2' fill='none' opacity='0.015'/%3E%3C/svg%3E");
+            background-size: 100% 100%, 100% 100%, 100% 100%, 360px 360px;
+        }
+
+        /* Floating bio-particles */
+        #bio-particles {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bp {
+            position: absolute;
+            border-radius: 50%;
+            animation: bio-rise linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes bio-rise {
+            0%   { opacity:0;   transform:translateY(0) scale(.4); }
+            12%  { opacity:.65; }
+            88%  { opacity:.25; }
+            100% { opacity:0;   transform:translateY(-110vh) scale(1.3); }
+        }
+
+
+
+        /* ══════════════════════════════════════════════════════
+           HEADER OVERRIDE — fixed, compact
+        ══════════════════════════════════════════════════════ */
+        .main-header {
+            position: fixed !important;
+            top: 0; left: 0; right: 0;
+            z-index: 700;
+            padding: 0.35rem 1rem !important;
+            border-bottom-width: 2px !important;
+        }
+
+        .main-header .header-container {
+            gap: 0.5rem;
+        }
+
+        .main-header .institution-logo-container {
+            height: 28px;
+            max-width: 100px;
+        }
+
+        .main-header .institution-logo-container img {
+            width: 62px !important;
+        }
+
+        .main-header .header-titles h1 {
+            font-size: 0.6rem;
+            margin-bottom: 0;
+        }
+
+        .main-header .header-titles p {
+            font-size: 0.68rem;
+            line-height: 1.3;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           GAME SUB-NAV — sits below the header
+        ══════════════════════════════════════════════════════ */
+        .game-nav {
+            position: fixed;
+            top: var(--header-h, 83px); left: 0; right: 0;
+            z-index: 600;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            transition: background 0.3s, border-color 0.3s, backdrop-filter 0.3s;
+        }
+
+        .game-nav.scrolled {
+            background: rgba(5,3,10,.94);
+            border-bottom: 1px solid var(--b1);
+            backdrop-filter: blur(14px);
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-family: var(--f-mono);
+            font-size: 12px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--t3);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .nav-back:hover { color: var(--g); }
+        .nav-back svg { width:16px; height:16px; fill:currentColor; }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-anchors {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-anchors a {
+            font-family: var(--f-mono);
+            font-size: 11px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--t3);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .nav-anchors a:hover { color: var(--p); }
+
+        /* ══════════════════════════════════════════════════════
+           ██████  HERO — CINEMATIC FULL VIEWPORT
+        ══════════════════════════════════════════════════════ */
+        #hero {
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            padding: 2rem 2rem 0.1rem;
+        }
+
+        /* Art background — game's key art */
+        .hero-art-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-art-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            display: block;
+            /* Dark, saturated, slightly blurred — atmospheric */
+            filter: brightness(.28) saturate(1.6) blur(1.5px);
+            transform: scale(1.04);
+        }
+
+        /* Multi-layer gradient overlay — makes center readable */
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background:
+                linear-gradient(to bottom,
+                    rgba(3,2,6,.75)  0%,
+                    rgba(3,2,6,.15) 35%,
+                    rgba(3,2,6,.20) 65%,
+                    rgba(3,2,6,.88) 100%),
+                radial-gradient(ellipse 60% 55% at 50% 50%, rgba(191,104,255,.08) 0%, transparent 70%);
+        }
+
+        /* Scan line overlay on hero */
+        .hero-scanlines {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+            background: repeating-linear-gradient(
+                0deg, transparent, transparent 2px,
+                rgba(0,0,0,.15) 2px, rgba(0,0,0,.15) 3px
+            );
+        }
+
+        /* Animated green "drip" at bottom of hero */
+        .hero-drip {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 3;
+            height: 80px;
+            pointer-events: none;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .hero-drip::before {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg,
+                transparent 0%, var(--g) 20%, var(--p) 50%, var(--g) 80%, transparent 100%);
+            animation: drip-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes drip-pulse {
+            0%,100% { opacity:.5; }
+            50%      { opacity:1;  box-shadow: 0 0 20px var(--g-glow); }
+        }
+
+        /* ── Hero content ── */
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            padding-top: 2rem;
+        }
+
+        /* Studio tag */
+        .hero-studio {
+            font-family: var(--f-mono);
+            font-size: 10px;
+            letter-spacing: .4em;
+            text-transform: uppercase;
+            color: var(--g);
+            margin-bottom: 1.5rem;
+            opacity: .85;
+            animation: fade-in-up .6s .1s both;
+        }
+
+        /* ── Hero Title Image ── */
+        .hero-title-img {
+            max-width: 90vw;
+            width: 600px;
+            height: auto;
+            margin-bottom: 0.5rem;
+            animation: fade-in-up .6s .2s both, title-float 4s 1s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(106, 217, 69, 0.4)) drop-shadow(0 0 70px rgba(191, 104, 255, 0.2));
+        }
+
+        @keyframes title-float {
+            0%, 100% { 
+                transform: translateY(0); 
+                filter: drop-shadow(0 0 30px rgba(106, 217, 69, 0.4)) drop-shadow(0 0 70px rgba(191, 104, 255, 0.2)); 
+            }
+            50% { 
+                transform: translateY(-12px); 
+                filter: drop-shadow(0 0 45px rgba(106, 217, 69, 0.7)) drop-shadow(0 0 100px rgba(191, 104, 255, 0.4)); 
+            }
+        }
+
+        /* ── Danger badge below title ── */
+        .hero-warning {
+            display: inline-flex;
+            align-items: center;
+            gap: .75rem;
+            font-family: var(--f-mono);
+            font-size: 9px;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: #ef4444;
+            border: 1px solid rgba(239,68,68,.35);
+            background: rgba(239,68,68,.07);
+            padding: 5px 16px;
+            margin-top: 1.4rem;
+            margin-bottom: .5rem;
+            animation: fade-in-up .6s .45s both, alert-blink 2.4s .45s ease-in-out infinite;
+        }
+
+        .warning-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #ef4444;
+            box-shadow: 0 0 8px #ef4444;
+            flex-shrink: 0;
+        }
+
+        @keyframes alert-blink {
+            0%,100% { opacity:1; }
+            50%      { opacity:.55; }
+        }
+
+        /* ── Hero tagline ── */
+        .hero-tagline {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--t2);
+            max-width: 720px;
+            line-height: 1.7;
+            margin: .6rem 0 2.5rem;
+            font-weight: 300;
+            animation: fade-in-up .6s .55s both;
+        }
+
+        .hero-tagline strong { color: var(--g); font-weight: 600; }
+
+        /* ── Genre tags ── */
+        .hero-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            animation: fade-in-up .6s .6s both;
+        }
+
+        .htag {
+            font-family: var(--f-mono);
+            font-size: 11px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            padding: 8px 18px;
+            border: 1px solid var(--b2);
+            color: var(--p);
+            background: var(--p-dim);
+            transition: all .2s;
+        }
+
+        .htag:hover {
+            border-color: var(--p);
+            background: rgba(191,104,255,.28);
+            box-shadow: 0 0 12px var(--p-glow);
+        }
+
+        /* ── Hero CTA buttons ── */
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fade-in-up .6s .7s both;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           BUTTONS (shared)
+        ══════════════════════════════════════════════════════ */
+        .btn-play {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--f-game);
+            font-size: 14px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 20px 42px;
+            background: var(--g);
+            color: var(--black);
+            font-weight: 700;
+            clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+            transition: all .25s;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-play::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.25), transparent);
+            transform: translateX(-100%);
+            transition: transform .45s;
+        }
+
+        .btn-play:hover::before { transform: translateX(100%); }
+
+        .btn-play:hover {
+            background: #83f054;
+            box-shadow: 0 0 35px var(--g-glow), 0 0 70px rgba(106,217,69,.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-gdd {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--f-game);
+            font-size: 14px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 19px 38px;
+            background: transparent;
+            color: var(--p);
+            border: 1px solid var(--b2);
+            clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+            transition: all .25s;
+            cursor: pointer;
+        }
+
+        .btn-gdd:hover {
+            background: var(--p-dim);
+            border-color: var(--p);
+            box-shadow: 0 0 28px var(--p-glow);
+            transform: translateY(-2px);
+        }
+
+        .btn-play svg, .btn-gdd svg {
+            width: 14px; height: 14px;
+            fill: currentColor; flex-shrink: 0;
+        }
+
+        /* ── Scroll hint ── */
+        .scroll-hint {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            opacity: .4;
+            font-family: var(--f-mono);
+            font-size: 8px;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--g);
+            animation: fade-in-up .6s 1.2s both;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 44px;
+            background: linear-gradient(to bottom, var(--g), transparent);
+            animation: scroll-bob 1.6s ease-in-out infinite;
+        }
+
+        @keyframes scroll-bob {
+            0%,100% { opacity:.3; transform:scaleY(1); }
+            50%      { opacity:1;  transform:scaleY(1.1); }
+        }
+
+        /* ══════════════════════════════════════════════════════
+           SECTION COMMONS
+        ══════════════════════════════════════════════════════ */
+        .s-wrap {
+            position: relative;
+            z-index: 1;
+        }
+
+        #about.s-wrap {
+            border-top: 1px solid var(--b1);
+        }
+
+        .s-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 50px 2rem;
+        }
+
+        .s-tag {
+            font-family: var(--f-mono);
+            font-size: 9px;
+            letter-spacing: .45em;
+            text-transform: uppercase;
+            color: var(--g);
+            margin-bottom: .6rem;
+            opacity: .8;
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+        }
+
+        .s-tag::after {
+            content: '';
+            display: block;
+            height: 1px;
+            width: 40px;
+            background: var(--g);
+            opacity: .4;
+        }
+
+        .s-title {
+            font-family: var(--f-game);
+            font-size: clamp(1.4rem, 3vw, 2.2rem);
+            color: var(--white);
+            line-height: 1.15;
+            margin-bottom: .8rem;
+        }
+
+        .s-divider {
+            width: 48px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--g), transparent);
+            border-radius: 2px;
+            margin-bottom: 3rem;
+        }
+
+        /* Alternating section backgrounds */
+        .bg-deep   { background: #06040f; }
+        .bg-surface{ background: #080511; }
+        .bg-void   { background: var(--bg0); }
+
+        /* ══════════════════════════════════════════════════════
+           ABOUT SECTION
+        ══════════════════════════════════════════════════════ */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.25fr .75fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.02rem;
+            color: var(--t2);
+            line-height: 1.85;
+            font-weight: 300;
+        }
+
+        .about-text p + p { margin-top: 1.1rem; }
+        .about-text strong { color: var(--g); font-weight: 600; }
+        .about-text em { color: var(--p); font-style: normal; }
+
+        .about-card {
+            background: var(--bg2);
+            border: 1px solid var(--b2);
+            border-radius: 4px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top:0; left:0; right:0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--g), var(--p));
+        }
+
+        .stat-row {
+            display: flex;
+            align-items: flex-start;
+            gap: .9rem;
+            padding: .9rem 0;
+            border-bottom: 1px solid rgba(191,104,255,.07);
+        }
+
+        .stat-row:last-child { border-bottom: none; }
+
+        .stat-ico { font-size: 1.2rem; width: 28px; text-align:center; flex-shrink:0; margin-top:2px; }
+
+        .stat-lbl {
+            font-family: var(--f-mono);
+            font-size: 7.5px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--p);
+            margin-bottom: 3px;
+        }
+
+        .stat-val {
+            font-size: .92rem;
+            color: var(--t1);
+            font-weight: 600;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           VILLAIN SECTION — RATTUS
+        ══════════════════════════════════════════════════════ */
+        #rattus { background: transparent; }
+
+        .rattus-layout {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 3.5rem;
+            align-items: start;
+        }
+
+        /* CRT terminal for the villain briefing */
+        .crt-terminal {
+            background: #02010a;
+            border: 1px solid rgba(106,217,69,.2);
+            border-radius: 4px;
+            padding: 1.5rem;
+            font-family: var(--f-mono);
+            font-size: .82rem;
+            color: var(--g);
+            line-height: 1.7;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                inset 0 0 40px rgba(0,0,0,.9),
+                0 0 20px rgba(106,217,69,.06);
+        }
+
+        /* scanlines on terminal */
+        .crt-terminal::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: repeating-linear-gradient(
+                0deg, transparent, transparent 2px,
+                rgba(0,0,0,.14) 2px, rgba(0,0,0,.14) 3px
+            );
+            pointer-events: none; z-index: 2;
+        }
+
+        .term-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(106,217,69,.12);
+            padding-bottom: .5rem;
+            margin-bottom: .9rem;
+            font-size: .75rem;
+            color: rgba(106,217,69,.5);
+        }
+
+        .term-dots { display:flex; gap:5px; }
+        .term-dot { width:8px; height:8px; border-radius:50%; }
+        .term-dot:nth-child(1){ background:#ff5f57; }
+        .term-dot:nth-child(2){ background:#febc2e; }
+        .term-dot:nth-child(3){ background:var(--g); }
+
+        .tline { margin-bottom: .45rem; }
+        .tline:last-child { margin-bottom:0; }
+
+        .t-red    { color:#ef4444; animation:t-pulse 1.8s ease-in-out infinite; }
+        .t-purple { color:var(--p); }
+        .t-cyan   { color:#38bdf8; }
+        .t-white  { color:var(--white); }
+
+        @keyframes t-pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+
+        .t-cursor {
+            display: inline-block;
+            width: 7px; height: 1em;
+            background: var(--g);
+            margin-left: 2px;
+            vertical-align: text-bottom;
+            animation: cursor-blink 1s step-end infinite;
+        }
+
+        @keyframes cursor-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+        /* Threat card on the right */
+        .threat-card {
+            background: var(--bg2);
+            border: 1px solid rgba(239,68,68,.2);
+            border-left: 4px solid #ef4444;
+            border-radius: 4px;
+            padding: 2rem;
+        }
+
+        .threat-title {
+            font-family: var(--f-game);
+            font-size: .9rem;
+            color: #ef4444;
+            margin-bottom: .5rem;
+            text-shadow: 0 0 14px rgba(239,68,68,.5);
+        }
+
+        .threat-codename {
+            font-family: var(--f-mono);
+            font-size: 8px;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: rgba(239,68,68,.6);
+            margin-bottom: 1.5rem;
+        }
+
+        .threat-img-container {
+            width: 100%;
+            height: 250px;
+            border: 1px solid rgba(239,68,68,.3);
+            border-radius: 3px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            position: relative;
+            background: #02010a;
+        }
+        
+        .threat-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0.85;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        
+        .threat-img-container:hover img {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .threat-img-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                0deg, transparent, transparent 2px,
+                rgba(0,0,0,.2) 2px, rgba(0,0,0,.2) 3px
+            );
+            pointer-events: none;
+        }
+
+        .threat-img-container::before {
+            content: 'REC •';
+            position: absolute;
+            top: 10px; right: 12px;
+            color: #ef4444;
+            font-family: var(--f-mono);
+            font-size: 10px;
+            letter-spacing: .1em;
+            z-index: 2;
+            animation: rec-blink 1.5s infinite;
+        }
+
+        .threat-desc {
+            font-size: .95rem;
+            color: var(--t2);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .threat-stats {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+
+        .tstat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--f-mono);
+            font-size: 9px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: .5rem 0;
+            border-bottom: 1px solid rgba(239,68,68,.07);
+        }
+
+        .tstat:last-child { border-bottom: none; }
+        .tstat-key { color: var(--t3); }
+        .tstat-val { color: #ef4444; font-weight: 700; }
+
+        /* ══════════════════════════════════════════════════════
+           SCIENTISTS / CHARACTERS SECTION
+        ══════════════════════════════════════════════════════ */
+        #cientistas { background: transparent; }
+
+        .scientists-intro {
+            font-size: 1rem;
+            color: var(--t2);
+            line-height: 1.75;
+            max-width: 700px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .sci-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .sci-card {
+            background: var(--bg2);
+            border: 1px solid var(--b1);
+            border-radius: 4px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all .3s cubic-bezier(.25,.8,.25,1);
+        }
+
+        /* Lab coat stripe accent */
+        .sci-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .3s;
+        }
+
+        .sci-card.c-green::before { background: var(--g); }
+        .sci-card.c-purple::before { background: var(--p); }
+        .sci-card.c-cyan::before { background: #38bdf8; }
+
+        .sci-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--b2);
+            box-shadow: 0 18px 45px rgba(0,0,0,.4);
+        }
+
+        .sci-card:hover::before { transform: scaleX(1); }
+
+        .sci-avatar {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-family: var(--f-game);
+            font-size: 1.5rem;
+            transition: all .35s;
+            border: 2px solid;
+            overflow: hidden;
+        }
+
+        .sci-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .sci-card.c-green  .sci-avatar { border-color:rgba(106,217,69,.3);  background:rgba(106,217,69,.08);  color:var(--g); }
+        .sci-card.c-purple .sci-avatar { border-color:rgba(191,104,255,.3); background:rgba(191,104,255,.08); color:var(--p); }
+        .sci-card.c-cyan   .sci-avatar { border-color:rgba(56,189,248,.3);  background:rgba(56,189,248,.08);  color:#38bdf8; }
+
+        .sci-card:hover .sci-avatar {
+            box-shadow: 0 0 24px currentColor;
+            border-color: currentColor;
+        }
+
+        .sci-name {
+            font-family: var(--f-body);
+            font-size: 1.38rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: .4rem;
+        }
+
+        .sci-role {
+            font-family: var(--f-mono);
+            font-size: 10px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 2px;
+            display: inline-block;
+            margin-bottom: .9rem;
+        }
+
+        .sci-card.c-green  .sci-role { color:var(--g); background:var(--g-dim); }
+        .sci-card.c-purple .sci-role { color:var(--p); background:var(--p-dim); }
+        .sci-card.c-cyan   .sci-role { color:#38bdf8;  background:rgba(56,189,248,.1); }
+
+        .sci-bio {
+            font-size: .85rem;
+            color: var(--t2);
+            line-height: 1.6;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           SCREENSHOTS SECTION
+        ══════════════════════════════════════════════════════ */
+        #capturas { background: transparent; }
+
+        .ss-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .ss-frame {
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            background: var(--bg2);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .ss-frame img {
+            width:100%; height:100%;
+            object-fit:cover; display:block;
+            transition: transform .4s ease, filter .3s;
+            filter: brightness(.85) saturate(1.15);
+        }
+
+        .ss-frame:hover img {
+            transform: scale(1.06);
+            filter: brightness(1) saturate(1.25);
+        }
+
+        .ss-lbl {
+            position: absolute;
+            bottom:0; left:0; right:0;
+            font-family: var(--f-mono);
+            font-size: 7px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--white);
+            background: linear-gradient(to top, rgba(0,0,0,.85), transparent);
+            padding: 24px 12px 10px;
+            opacity:0;
+            transition: opacity .3s;
+        }
+
+        .ss-frame:hover .ss-lbl { opacity:1; }
+
+        /* ══════════════════════════════════════════════════════
+           FEATURES / MECHANICS
+        ══════════════════════════════════════════════════════ */
+        #features { background: transparent; }
+
+        .feat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+            background: var(--b1);
+            border: 1px solid var(--b1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .feat-card {
+            background: var(--bg2);
+            padding: 2rem 1.5rem;
+            transition: background .25s, transform .25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feat-card::after {
+            content: '';
+            position: absolute;
+            bottom:0; left:0;
+            width:100%; height:2px;
+            background: linear-gradient(90deg, var(--g), transparent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .3s;
+        }
+
+        .feat-card:hover { background: var(--bg3); transform: translateY(-3px); }
+        .feat-card:hover::after { transform: scaleX(1); }
+
+        .feat-icon { font-size: 1.7rem; margin-bottom: .9rem; }
+
+        .feat-title {
+            font-family: var(--f-mono);
+            font-size: 12px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--g);
+            margin-bottom: .55rem;
+        }
+
+        .feat-desc {
+            font-size: .86rem;
+            color: var(--t2);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           GAMEPLAY MECHANICS DETAIL
+        ══════════════════════════════════════════════════════ */
+        #mecanicas { background: transparent; }
+
+        .mec-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .mec-list { list-style:none; display:flex; flex-direction:column; }
+
+        .mec-item {
+            display: flex;
+            align-items: flex-start;
+            gap: .9rem;
+            padding: .85rem 0;
+            border-bottom: 1px solid rgba(191,104,255,.07);
+            transition: all .2s;
+        }
+
+        .mec-item:hover { padding-left: .4rem; }
+        .mec-item:last-child { border-bottom: none; }
+
+        .mec-bullet {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--g);
+            box-shadow: 0 0 8px var(--g-glow);
+            flex-shrink: 0;
+            margin-top: .55rem;
+        }
+
+        .mec-txt { font-size:.93rem; color:var(--t2); line-height:1.5; }
+        .mec-txt strong { color:var(--t1); font-weight:600; }
+
+        /* Inspirations block */
+        .inspo-block { display:flex; flex-direction:column; gap:1.5rem; }
+
+        .inspo-lbl {
+            font-family: var(--f-mono);
+            font-size: 12px;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--p);
+        }
+
+        .inspo-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .inspo-tag {
+            background: var(--bg2);
+            border: 1px solid var(--b2);
+            border-radius: 3px;
+            padding: 1rem;
+            text-align: center;
+            font-family: var(--f-mono);
+            font-size: 12px;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--t1);
+            transition: all .25s;
+        }
+
+        .inspo-tag:hover {
+            border-color: var(--p);
+            background: var(--p-dim);
+            box-shadow: 0 0 14px var(--p-glow);
+        }
+
+        .dev-box {
+            background: var(--bg2);
+            border: 1px solid var(--b1);
+            border-left: 3px solid var(--p);
+            border-radius: 3px;
+            padding: 1.5rem;
+        }
+
+        .dev-badge {
+            display: inline-block;
+            font-family: var(--f-mono);
+            font-size: 8px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            background: linear-gradient(135deg,#0056ff,#00d2ff);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 3px;
+            margin-bottom: .7rem;
+            box-shadow: 0 0 14px rgba(0,86,255,.35);
+        }
+
+        .dev-box p { font-size:.88rem; color:var(--t2); line-height:1.6; }
+
+        /* ══════════════════════════════════════════════════════
+           TEAM SECTION (dev team as scientists)
+        ══════════════════════════════════════════════════════ */
+        #equipe { background: transparent; }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .team-card {
+            background: var(--bg2);
+            border: 1px solid var(--b1);
+            border-radius: 4px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all .3s cubic-bezier(.25,.8,.25,1);
+        }
+
+        .team-card::after {
+            content: '';
+            position: absolute;
+            bottom:0; left:0; right:0;
+            height: 3px;
+            background: var(--p);
+            transform: scaleX(0);
+            transition: transform .3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--b2);
+            box-shadow: 0 16px 42px rgba(191,104,255,.12);
+        }
+
+        .team-card:hover::after { transform: scaleX(1); }
+
+        .tm-avatar {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--b2);
+            background: var(--p-dim);
+            display: flex; align-items:center; justify-content:center;
+            margin: 0 auto 1.2rem;
+            font-family: var(--f-game);
+            font-size: 1.3rem;
+            color: var(--p);
+            transition: all .35s ease;
+            overflow: hidden;
+        }
+
+        .tm-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .team-card:hover .tm-avatar {
+            border-color: var(--g);
+            color: var(--g);
+            background: var(--g-dim);
+            box-shadow: 0 0 22px var(--g-glow);
+        }
+
+        .tm-name { font-size:1.3rem; font-weight:700; color:var(--white); margin-bottom:.4rem; }
+
+        .tm-role {
+            font-family: var(--f-mono);
+            font-size: 10px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--p);
+            background: var(--p-dim);
+            padding: 4px 10px;
+            border-radius: 2px;
+            display: inline-block;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           FINAL CTA
+        ══════════════════════════════════════════════════════ */
+        #cta {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            background: transparent;
+        }
+
+        /* Warning stripe divider at top of CTA */
+        .cta-stripe {
+            height: 4px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--g) 0, var(--g) 6px,
+                rgba(0,0,0,0) 6px, rgba(0,0,0,0) 12px,
+                var(--p) 12px, var(--p) 18px,
+                rgba(0,0,0,0) 18px, rgba(0,0,0,0) 24px
+            );
+            opacity: .35;
+        }
+
+        .cta-title {
+            font-family: var(--f-game);
+            font-size: clamp(1.6rem, 5vw, 3.5rem);
+            color: var(--white);
+            margin-bottom: .9rem;
+            text-shadow:
+                0 0 40px rgba(106,217,69,.3),
+                0 0 80px rgba(191,104,255,.2);
+        }
+
+        .cta-sub {
+            font-size: 1.05rem;
+            color: var(--t2);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .cta-scenario {
+            max-width: 700px;
+            aspect-ratio: 700 / 467;
+            margin: 0 auto 3.5rem auto;
+            border: 1px solid var(--b2);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(106, 217, 69, 0.15), 0 0 80px rgba(191, 104, 255, 0.1);
+            position: relative;
+        }
+
+        .cta-scenario img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .cta-scenario:hover img {
+            transform: scale(1.03);
+        }
+
+        .cta-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           FOOTER
+        ══════════════════════════════════════════════════════ */
+        .main-footer {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            text-align: center;
+            font-size: .82rem;
+            color: var(--t3);
+            background: transparent;
+        }
+
+        .main-footer a { color:var(--p); text-decoration:none; transition:color .2s; }
+        .main-footer a:hover { color:var(--g); }
+
+        /* ══════════════════════════════════════════════════════
+           SCROLL REVEAL
+        ══════════════════════════════════════════════════════ */
+        .rv {
+            opacity: 0;
+            transform: translateY(26px);
+            transition: opacity .65s ease, transform .65s ease;
+        }
+        .rv.vis { opacity:1; transform:none; }
+
+        /* ══════════════════════════════════════════════════════
+           ENTRY ANIMATIONS
+        ══════════════════════════════════════════════════════ */
+        @keyframes fade-in-up {
+            from { opacity:0; transform:translateY(20px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        /* ══════════════════════════════════════════════════════
+           RESPONSIVE
+        ══════════════════════════════════════════════════════ */
+        @media (max-width: 1000px) {
+            .about-grid, .rattus-layout, .mec-layout { grid-template-columns:1fr; gap:2.5rem; }
+            .feat-grid { grid-template-columns: repeat(2,1fr); }
+            .sci-grid { grid-template-columns: 1fr; max-width:360px; margin:0 auto; }
+            .team-grid { grid-template-columns: 1fr; max-width:380px; margin:0 auto; }
+            .ss-grid { grid-template-columns: 1fr; }
+            .nav-anchors { display:none; }
+        }
+
+        @media (max-width: 600px) {
+            .hdr-inner, .game-nav { padding:0 1rem; }
+            .s-inner { padding:40px 1.25rem; }
+            .feat-grid { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction:column; align-items:center; }
+            .btn-play, .btn-gdd { justify-content:center; width:100%; max-width:280px; }
+            .title-ray { font-size: clamp(5rem, 28vw, 8rem); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Persistent lab atmosphere -->
+<div class="lab-bg"></div>
+<div id="bio-particles"></div>
+
+
+
+<!-- CABEÇALHO -->
+<header class="main-header">
+    <div class="header-container">
+        <div class="institution-logo-container">
+            <span>
+                <a href="https://portal.unis.edu.br/?hsLang=pt-br">
+                    <img src="https://portal.unis.edu.br/hs-fs/hubfs/LogoUnisBranca.png?width=97&height=60&name=LogoUnisBranca.png"
+                         height="60" style="height:auto;width:97px;border:0;" width="97" alt="Logo UNIS">
+                </a>
+            </span>
+        </div>
+        <div class="header-titles">
+            <h1>EXPO_GAMES_PORTAL v1.0</h1>
+            <p>Repositório de Páginas de Loja (Store Pages) da Turma de Desenvolvimento de Games</p>
+        </div>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════
+     GAME SUB-NAV
+═══════════════════════════════════════════════ -->
+<nav class="game-nav">
+    <!-- Rota de volta ao portal (obrigatório) -->
+    <a href="index.html" class="nav-back" id="btn-back-portal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+        Voltar ao Portal
+    </a>
+    <div class="nav-right">
+        <ul class="nav-anchors">
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#rattus">Missão</a></li>
+            <li><a href="#cientistas">Cientistas</a></li>
+            <li><a href="#capturas">Capturas</a></li>
+            <li><a href="#features">Mecânicas</a></li>
+            <li><a href="#equipe">Equipe</a></li>
+        </ul>
+        <a href="https://gd.games/games/99c542d3-e639-46f9-98eb-abfb62e3b451" class="btn-play" target="_blank" style="padding: 12px 28px; font-size: 11px;">
+            JOGAR
+        </a>
+    </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     ██ HERO — CINEMATIC TITLE CARD ██
+═══════════════════════════════════════════════ -->
+<section id="hero">
+
+    <!-- Background: key art da arte principal do jogo -->
+    <div class="hero-art-bg">
+        <img src="imgs_LFA/fundo.png" alt="Project Ray Banner">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-scanlines"></div>
+    <div class="hero-drip"></div>
+
+    <!-- Main content -->
+    <div class="hero-content">
+
+        <!-- Studio & engine tag -->
+        <p class="hero-studio">◈ &nbsp;LFA GAMES &nbsp;·&nbsp; GDevelop &nbsp;◈</p>
+
+        <!-- ── THE TITLE IMAGE ── -->
+        <!-- Substitua o src abaixo pela imagem do seu logo/título -->
+        <img src="imgs_LFA/titulo.png" alt="Project Ray" class="hero-title-img">
+
+
+
+        <!-- Tagline -->
+        <p class="hero-tagline">
+            Um <strong>laboratório</strong>. Um <strong>experimento</strong> que deu errado.
+            Três <strong>cientistas</strong> contra um rato gigante mutante.
+            A missão começou — e há apenas uma saída.
+        </p>
+
+        <!-- Genre tags -->
+        <div class="hero-tags">
+            <span class="htag">Plataforma 2D</span>
+            <span class="htag">Pixel Art</span>
+            <span class="htag">Retrô</span>
+            <span class="htag">Single-player</span>
+            <span class="htag">Browser</span>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="hero-buttons">
+            <!-- BOTÃO JOGAR — atualize o href quando o jogo estiver online -->
+            <a href="https://gd.games/games/99c542d3-e639-46f9-98eb-abfb62e3b451" id="btn-jogar" class="btn-play" target="_blank">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                JOGAR AGORA
+            </a>
+            <!-- BOTÃO BAIXAR GDD — atualize o href com o caminho do PDF -->
+            <a href="pdfs/project-ray-gdd.pdf" id="btn-gdd" class="btn-gdd" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                BAIXAR GDD
+            </a>
+        </div>
+    </div>
+
+
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SOBRE O JOGO
+═══════════════════════════════════════════════ -->
+<section class="s-wrap" id="about">
+    <div class="s-inner">
+        <div class="about-grid rv">
+            <div class="about-text">
+                <p class="s-tag">Sobre o Jogo</p>
+                <h2 class="s-title">Uma aventura retrô<br>com mutantes e caos</h2>
+                <div class="s-divider"></div>
+                <p>
+                    <strong>Project Ray</strong> é um jogo de plataforma 2D com estética <em>pixel art</em> retrô, desenvolvido pela <strong>LFA GAMES</strong>.
+                    A história se passa em um laboratório científico sombrio onde um experimento genético catastrófico resultou no nascimento de <em>Rattus</em> — um rato gigante, mutante e hostil.
+                </p>
+                <p>
+                    Três cientistas sobreviventes — presos dentro das instalações — assumem a missão de neutralizar a ameaça antes que ela se espalhe. Cada fase representa um novo setor do laboratório infestado, mais perigoso que o anterior.
+                </p>
+                <p>
+                    Com <strong>4 fases progressivas</strong>, batalha contra chefe, sistema de moedas, trilha sonora chiptune e visuais inspirados nos arcades dos anos 90, Project Ray entrega nostalgia, tensão e diversão — direto no navegador.
+                </p>
+            </div>
+            <div class="about-card">
+                <div class="stat-row">
+                    <div class="stat-ico">🎮</div>
+                    <div>
+                        <div class="stat-lbl">Modalidade</div>
+                        <div class="stat-val">Single-player · Browser</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-ico">🕹️</div>
+                    <div>
+                        <div class="stat-lbl">Gênero</div>
+                        <div class="stat-val">Plataforma 2D · Pixel Art</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-ico">⚙️</div>
+                    <div>
+                        <div class="stat-lbl">Engine</div>
+                        <div class="stat-val">GDevelop</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-ico">🌐</div>
+                    <div>
+                        <div class="stat-lbl">Plataforma</div>
+                        <div class="stat-val">Navegadores Modernos</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-ico">🎨</div>
+                    <div>
+                        <div class="stat-lbl">Estilo</div>
+                        <div class="stat-val">Retrô · Arcade · Dark Neon</div>
+                    </div>
+                </div>
+                <div class="stat-row">
+                    <div class="stat-ico">📅</div>
+                    <div>
+                        <div class="stat-lbl">Classificação</div>
+                        <div class="stat-val">+10 anos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     MISSÃO — O VILÃO RATTUS
+═══════════════════════════════════════════════ -->
+<section class="s-wrap" id="rattus">
+    <div class="s-inner">
+        <div class="rattus-layout rv">
+            
+            <div class="rattus-left">
+                <p class="s-tag">Missão Ativa</p>
+                <h2 class="s-title">O Experimento<br>que Deu Errado</h2>
+                <div class="s-divider"></div>
+
+                <!-- CRT terminal briefing -->
+                <div class="crt-terminal">
+                <div class="term-header">
+                    <div class="term-dots">
+                        <div class="term-dot"></div>
+                        <div class="term-dot"></div>
+                        <div class="term-dot"></div>
+                    </div>
+                    <span>TERMINAL_LAB_v4.0.2 &nbsp;·&nbsp; NÍVEL DE ACESSO: MÁXIMO</span>
+                    <span>STATUS: CRÍTICO</span>
+                </div>
+                <div class="tline"><span class="t-red">&gt; [ALERTA VERMELHO]: VIOLAÇÃO GENÉTICA DETECTADA — SETOR 7.</span></div>
+                <div class="tline">&gt; Experimento nº 47-R: <span class="t-white">RATTUS MAXIMUS</span>. Mutação acelerada confirmada.</div>
+                <div class="tline">&gt; Sujeito cresceu de 200g para estimados <span class="t-red">180kg</span>. Capacidade destrutiva: imprevisível.</div>
+                <div class="tline">&gt; Contenção dos setores A, B e C: <span class="t-red">FALHOU.</span></div>
+                <div class="tline">&gt; Sobreviventes identificados no complexo:</div>
+                <div class="tline">&nbsp;&nbsp;&nbsp;<span class="t-purple">◈ Dra. Kim</span> &nbsp;·&nbsp; <span class="t-cyan">Dr. Axel</span> &nbsp;·&nbsp; <span style="color:var(--g)">Dra. Andy</span></div>
+                <div class="tline">&gt; Objetivo: neutralizar Rattus. Sintetizar antídoto. Sobreviver.</div>
+                <div class="tline" style="border-top:1px solid rgba(106,217,69,.1);padding-top:.5rem;margin-top:.4rem;color:var(--g)">
+                    &gt; AGUARDANDO INTERVENÇÃO DOS CIENTISTAS...<span class="t-cursor"></span>
+                </div>
+            </div>
+            </div>
+
+            <!-- Villain threat card -->
+            <div class="threat-card">
+                <div class="threat-title">⚠ RATTUS</div>
+                <div class="threat-codename">Experimento #47-R · Ameaça Máxima</div>
+                
+                <!-- Imagem do Vilão -->
+                <div class="threat-img-container">
+                    <img src="imgs_LFA/rattus_vilao.png" alt="Rattus">
+                </div>
+
+                <p class="threat-desc">
+                    Nascido de um acidente em um experimento de modificação genética acelerada,
+                    <strong style="color:#ef4444">Rattus</strong> é o vilão principal de Project Ray.
+                    Um rato de laboratório que sofreu mutações massivas e agora domina os
+                    setores do complexo. Sua inteligência e brutalidade aumentaram
+                    proporcionalmente ao seu tamanho — e ele não tem intenção de ser contido novamente.
+                </p>
+                <div class="threat-stats">
+                    <div class="tstat">
+                        <span class="tstat-key">Classificação</span>
+                        <span class="tstat-val">BOSS FINAL</span>
+                    </div>
+                    <div class="tstat">
+                        <span class="tstat-key">Origem</span>
+                        <span class="tstat-val">Mutação Genética</span>
+                    </div>
+                    <div class="tstat">
+                        <span class="tstat-key">Localização</span>
+                        <span class="tstat-val">Setor Central</span>
+                    </div>
+                    <div class="tstat">
+                        <span class="tstat-key">Nível de Ameaça</span>
+                        <span class="tstat-val">CRÍTICO ██████████</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     OS CIENTISTAS — PERSONAGENS
+═══════════════════════════════════════════════ -->
+<section class="s-wrap" id="cientistas">
+    <div class="s-inner">
+        <div class="rv">
+            <p class="s-tag">Personagens</p>
+            <h2 class="s-title">Os Três Cientistas</h2>
+            <div class="s-divider"></div>
+        </div>
+        <p class="scientists-intro rv">
+            Presos dentro do laboratório após o colapso dos sistemas de contenção, três cientistas com habilidades complementares
+            formam a única linha de defesa contra Rattus. Juntos, eles carregam a missão de sobreviver — e vencer.
+        </p>
+        <div class="sci-grid rv">
+
+            <!-- Dra. Kim -->
+            <div class="sci-card c-purple">
+                <div class="sci-avatar">
+                    <img src="imgs_LFA/cientista_kim.png" alt="Dra. Kim">
+                </div>
+                <div class="sci-name">Dra. Kim</div>
+                <span class="sci-role">Bioquímica / Estrategista</span>
+                <p class="sci-bio" style="margin-top:.9rem">
+                    Especialista em mutações genéticas. Dra. Kim é a mente analítica do grupo —
+                    responsável por decifrar os padrões de ataque de Rattus e formular o antídoto.
+                </p>
+            </div>
+
+            <!-- Dr. Axel -->
+            <div class="sci-card c-green">
+                <div class="sci-avatar">
+                    <img src="imgs_LFA/cientista_axel.png" alt="Dr. Axel">
+                </div>
+                <div class="sci-name">Dr. Axel</div>
+                <span class="sci-role">Físico / Combatente</span>
+                <p class="sci-bio" style="margin-top:.9rem">
+                    O protagonista central. Dr. Axel é ágil, corajoso e o primeiro a enfrentar
+                    os mutantes diretamente. Sua experiência em campo o torna indispensável
+                    nas fases mais intensas do laboratório.
+                </p>
+            </div>
+
+            <!-- Dra. Andy -->
+            <div class="sci-card c-cyan">
+                <div class="sci-avatar">
+                    <img src="imgs_LFA/cientista_andy.png" alt="Dra. Andy">
+                </div>
+                <div class="sci-name">Dra. Andy</div>
+                <span class="sci-role">Engenheira / Suporte Técnico</span>
+                <p class="sci-bio" style="margin-top:.9rem">
+                    Especialista em sistemas do laboratório. Dra. Andy mantém os equipamentos
+                    funcionando e encontra rotas alternativas pelos setores bloqueados.
+                    Sem ela, a equipe estaria perdida no complexo.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CAPTURAS DE TELA
+═══════════════════════════════════════════════ -->
+<section class="s-wrap" id="capturas">
+    <div class="s-inner">
+        <div class="rv">
+            <p class="s-tag">Visual</p>
+            <h2 class="s-title">Material de Gameplay</h2>
+            <div class="s-divider"></div>
+        </div>
+        <div class="ss-grid rv">
+            <div class="ss-frame">
+                <!-- Screenshot: tela do menu principal -->
+                <img src="imgs_LFA/print_menu.png" alt="Menu Principal — Project Ray">
+                <span class="ss-lbl">Menu Principal</span>
+            </div>
+            <div class="ss-frame">
+                <!-- Screenshot: gameplay em ação -->
+                <img src="imgs_LFA/print_gameplay.png" alt="Gameplay — Project Ray">
+                <span class="ss-lbl">Gameplay</span>
+            </div>
+            <div class="ss-frame">
+                <!-- Screenshot: personagens / arte -->
+                <img src="imgs_LFA/print_inimigos.png" alt="Inimigos — Project Ray">
+                <span class="ss-lbl">Inimigos</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FEATURES — CARACTERÍSTICAS DO JOGO
+═══════════════════════════════════════════════ -->
+<section class="s-wrap" id="features">
+    <div class="s-inner">
+        <div class="rv">
+            <p class="s-tag">Características</p>
+            <h2 class="s-title">O que você vai encontrar</h2>
+            <div class="s-divider"></div>
+        </div>
+        <div class="feat-grid rv">
+            <div class="feat-card">
+                <div class="feat-icon">🗺️</div>
+                <div class="feat-title">4 Fases Progressivas</div>
+                <p class="feat-desc">Cada setor do laboratório esconde novos inimigos, armadilhas e desafios crescentes.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">💀</div>
+                <div class="feat-title">Boss Final — Rattus</div>
+                <p class="feat-desc">O enfrentamento épico contra o rato gigante exige precisão, velocidade e estratégia.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🎨</div>
+                <div class="feat-title">Pixel Art Original</div>
+                <p class="feat-desc">Arte personalizada com cenários de laboratório escuros, iluminados por neon verde e roxo.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🎵</div>
+                <div class="feat-title">Trilha Retrô</div>
+                <p class="feat-desc">Música original em estilo chiptune que ambienta o perigo e a urgência da missão.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">⚡</div>
+                <div class="feat-title">Plataformas Móveis</div>
+                <p class="feat-desc">Elevadores, esteiras e superfícies instáveis dominam os setores mais avançados.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🪙</div>
+                <div class="feat-title">Moedas & Pontos</div>
+                <p class="feat-desc">Colete moedas douradas e maximize a pontuação completando fases rapidamente.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">🎮</div>
+                <div class="feat-title">Suporte a Controle</div>
+                <p class="feat-desc">Teclado ou controle — jogue do jeito que preferir, diretamente no browser.</p>
+            </div>
+            <div class="feat-card">
+                <div class="feat-icon">📈</div>
+                <div class="feat-title">Dificuldade Crescente</div>
+                <p class="feat-desc">Mutantes mais ágeis e armadilhas mais complexas a cada setor desbloqueado.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     MECÂNICAS + INSPIRAÇÕES
+═══════════════════════════════════════════════ -->
+<section class="s-wrap" id="mecanicas">
+    <div class="s-inner">
+        <div class="rv">
+            <p class="s-tag">Jogabilidade</p>
+            <h2 class="s-title">Mecânicas &amp; Inspirações</h2>
+            <div class="s-divider"></div>
+        </div>
+        <div class="mec-layout rv">
+            <ul class="mec-list">
+                <li class="mec-item">
+                    <span class="mec-bullet"></span>
+                    <span class="mec-txt"><strong>Desafios de plataforma:</strong> Navegue por elevadores, plataformas móveis e armadilhas progressivas pelo laboratório.</span>
+                </li>
+                <li class="mec-item">
+                    <span class="mec-bullet"></span>
+                    <span class="mec-txt"><strong>Encontros com inimigos:</strong> Tubos de ensaio e objetos químicos ganham vida, além de ratos mutantes do experimento bloqueiam a passagem.</span>
+                </li>
+                <li class="mec-item">
+                    <span class="mec-bullet"></span>
+                    <span class="mec-txt"><strong>Pulos de precisão:</strong> Evite gosmas ácidas, esgoto radioativo e veículos violentos pelo caminho.</span>
+                </li>
+                <li class="mec-item">
+                    <span class="mec-bullet"></span>
+                    <span class="mec-txt"><strong>Sistema de pontuação:</strong> Complete fases rapidamente e colete itens para maximizar o score.</span>
+                </li>
+                <li class="mec-item">
+                    <span class="mec-bullet"></span>
+                    <span class="mec-txt"><strong>Moedas colecionáveis:</strong> Itens dourados espalhados estrategicamente em cada setor que guiam o caminho.</span>
+                </li>
+                <li class="mec-item">
+                    <span class="mec-bullet"></span>
+                    <span class="mec-txt"><strong>Múltiplas vidas:</strong> Três corações por fase, com possibilidade de kits médicos para recuperar a vida.</span>
+                </li>
+            </ul>
+            <div class="inspo-block">
+                <p class="inspo-lbl">Inspirações</p>
+                <div class="inspo-grid">
+                    <div class="inspo-tag">Super Mario</div>
+                    <div class="inspo-tag">Sonic</div>
+                    <div class="inspo-tag">Donkey Kong Jr.</div>
+                    <div class="inspo-tag">TMNT</div>
+                </div>
+                <div class="dev-box">
+                    <div class="dev-badge">GDevelop</div>
+                    <p>
+                        Project Ray foi inteiramente desenvolvido no GDevelop, com foco em sistemas de jogabilidade,
+                        design de níveis e experiências interativas. O projeto combina pixel art original,
+                        fluxos criativos assistidos por IA e audio design autoral.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     EQUIPE — LFA GAMES
+═══════════════════════════════════════════════ -->
+<section class="s-wrap" id="equipe">
+    <div class="s-inner">
+        <div class="rv" style="text-align:center;max-width:480px;margin:0 auto 3.5rem;">
+            <p class="s-tag" style="justify-content:center;">Desenvolvimento</p>
+            <h2 class="s-title" style="text-align:center;">Desenvolvido por<br><span style="color:var(--g)">LFA GAMES</span></h2>
+        </div>
+        <div class="team-grid rv">
+
+            <div class="team-card">
+                <div class="tm-avatar">
+                    <img src="imgs_LFA/equipe_andriele.png" alt="Andriele">
+                </div>
+                <div class="tm-name">Andriele de Fátima Silva</div>
+                <span class="tm-role">Documentação · Testes</span>
+            </div>
+
+            <div class="team-card">
+                <div class="tm-avatar">
+                    <img src="imgs_LFA/equipe_fernanda.png" alt="Fernanda">
+                </div>
+                <div class="tm-name">Fernanda Laudares Silva</div>
+                <span class="tm-role">Game Designer · Desenvolvedora</span>
+            </div>
+
+            <div class="team-card">
+                <div class="tm-avatar">
+                    <img src="imgs_LFA/equipe_lucas.png" alt="Lucas">
+                </div>
+                <div class="tm-name">Lucas Silva Ciacci</div>
+                <span class="tm-role">Artista Técnico · Desenvolvedor</span>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FINAL CTA
+═══════════════════════════════════════════════ -->
+<section id="cta">
+    <div class="cta-stripe"></div>
+    <div class="s-inner rv">
+        <h2 class="cta-title">A missão ainda<br>não terminou.</h2>
+        <p class="cta-sub">Rattus está solto. O laboratório está em colapso. Só você pode fazer a diferença.</p>
+        
+        <!-- Imagem de Cenário -->
+        <div class="cta-scenario">
+            <img src="imgs_LFA/cenario.png" alt="Cenário do Jogo">
+        </div>
+
+        <div class="cta-btns">
+            <!-- BOTÃO JOGAR — atualize o href quando o jogo estiver publicado -->
+            <a href="https://gd.games/games/99c542d3-e639-46f9-98eb-abfb62e3b451" id="btn-jogar-cta" class="btn-play" target="_blank" style="font-size:12px;padding:19px 48px;">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                JOGAR AGORA
+            </a>
+            <!-- BOTÃO BAIXAR GDD — atualize o href com o caminho do PDF -->
+            <a href="pdfs/project-ray-gdd.pdf" id="btn-gdd-cta" class="btn-gdd" style="font-size:12px;padding:18px 44px;" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                BAIXAR GDD
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer class="main-footer">
+    <p>© 2026 &bull; Mostra de Games Acadêmica &bull; <strong style="color:var(--p)">LFA GAMES</strong> — Project Ray &bull; Desenvolvido para <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.</p>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════════ -->
+<script>
+    // ── Bio-particles (green + purple, lab vibes) ──
+    const pc = document.getElementById('bio-particles');
+    const colors = ['#6ad945','#bf68ff','rgba(106,217,69,.7)','rgba(191,104,255,.7)','#4ab82e','#8830d4'];
+    for (let i = 0; i < 30; i++) {
+        const el = document.createElement('div');
+        el.className = 'bp';
+        const s = Math.random() * 3.5 + 1;
+        el.style.cssText = `
+            width:${s}px; height:${s}px;
+            background:${colors[i % colors.length]};
+            left:${Math.random() * 100}%;
+            bottom:-10px;
+            animation-duration:${Math.random() * 13 + 9}s;
+            animation-delay:${Math.random() * 11}s;
+        `;
+        pc.appendChild(el);
+    }
+
+    // ── Scroll reveal ──
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('vis');
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+
+    // ── Measure header height and position game-nav below it ──
+    const hdr = document.querySelector('.main-header');
+    function syncHeaderHeight() {
+        if (hdr) {
+            document.documentElement.style.setProperty('--header-h', hdr.offsetHeight + 'px');
+        }
+    }
+    syncHeaderHeight();
+    window.addEventListener('resize', syncHeaderHeight);
+
+    // ── Transparent to solid Nav bar on scroll ──
+    const nav = document.querySelector('.game-nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+</script>
+
+</body>
+</html>
