@@ -60,6 +60,13 @@ Abaixo estão os projetos principais desenvolvidos em cada período da graduaç�
 * **Caminho:** `4-periodo/4-ProjetoIntegradorExtensionista/MVP-de-App-BI-Dashboards-Mobile-First/`
 * **Descrição:** Aplicativo mobile .NET MAUI com dashboards interativos e integração MySQL.
 
+### **📌 5º Período — Projeto ExpressMe**
+
+* **Projeto:** Aplicativo de comunicação alternativa para crianças autistas (ExpressMe)
+* **Link:** [Acessar Projeto](https://github.com/LucasCiacci/Faculdade/tree/main/5-periodo/5-ProjetoIntegradorExtensionista)
+* **Caminho:** `5-periodo/5-ProjetoIntegradorExtensionista/Projeto-ExpressMe/`
+* **Descrição:** Projeto integrador focado no desenvolvimento de uma solução tecnológica para suporte e comunicação alternativa.
+
 ---
 
 ## 🗂️ Atividades Secundárias
@@ -101,6 +108,11 @@ Atividades complementares realizadas dentro das disciplinas, listadas de forma d
   * Comparação prática entre .NET MAUI e Android Nativo ao implementar as mesmas funcionalidades em ambos.
   * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/4-periodo/Mobile_Technologies/AppParidade)**
 
+* **Projeto de Jogo 2D/3D**
+  * *Período 5 — Disciplina: Desenvolvimento de Games*
+  * Desenvolvimento de um jogo completo abordando planejamento, mecânicas, prototipação e apresentação final do MVP.
+  * **👉 [Acessar atividade](https://github.com/LucasCiacci/Faculdade/tree/main/5-periodo/Desenvolvimento_de_Games/Projeto_da_Disciplina)**
+
 ---
 
 ## 📚 Estrutura do Repositório
@@ -133,6 +145,12 @@ Faculdade/
 │   ├── Disciplina 1 — [Banco de Dados Aplicado a Business Inteligence e Big Data]
 │   ├── Disciplina 2 — [Gestão de Projetos Ágeis]
 │   └── Disciplina 3 — [Mobile Technologies]
+│
+├── 5-periodo/
+│   ├── 5-ProjetoIntegradorExtensionista —> [Projeto-ExpressMe]
+│   ├── Disciplina 1 — [Desenvolvimento de Games]
+│   ├── Disciplina 2 — [Optativa]
+│   └── Disciplina 3 — [Sistemas Embarcados e IoT]
 │
 └── README.md
 ```
