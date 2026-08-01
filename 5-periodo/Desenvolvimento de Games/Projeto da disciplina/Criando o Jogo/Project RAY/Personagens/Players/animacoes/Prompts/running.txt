@@ -1,0 +1,57 @@
+Create a pixel art sprite sheet of a character performing a running animation.
+
+Use the provided character as exact reference. Do not redesign or reinterpret the character.
+
+Animation: running
+Total frames: 8
+
+Sprite size: 64x64 pixels per frame
+Layout: horizontal strip (8 columns, 1 row)
+Background: transparent
+
+IMPORTANT STRUCTURE RULES:
+- The final image must be divided into 8 equal frame regions
+- Each frame must occupy exactly one 64x64 cell
+- Frames must be perfectly aligned in a grid
+- No spacing between frames
+- The total image size must be 512x64 pixels
+- Each frame must be centered and fully contained inside its own cell
+
+IMPORTANT VISUAL RULES:
+- Maintain exact character proportions and design consistency
+- No blur, no anti-aliasing, sharp pixel edges only
+- Keep consistent lighting and color palette
+- No deformation or style change between frames
+- No position jitter between frames (character must stay aligned)
+
+ANIMATION DESCRIPTION (FRAME BY FRAME):
+
+Frame 1:
+Right leg forward, left leg back. Right arm back, left arm forward. Contact pose.
+
+Frame 2:
+Body slightly lowered. Legs beginning to pass each other. Arms moving toward center.
+
+Frame 3:
+Passing pose. Legs aligned under the body. Arms crossing near the torso.
+
+Frame 4:
+Left leg forward, right leg pushing off the ground. Body rising slightly.
+
+Frame 5:
+Airborne moment. Both feet off the ground. Legs extended in opposite directions.
+
+Frame 6:
+Left leg forward preparing for contact. Arms swinging opposite to legs.
+
+Frame 7:
+Body lowering again. Legs moving toward passing position.
+
+Frame 8:
+Return to initial contact pose (loop seamlessly with frame 1).
+
+FINAL REQUIREMENTS:
+- The animation must loop seamlessly
+- Motion must feel dynamic and smooth
+- The sprite sheet must be ready for direct slicing in a game engine
+- Keep character perfectly centered in all frames
